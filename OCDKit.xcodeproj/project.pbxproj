@@ -28,6 +28,7 @@
 		3F0D80EC184EFA69004D0249 /* OCDTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80EB184EFA69004D0249 /* OCDTerm.m */; };
 		3F0D80EF184EFB8B004D0249 /* OCDSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80EE184EFB8B004D0249 /* OCDSession.m */; };
 		3F0D80F2184EFE18004D0249 /* OCDGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80F1184EFE18004D0249 /* OCDGeometry.m */; };
+		3F163FE118995E4D0013CE90 /* OCDResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F163FE018995E4D0013CE90 /* OCDResultSet.m */; };
 		3F59FA56184F915C007C0235 /* OCDBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA55184F915C007C0235 /* OCDBoundary.m */; };
 		3F59FA59184F934B007C0235 /* OCDURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA58184F934B007C0235 /* OCDURL.m */; };
 		3F59FA5C184F955C007C0235 /* OCDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA5B184F955C007C0235 /* OCDContact.m */; };
@@ -95,6 +96,8 @@
 		3F0D80EE184EFB8B004D0249 /* OCDSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSession.m; sourceTree = "<group>"; };
 		3F0D80F0184EFE18004D0249 /* OCDGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDGeometry.h; sourceTree = "<group>"; };
 		3F0D80F1184EFE18004D0249 /* OCDGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDGeometry.m; sourceTree = "<group>"; };
+		3F163FDF18995E4D0013CE90 /* OCDResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDResultSet.h; sourceTree = "<group>"; };
+		3F163FE018995E4D0013CE90 /* OCDResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDResultSet.m; sourceTree = "<group>"; };
 		3F59FA54184F915C007C0235 /* OCDBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBoundary.h; sourceTree = "<group>"; };
 		3F59FA55184F915C007C0235 /* OCDBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBoundary.m; sourceTree = "<group>"; };
 		3F59FA57184F934B007C0235 /* OCDURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDURL.h; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				3F59FA58184F934B007C0235 /* OCDURL.m */,
 				3F0D80E1184EF8A3004D0249 /* OCDVote.h */,
 				3F0D80E2184EF8A3004D0249 /* OCDVote.m */,
+				3F163FDF18995E4D0013CE90 /* OCDResultSet.h */,
+				3F163FE018995E4D0013CE90 /* OCDResultSet.m */,
 			);
 			path = OCDKit;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			files = (
 				3F0D80EC184EFA69004D0249 /* OCDTerm.m in Sources */,
 				3F0D80E3184EF8A3004D0249 /* OCDVote.m in Sources */,
+				3F163FE118995E4D0013CE90 /* OCDResultSet.m in Sources */,
 				3F0D80E6184EF8AE004D0249 /* OCDEvent.m in Sources */,
 				3F59FA65184F9899007C0235 /* OCDName.m in Sources */,
 				3F0D80F2184EFE18004D0249 /* OCDGeometry.m in Sources */,

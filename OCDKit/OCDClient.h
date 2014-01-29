@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OCDResultSet.h"
 
 @interface OCDClient : NSObject
+
++ (id)clientWithKey:(NSString *)key;
+
+- (OCDResultSet *)bills:(NSDictionary *)params;
+- (OCDResultSet *)divisions:(NSDictionary *)params;
+- (OCDResultSet *)events:(NSDictionary *)params;
+- (OCDResultSet *)jurisdictions:(NSDictionary *)params;
+- (OCDResultSet *)organizations:(NSDictionary *)params;
+- (OCDResultSet *)people:(NSDictionary *)params;
+- (OCDResultSet *)votes:(NSDictionary *)params;
 
 @end
