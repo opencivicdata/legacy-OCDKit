@@ -9,13 +9,31 @@
 /* Begin PBXBuildFile section */
 		3F0D80A7184EF628004D0249 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0D80A6184EF628004D0249 /* Foundation.framework */; };
 		3F0D80AC184EF628004D0249 /* OCDKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F0D80AB184EF628004D0249 /* OCDKit.h */; };
-		3F0D80AE184EF628004D0249 /* OCDKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80AD184EF628004D0249 /* OCDKit.m */; };
 		3F0D80B5184EF628004D0249 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0D80B4184EF628004D0249 /* XCTest.framework */; };
 		3F0D80B6184EF628004D0249 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0D80A6184EF628004D0249 /* Foundation.framework */; };
 		3F0D80B8184EF628004D0249 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0D80B7184EF628004D0249 /* UIKit.framework */; };
 		3F0D80BB184EF628004D0249 /* libOCDKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0D80A3184EF628004D0249 /* libOCDKit.a */; };
 		3F0D80C1184EF628004D0249 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F0D80BF184EF628004D0249 /* InfoPlist.strings */; };
 		3F0D80C3184EF628004D0249 /* OCDKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80C2184EF628004D0249 /* OCDKitTests.m */; };
+		3F0D80CE184EF6CF004D0249 /* OCDClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80CD184EF6CF004D0249 /* OCDClient.m */; };
+		3F0D80D1184EF826004D0249 /* OCDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80D0184EF826004D0249 /* OCDObject.m */; };
+		3F0D80D4184EF84F004D0249 /* OCDJurisdiction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80D3184EF84F004D0249 /* OCDJurisdiction.m */; };
+		3F0D80D7184EF866004D0249 /* OCDDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80D6184EF866004D0249 /* OCDDivision.m */; };
+		3F0D80DA184EF874004D0249 /* OCDOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80D9184EF874004D0249 /* OCDOrganization.m */; };
+		3F0D80DD184EF885004D0249 /* OCDPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80DC184EF885004D0249 /* OCDPerson.m */; };
+		3F0D80E0184EF89A004D0249 /* OCDBill.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80DF184EF89A004D0249 /* OCDBill.m */; };
+		3F0D80E3184EF8A3004D0249 /* OCDVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80E2184EF8A3004D0249 /* OCDVote.m */; };
+		3F0D80E6184EF8AE004D0249 /* OCDEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80E5184EF8AE004D0249 /* OCDEvent.m */; };
+		3F0D80E9184EFA27004D0249 /* OCDChamber.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80E8184EFA27004D0249 /* OCDChamber.m */; };
+		3F0D80EC184EFA69004D0249 /* OCDTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80EB184EFA69004D0249 /* OCDTerm.m */; };
+		3F0D80EF184EFB8B004D0249 /* OCDSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80EE184EFB8B004D0249 /* OCDSession.m */; };
+		3F0D80F2184EFE18004D0249 /* OCDGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80F1184EFE18004D0249 /* OCDGeometry.m */; };
+		3F59FA56184F915C007C0235 /* OCDBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA55184F915C007C0235 /* OCDBoundary.m */; };
+		3F59FA59184F934B007C0235 /* OCDURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA58184F934B007C0235 /* OCDURL.m */; };
+		3F59FA5C184F955C007C0235 /* OCDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA5B184F955C007C0235 /* OCDContact.m */; };
+		3F59FA5F184F9632007C0235 /* OCDPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA5E184F9632007C0235 /* OCDPost.m */; };
+		3F59FA62184F976E007C0235 /* OCDIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA61184F976E007C0235 /* OCDIdentifier.m */; };
+		3F59FA65184F9899007C0235 /* OCDName.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F59FA64184F9899007C0235 /* OCDName.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +62,51 @@
 /* Begin PBXFileReference section */
 		3F0D80A3184EF628004D0249 /* libOCDKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCDKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D80A6184EF628004D0249 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3F0D80AA184EF628004D0249 /* OCDKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCDKit-Prefix.pch"; sourceTree = "<group>"; };
 		3F0D80AB184EF628004D0249 /* OCDKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDKit.h; sourceTree = "<group>"; };
-		3F0D80AD184EF628004D0249 /* OCDKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCDKit.m; sourceTree = "<group>"; };
 		3F0D80B3184EF628004D0249 /* OCDKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCDKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D80B4184EF628004D0249 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3F0D80B7184EF628004D0249 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		3F0D80BE184EF628004D0249 /* OCDKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCDKitTests-Info.plist"; sourceTree = "<group>"; };
 		3F0D80C0184EF628004D0249 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F0D80C2184EF628004D0249 /* OCDKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCDKitTests.m; sourceTree = "<group>"; };
+		3F0D80CC184EF6CF004D0249 /* OCDClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDClient.h; sourceTree = "<group>"; };
+		3F0D80CD184EF6CF004D0249 /* OCDClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDClient.m; sourceTree = "<group>"; };
+		3F0D80CF184EF826004D0249 /* OCDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDObject.h; sourceTree = "<group>"; };
+		3F0D80D0184EF826004D0249 /* OCDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDObject.m; sourceTree = "<group>"; };
+		3F0D80D2184EF84F004D0249 /* OCDJurisdiction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDJurisdiction.h; sourceTree = "<group>"; };
+		3F0D80D3184EF84F004D0249 /* OCDJurisdiction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdiction.m; sourceTree = "<group>"; };
+		3F0D80D5184EF866004D0249 /* OCDDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDDivision.h; sourceTree = "<group>"; };
+		3F0D80D6184EF866004D0249 /* OCDDivision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivision.m; sourceTree = "<group>"; };
+		3F0D80D8184EF874004D0249 /* OCDOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDOrganization.h; sourceTree = "<group>"; };
+		3F0D80D9184EF874004D0249 /* OCDOrganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDOrganization.m; sourceTree = "<group>"; };
+		3F0D80DB184EF885004D0249 /* OCDPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDPerson.h; sourceTree = "<group>"; };
+		3F0D80DC184EF885004D0249 /* OCDPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDPerson.m; sourceTree = "<group>"; };
+		3F0D80DE184EF89A004D0249 /* OCDBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBill.h; sourceTree = "<group>"; };
+		3F0D80DF184EF89A004D0249 /* OCDBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBill.m; sourceTree = "<group>"; };
+		3F0D80E1184EF8A3004D0249 /* OCDVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDVote.h; sourceTree = "<group>"; };
+		3F0D80E2184EF8A3004D0249 /* OCDVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDVote.m; sourceTree = "<group>"; };
+		3F0D80E4184EF8AE004D0249 /* OCDEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDEvent.h; sourceTree = "<group>"; };
+		3F0D80E5184EF8AE004D0249 /* OCDEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDEvent.m; sourceTree = "<group>"; };
+		3F0D80E7184EFA27004D0249 /* OCDChamber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDChamber.h; sourceTree = "<group>"; };
+		3F0D80E8184EFA27004D0249 /* OCDChamber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDChamber.m; sourceTree = "<group>"; };
+		3F0D80EA184EFA69004D0249 /* OCDTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTerm.h; sourceTree = "<group>"; };
+		3F0D80EB184EFA69004D0249 /* OCDTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTerm.m; sourceTree = "<group>"; };
+		3F0D80ED184EFB8B004D0249 /* OCDSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDSession.h; sourceTree = "<group>"; };
+		3F0D80EE184EFB8B004D0249 /* OCDSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSession.m; sourceTree = "<group>"; };
+		3F0D80F0184EFE18004D0249 /* OCDGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDGeometry.h; sourceTree = "<group>"; };
+		3F0D80F1184EFE18004D0249 /* OCDGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDGeometry.m; sourceTree = "<group>"; };
+		3F59FA54184F915C007C0235 /* OCDBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBoundary.h; sourceTree = "<group>"; };
+		3F59FA55184F915C007C0235 /* OCDBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBoundary.m; sourceTree = "<group>"; };
+		3F59FA57184F934B007C0235 /* OCDURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDURL.h; sourceTree = "<group>"; };
+		3F59FA58184F934B007C0235 /* OCDURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDURL.m; sourceTree = "<group>"; };
+		3F59FA5A184F955C007C0235 /* OCDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDContact.h; sourceTree = "<group>"; };
+		3F59FA5B184F955C007C0235 /* OCDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDContact.m; sourceTree = "<group>"; };
+		3F59FA5D184F9632007C0235 /* OCDPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDPost.h; sourceTree = "<group>"; };
+		3F59FA5E184F9632007C0235 /* OCDPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDPost.m; sourceTree = "<group>"; };
+		3F59FA60184F976E007C0235 /* OCDIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDIdentifier.h; sourceTree = "<group>"; };
+		3F59FA61184F976E007C0235 /* OCDIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDIdentifier.m; sourceTree = "<group>"; };
+		3F59FA63184F9899007C0235 /* OCDName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDName.h; sourceTree = "<group>"; };
+		3F59FA64184F9899007C0235 /* OCDName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDName.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,19 +164,47 @@
 		3F0D80A8184EF628004D0249 /* OCDKit */ = {
 			isa = PBXGroup;
 			children = (
+				3F0D80DE184EF89A004D0249 /* OCDBill.h */,
+				3F0D80DF184EF89A004D0249 /* OCDBill.m */,
+				3F59FA54184F915C007C0235 /* OCDBoundary.h */,
+				3F59FA55184F915C007C0235 /* OCDBoundary.m */,
+				3F0D80E7184EFA27004D0249 /* OCDChamber.h */,
+				3F0D80E8184EFA27004D0249 /* OCDChamber.m */,
+				3F0D80CC184EF6CF004D0249 /* OCDClient.h */,
+				3F0D80CD184EF6CF004D0249 /* OCDClient.m */,
+				3F59FA5A184F955C007C0235 /* OCDContact.h */,
+				3F59FA5B184F955C007C0235 /* OCDContact.m */,
+				3F0D80D5184EF866004D0249 /* OCDDivision.h */,
+				3F0D80D6184EF866004D0249 /* OCDDivision.m */,
+				3F0D80E4184EF8AE004D0249 /* OCDEvent.h */,
+				3F0D80E5184EF8AE004D0249 /* OCDEvent.m */,
+				3F0D80F0184EFE18004D0249 /* OCDGeometry.h */,
+				3F0D80F1184EFE18004D0249 /* OCDGeometry.m */,
+				3F59FA60184F976E007C0235 /* OCDIdentifier.h */,
+				3F59FA61184F976E007C0235 /* OCDIdentifier.m */,
+				3F0D80D2184EF84F004D0249 /* OCDJurisdiction.h */,
+				3F0D80D3184EF84F004D0249 /* OCDJurisdiction.m */,
 				3F0D80AB184EF628004D0249 /* OCDKit.h */,
-				3F0D80AD184EF628004D0249 /* OCDKit.m */,
-				3F0D80A9184EF628004D0249 /* Supporting Files */,
+				3F59FA63184F9899007C0235 /* OCDName.h */,
+				3F59FA64184F9899007C0235 /* OCDName.m */,
+				3F0D80CF184EF826004D0249 /* OCDObject.h */,
+				3F0D80D0184EF826004D0249 /* OCDObject.m */,
+				3F0D80D8184EF874004D0249 /* OCDOrganization.h */,
+				3F0D80D9184EF874004D0249 /* OCDOrganization.m */,
+				3F0D80DB184EF885004D0249 /* OCDPerson.h */,
+				3F0D80DC184EF885004D0249 /* OCDPerson.m */,
+				3F59FA5D184F9632007C0235 /* OCDPost.h */,
+				3F59FA5E184F9632007C0235 /* OCDPost.m */,
+				3F0D80ED184EFB8B004D0249 /* OCDSession.h */,
+				3F0D80EE184EFB8B004D0249 /* OCDSession.m */,
+				3F0D80EA184EFA69004D0249 /* OCDTerm.h */,
+				3F0D80EB184EFA69004D0249 /* OCDTerm.m */,
+				3F59FA57184F934B007C0235 /* OCDURL.h */,
+				3F59FA58184F934B007C0235 /* OCDURL.m */,
+				3F0D80E1184EF8A3004D0249 /* OCDVote.h */,
+				3F0D80E2184EF8A3004D0249 /* OCDVote.m */,
 			);
 			path = OCDKit;
-			sourceTree = "<group>";
-		};
-		3F0D80A9184EF628004D0249 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3F0D80AA184EF628004D0249 /* OCDKit-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		3F0D80BC184EF628004D0249 /* OCDKitTests */ = {
@@ -224,7 +306,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F0D80AE184EF628004D0249 /* OCDKit.m in Sources */,
+				3F0D80EC184EFA69004D0249 /* OCDTerm.m in Sources */,
+				3F0D80E3184EF8A3004D0249 /* OCDVote.m in Sources */,
+				3F0D80E6184EF8AE004D0249 /* OCDEvent.m in Sources */,
+				3F59FA65184F9899007C0235 /* OCDName.m in Sources */,
+				3F0D80F2184EFE18004D0249 /* OCDGeometry.m in Sources */,
+				3F0D80CE184EF6CF004D0249 /* OCDClient.m in Sources */,
+				3F0D80D4184EF84F004D0249 /* OCDJurisdiction.m in Sources */,
+				3F0D80EF184EFB8B004D0249 /* OCDSession.m in Sources */,
+				3F0D80D1184EF826004D0249 /* OCDObject.m in Sources */,
+				3F0D80E9184EFA27004D0249 /* OCDChamber.m in Sources */,
+				3F59FA5C184F955C007C0235 /* OCDContact.m in Sources */,
+				3F0D80D7184EF866004D0249 /* OCDDivision.m in Sources */,
+				3F59FA5F184F9632007C0235 /* OCDPost.m in Sources */,
+				3F59FA56184F915C007C0235 /* OCDBoundary.m in Sources */,
+				3F59FA59184F934B007C0235 /* OCDURL.m in Sources */,
+				3F0D80DA184EF874004D0249 /* OCDOrganization.m in Sources */,
+				3F0D80E0184EF89A004D0249 /* OCDBill.m in Sources */,
+				3F0D80DD184EF885004D0249 /* OCDPerson.m in Sources */,
+				3F59FA62184F976E007C0235 /* OCDIdentifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +509,7 @@
 				3F0D80C8184EF628004D0249 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F0D80C9184EF628004D0249 /* Build configuration list for PBXNativeTarget "OCDKitTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +518,7 @@
 				3F0D80CB184EF628004D0249 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

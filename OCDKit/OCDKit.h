@@ -6,8 +6,12 @@
 //  Copyright (c) 2013 Jeremy Carbaugh. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "OCDClient.h"
 
-@interface OCDKit : NSObject
-
-@end
+#import "OCDDivision.h"
+#import "OCDJurisdiction.h"
+#import "OCDOrganization.h"
+#import "OCDPerson.h"
+#import "OCDBill.h"
+#import "OCDVote.h"
+#import "OCDEvent.h"
