@@ -7,33 +7,91 @@
 //
 
 #import "OCDClient.h"
+#import "OCDBill.h"
+
+NSString *const BASEURL = @"https://api.opencivicdata.org";
 
 @implementation OCDClient
 
+#pragma mark - init
+
 + (id)clientWithKey:(NSString *)key {
-    return nil;
+    return [OCDClient clientWithKey:key baseURL:[NSURL URLWithString:BASEURL]];
 }
 
-- (OCDResultSet *)bills:(NSDictionary *)params {
-    return nil;
++ (id)clientWithKey:(NSString *)key baseURL:(NSURL *)baseURL {
+    OCDClient *client = [[OCDClient alloc] initWithBaseURL:baseURL];
+    [client setKey:key];
+    return client;
 }
-- (OCDResultSet *)divisions:(NSDictionary *)params {
-    return nil;
+
+- (id)initWithBaseURL:(NSURL *)url {
+    self = [super initWithBaseURL:url];
+    if (self) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        
+        [self.requestSerializer setValue:@"OCDKit" forHTTPHeaderField:@"User-Agent"];
+    };
+    return self;
 }
-- (OCDResultSet *)events:(NSDictionary *)params {
-    return nil;
+
+#pragma mark - OCDClient
+
+- (void)setKey:(NSString *)key {
+    [self.requestSerializer setValue:key forHTTPHeaderField:@"X-APIKEY"];
 }
-- (OCDResultSet *)jurisdictions:(NSDictionary *)params {
-    return nil;
+
+- (OCDResultSet *)resultSetForResponse:(id)responseObject {
+    NSDictionary *metaDictionary = [responseObject valueForKeyPath:@"meta"];
+    OCDResultSet *resultSet = [[OCDResultSet alloc] initWithCount:(NSInteger)[metaDictionary objectForKey:@"count"]
+                                                             page:(NSInteger)[metaDictionary objectForKey:@"page"]
+                                                          perPage:(NSInteger)[metaDictionary objectForKey:@"perPage"]
+                                                          maxPage:(NSInteger)[metaDictionary objectForKey:@"maxPage"]
+                                                       totalCount:(NSInteger)[metaDictionary objectForKey:@"totalCount"]];
+    return resultSet;
+};
+
+- (OCDResultSet *)billResultSetForResponse:(id)responseObject
+{
+    OCDResultSet *resultSet = [self resultSetForResponse:responseObject];
+    NSArray *results = [responseObject valueForKeyPath:@"results"];
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:results.count];
+    for (NSDictionary *obj in results) {
+        OCDBill *bill = [OCDBill modelWithDictionary:obj error:nil];
+        [items addObject:bill];
+    }
+    [resultSet setItems:items];
+    return resultSet;
 }
-- (OCDResultSet *)organizations:(NSDictionary *)params {
-    return nil;
+
+#pragma mark - OCDClient API methods
+
+- (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self GET:@"bills/" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        OCDResultSet *resultSet = [self billResultSetForResponse:responseObject];
+        completionBlock(resultSet);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completionBlock(nil);
+    }];
 }
-- (OCDResultSet *)people:(NSDictionary *)params {
-    return nil;
+- (void)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
 }
-- (OCDResultSet *)votes:(NSDictionary *)params {
-    return nil;
+- (void)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
+}
+- (void)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
+}
+- (void)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
+}
+- (void)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
+}
+- (void)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    //
 }
 
 @end

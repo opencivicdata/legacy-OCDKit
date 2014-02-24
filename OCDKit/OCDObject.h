@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface OCDObject : NSObject
+@interface OCDObject : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSDate *updatedAt;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
-@property (nonatomic, copy, readonly) NSArray *sources; # OCDURL
+@property (nonatomic, copy, readonly) NSArray *sources; // OCDURL
 
 @end

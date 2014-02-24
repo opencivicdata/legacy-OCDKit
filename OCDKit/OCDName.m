@@ -10,4 +10,11 @@
 
 @implementation OCDName
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+        @"startDate": @"start_date",
+        @"endDate": @"end_date",
+    };
+}
+
 @end

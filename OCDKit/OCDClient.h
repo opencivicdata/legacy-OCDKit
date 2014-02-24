@@ -7,18 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFNetworking.h>
 #import "OCDResultSet.h"
 
-@interface OCDClient : NSObject
+FOUNDATION_EXPORT NSString *const BASEURL;
+
+@interface OCDClient : AFHTTPSessionManager
 
 + (id)clientWithKey:(NSString *)key;
++ (id)clientWithKey:(NSString *)key baseURL:(NSURL *)baseURL;
 
-- (OCDResultSet *)bills:(NSDictionary *)params;
-- (OCDResultSet *)divisions:(NSDictionary *)params;
-- (OCDResultSet *)events:(NSDictionary *)params;
-- (OCDResultSet *)jurisdictions:(NSDictionary *)params;
-- (OCDResultSet *)organizations:(NSDictionary *)params;
-- (OCDResultSet *)people:(NSDictionary *)params;
-- (OCDResultSet *)votes:(NSDictionary *)params;
+- (void)setKey:(NSString *)key;
+
+- (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
 
 @end
