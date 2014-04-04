@@ -10,4 +10,13 @@
 
 @implementation OCDObject
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"createdAt": @"created_at",
+             @"updatedAt": @"updated_at",
+             @"sources": @"sources"
+            };
+}
+
+
 @end
