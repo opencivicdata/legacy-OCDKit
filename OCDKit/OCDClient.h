@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 #import "OCDResultSet.h"
 
 FOUNDATION_EXPORT NSString *const BASEURL;
