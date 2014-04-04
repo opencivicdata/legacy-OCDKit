@@ -11,20 +11,13 @@ PODS:
   - Mantle (1.4.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
-  - OCDKit (0.0.1):
-    - AFNetworking/NSURLSession (~> 2.2.0)
-    - Mantle (~> 1.4.0)
 
 DEPENDENCIES:
-  - OCDKit (from `../`)
-
-EXTERNAL SOURCES:
-  OCDKit:
-    :path: ../
+  - AFNetworking/NSURLSession (~> 2.2.0)
+  - Mantle (~> 1.4.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
-  OCDKit: 088bdb4ba6a1b80e97cb9f24f88084d1b7257f2c
 
 COCOAPODS: 0.31.1

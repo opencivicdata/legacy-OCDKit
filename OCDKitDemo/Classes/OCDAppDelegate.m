@@ -7,6 +7,7 @@
 //
 
 #import "OCDAppDelegate.h"
+#import "OCDKit.h"
 
 @implementation OCDAppDelegate
 
@@ -16,6 +17,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+    OCDClient *client = [OCDClient clientWithKey:@"foo"];
+
     return YES;
 }
 
