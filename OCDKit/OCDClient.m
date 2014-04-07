@@ -11,6 +11,12 @@
 
 NSString *const BASEURL = @"https://api.opencivicdata.org";
 
+@interface OCDClient ()
+
+- (OCDResultSet *)resultSetForResponse:(id)responseObject class:(Class)responseClass;
+
+@end
+
 @implementation OCDClient
 
 #pragma mark - init
@@ -42,26 +48,21 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
     [self.requestSerializer setValue:key forHTTPHeaderField:@"X-APIKEY"];
 }
 
-- (OCDResultSet *)resultSetForResponse:(id)responseObject {
+- (OCDResultSet *)resultSetForResponse:(id)responseObject class:(Class)responseClass {
     NSDictionary *metaDictionary = [responseObject valueForKeyPath:@"meta"];
     OCDResultSet *resultSet = [[OCDResultSet alloc] initWithCount:(NSInteger)[metaDictionary objectForKey:@"count"]
                                                              page:(NSInteger)[metaDictionary objectForKey:@"page"]
                                                           perPage:(NSInteger)[metaDictionary objectForKey:@"perPage"]
                                                           maxPage:(NSInteger)[metaDictionary objectForKey:@"maxPage"]
                                                        totalCount:(NSInteger)[metaDictionary objectForKey:@"totalCount"]];
-    return resultSet;
-};
 
-- (OCDResultSet *)billResultSetForResponse:(id)responseObject
-{
-    OCDResultSet *resultSet = [self resultSetForResponse:responseObject];
     NSArray *results = [responseObject valueForKeyPath:@"results"];
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:results.count];
-    for (NSDictionary *obj in results) {
-        OCDBill *bill = [OCDBill modelWithDictionary:obj error:nil];
-        [items addObject:bill];
+    for (NSDictionary *jsonDict in results) {
+        id obj = [MTLJSONAdapter modelOfClass:responseClass fromJSONDictionary:jsonDict error:NULL];
+        [items addObject:obj];
     }
-    [resultSet setItems:items];
+    resultSet.items = [NSArray arrayWithArray:items];
     return resultSet;
 }
 
@@ -69,7 +70,7 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 
 - (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
     [self GET:@"bills/" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        OCDResultSet *resultSet = [self billResultSetForResponse:responseObject];
+        OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:OCDBill.class];
         completionBlock(resultSet);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completionBlock(nil);
