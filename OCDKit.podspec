@@ -23,8 +23,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/sunlightlabs/OCDKit.git", :tag => "0.0.1" }
-  s.source_files  = "OCDKit/OCDKit.h"
-  s.public_header_files = "OCDKit/*.h"
+  s.source_files  = "OCDKit"
+  # s.public_header_files = "OCDKit/*.h"
   s.exclude_files = "InstagramKitDemo"
 
   s.requires_arc = true

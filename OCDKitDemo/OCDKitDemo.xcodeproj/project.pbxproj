@@ -8,26 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
-		2FB5B25E18EF5DCE008B0028 /* OCDBill.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23618EF5DCE008B0028 /* OCDBill.m */; };
-		2FB5B25F18EF5DCE008B0028 /* OCDBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23818EF5DCE008B0028 /* OCDBoundary.m */; };
-		2FB5B26018EF5DCE008B0028 /* OCDChamber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23A18EF5DCE008B0028 /* OCDChamber.m */; };
-		2FB5B26118EF5DCE008B0028 /* OCDClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23C18EF5DCE008B0028 /* OCDClient.m */; };
-		2FB5B26218EF5DCE008B0028 /* OCDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23E18EF5DCE008B0028 /* OCDContact.m */; };
-		2FB5B26318EF5DCE008B0028 /* OCDDivision.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24018EF5DCE008B0028 /* OCDDivision.m */; };
-		2FB5B26418EF5DCE008B0028 /* OCDEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24218EF5DCE008B0028 /* OCDEvent.m */; };
-		2FB5B26518EF5DCE008B0028 /* OCDGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24418EF5DCE008B0028 /* OCDGeometry.m */; };
-		2FB5B26618EF5DCE008B0028 /* OCDIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24618EF5DCE008B0028 /* OCDIdentifier.m */; };
-		2FB5B26718EF5DCE008B0028 /* OCDJurisdiction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24818EF5DCE008B0028 /* OCDJurisdiction.m */; };
-		2FB5B26818EF5DCE008B0028 /* OCDName.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24B18EF5DCE008B0028 /* OCDName.m */; };
-		2FB5B26918EF5DCE008B0028 /* OCDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24D18EF5DCE008B0028 /* OCDObject.m */; };
-		2FB5B26A18EF5DCE008B0028 /* OCDOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B24F18EF5DCE008B0028 /* OCDOrganization.m */; };
-		2FB5B26B18EF5DCE008B0028 /* OCDPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25118EF5DCE008B0028 /* OCDPerson.m */; };
-		2FB5B26C18EF5DCE008B0028 /* OCDPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25318EF5DCE008B0028 /* OCDPost.m */; };
-		2FB5B26D18EF5DCE008B0028 /* OCDResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25518EF5DCE008B0028 /* OCDResultSet.m */; };
-		2FB5B26E18EF5DCE008B0028 /* OCDSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25718EF5DCE008B0028 /* OCDSession.m */; };
-		2FB5B26F18EF5DCE008B0028 /* OCDTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25918EF5DCE008B0028 /* OCDTerm.m */; };
-		2FB5B27018EF5DCE008B0028 /* OCDURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25B18EF5DCE008B0028 /* OCDURL.m */; };
-		2FB5B27118EF5DCE008B0028 /* OCDVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B25D18EF5DCE008B0028 /* OCDVote.m */; };
 		2FB8AB9318EF440400B45AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9218EF440400B45AB7 /* Foundation.framework */; };
 		2FB8AB9518EF440400B45AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */; };
 		2FB8AB9718EF440400B45AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9618EF440400B45AB7 /* UIKit.framework */; };
@@ -57,47 +37,6 @@
 		2D1E2B91FF91410292C323E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDConfiguration.h; sourceTree = "<group>"; };
 		2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDConfiguration.m; sourceTree = "<group>"; };
-		2FB5B23518EF5DCE008B0028 /* OCDBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBill.h; sourceTree = "<group>"; };
-		2FB5B23618EF5DCE008B0028 /* OCDBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBill.m; sourceTree = "<group>"; };
-		2FB5B23718EF5DCE008B0028 /* OCDBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBoundary.h; sourceTree = "<group>"; };
-		2FB5B23818EF5DCE008B0028 /* OCDBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBoundary.m; sourceTree = "<group>"; };
-		2FB5B23918EF5DCE008B0028 /* OCDChamber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDChamber.h; sourceTree = "<group>"; };
-		2FB5B23A18EF5DCE008B0028 /* OCDChamber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDChamber.m; sourceTree = "<group>"; };
-		2FB5B23B18EF5DCE008B0028 /* OCDClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDClient.h; sourceTree = "<group>"; };
-		2FB5B23C18EF5DCE008B0028 /* OCDClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDClient.m; sourceTree = "<group>"; };
-		2FB5B23D18EF5DCE008B0028 /* OCDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDContact.h; sourceTree = "<group>"; };
-		2FB5B23E18EF5DCE008B0028 /* OCDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDContact.m; sourceTree = "<group>"; };
-		2FB5B23F18EF5DCE008B0028 /* OCDDivision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDDivision.h; sourceTree = "<group>"; };
-		2FB5B24018EF5DCE008B0028 /* OCDDivision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivision.m; sourceTree = "<group>"; };
-		2FB5B24118EF5DCE008B0028 /* OCDEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDEvent.h; sourceTree = "<group>"; };
-		2FB5B24218EF5DCE008B0028 /* OCDEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDEvent.m; sourceTree = "<group>"; };
-		2FB5B24318EF5DCE008B0028 /* OCDGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDGeometry.h; sourceTree = "<group>"; };
-		2FB5B24418EF5DCE008B0028 /* OCDGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDGeometry.m; sourceTree = "<group>"; };
-		2FB5B24518EF5DCE008B0028 /* OCDIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDIdentifier.h; sourceTree = "<group>"; };
-		2FB5B24618EF5DCE008B0028 /* OCDIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDIdentifier.m; sourceTree = "<group>"; };
-		2FB5B24718EF5DCE008B0028 /* OCDJurisdiction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDJurisdiction.h; sourceTree = "<group>"; };
-		2FB5B24818EF5DCE008B0028 /* OCDJurisdiction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdiction.m; sourceTree = "<group>"; };
-		2FB5B24918EF5DCE008B0028 /* OCDKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDKit.h; sourceTree = "<group>"; };
-		2FB5B24A18EF5DCE008B0028 /* OCDName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDName.h; sourceTree = "<group>"; };
-		2FB5B24B18EF5DCE008B0028 /* OCDName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDName.m; sourceTree = "<group>"; };
-		2FB5B24C18EF5DCE008B0028 /* OCDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDObject.h; sourceTree = "<group>"; };
-		2FB5B24D18EF5DCE008B0028 /* OCDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDObject.m; sourceTree = "<group>"; };
-		2FB5B24E18EF5DCE008B0028 /* OCDOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDOrganization.h; sourceTree = "<group>"; };
-		2FB5B24F18EF5DCE008B0028 /* OCDOrganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDOrganization.m; sourceTree = "<group>"; };
-		2FB5B25018EF5DCE008B0028 /* OCDPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDPerson.h; sourceTree = "<group>"; };
-		2FB5B25118EF5DCE008B0028 /* OCDPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDPerson.m; sourceTree = "<group>"; };
-		2FB5B25218EF5DCE008B0028 /* OCDPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDPost.h; sourceTree = "<group>"; };
-		2FB5B25318EF5DCE008B0028 /* OCDPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDPost.m; sourceTree = "<group>"; };
-		2FB5B25418EF5DCE008B0028 /* OCDResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDResultSet.h; sourceTree = "<group>"; };
-		2FB5B25518EF5DCE008B0028 /* OCDResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDResultSet.m; sourceTree = "<group>"; };
-		2FB5B25618EF5DCE008B0028 /* OCDSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDSession.h; sourceTree = "<group>"; };
-		2FB5B25718EF5DCE008B0028 /* OCDSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSession.m; sourceTree = "<group>"; };
-		2FB5B25818EF5DCE008B0028 /* OCDTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTerm.h; sourceTree = "<group>"; };
-		2FB5B25918EF5DCE008B0028 /* OCDTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTerm.m; sourceTree = "<group>"; };
-		2FB5B25A18EF5DCE008B0028 /* OCDURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDURL.h; sourceTree = "<group>"; };
-		2FB5B25B18EF5DCE008B0028 /* OCDURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDURL.m; sourceTree = "<group>"; };
-		2FB5B25C18EF5DCE008B0028 /* OCDVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDVote.h; sourceTree = "<group>"; };
-		2FB5B25D18EF5DCE008B0028 /* OCDVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDVote.m; sourceTree = "<group>"; };
 		2FB8AB8F18EF440400B45AB7 /* OCDKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCDKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB8AB9218EF440400B45AB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,10 +61,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8F4BB31B4F4C198752E83F /* libPods.a in Frameworks */,
 				2FB8AB9518EF440400B45AB7 /* CoreGraphics.framework in Frameworks */,
 				2FB8AB9718EF440400B45AB7 /* UIKit.framework in Frameworks */,
 				2FB8AB9318EF440400B45AB7 /* Foundation.framework in Frameworks */,
-				FF8F4BB31B4F4C198752E83F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,61 +90,11 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		2FB5B23418EF5DCE008B0028 /* OCDKit */ = {
-			isa = PBXGroup;
-			children = (
-				2FB5B23518EF5DCE008B0028 /* OCDBill.h */,
-				2FB5B23618EF5DCE008B0028 /* OCDBill.m */,
-				2FB5B23718EF5DCE008B0028 /* OCDBoundary.h */,
-				2FB5B23818EF5DCE008B0028 /* OCDBoundary.m */,
-				2FB5B23918EF5DCE008B0028 /* OCDChamber.h */,
-				2FB5B23A18EF5DCE008B0028 /* OCDChamber.m */,
-				2FB5B23B18EF5DCE008B0028 /* OCDClient.h */,
-				2FB5B23C18EF5DCE008B0028 /* OCDClient.m */,
-				2FB5B23D18EF5DCE008B0028 /* OCDContact.h */,
-				2FB5B23E18EF5DCE008B0028 /* OCDContact.m */,
-				2FB5B23F18EF5DCE008B0028 /* OCDDivision.h */,
-				2FB5B24018EF5DCE008B0028 /* OCDDivision.m */,
-				2FB5B24118EF5DCE008B0028 /* OCDEvent.h */,
-				2FB5B24218EF5DCE008B0028 /* OCDEvent.m */,
-				2FB5B24318EF5DCE008B0028 /* OCDGeometry.h */,
-				2FB5B24418EF5DCE008B0028 /* OCDGeometry.m */,
-				2FB5B24518EF5DCE008B0028 /* OCDIdentifier.h */,
-				2FB5B24618EF5DCE008B0028 /* OCDIdentifier.m */,
-				2FB5B24718EF5DCE008B0028 /* OCDJurisdiction.h */,
-				2FB5B24818EF5DCE008B0028 /* OCDJurisdiction.m */,
-				2FB5B24918EF5DCE008B0028 /* OCDKit.h */,
-				2FB5B24A18EF5DCE008B0028 /* OCDName.h */,
-				2FB5B24B18EF5DCE008B0028 /* OCDName.m */,
-				2FB5B24C18EF5DCE008B0028 /* OCDObject.h */,
-				2FB5B24D18EF5DCE008B0028 /* OCDObject.m */,
-				2FB5B24E18EF5DCE008B0028 /* OCDOrganization.h */,
-				2FB5B24F18EF5DCE008B0028 /* OCDOrganization.m */,
-				2FB5B25018EF5DCE008B0028 /* OCDPerson.h */,
-				2FB5B25118EF5DCE008B0028 /* OCDPerson.m */,
-				2FB5B25218EF5DCE008B0028 /* OCDPost.h */,
-				2FB5B25318EF5DCE008B0028 /* OCDPost.m */,
-				2FB5B25418EF5DCE008B0028 /* OCDResultSet.h */,
-				2FB5B25518EF5DCE008B0028 /* OCDResultSet.m */,
-				2FB5B25618EF5DCE008B0028 /* OCDSession.h */,
-				2FB5B25718EF5DCE008B0028 /* OCDSession.m */,
-				2FB5B25818EF5DCE008B0028 /* OCDTerm.h */,
-				2FB5B25918EF5DCE008B0028 /* OCDTerm.m */,
-				2FB5B25A18EF5DCE008B0028 /* OCDURL.h */,
-				2FB5B25B18EF5DCE008B0028 /* OCDURL.m */,
-				2FB5B25C18EF5DCE008B0028 /* OCDVote.h */,
-				2FB5B25D18EF5DCE008B0028 /* OCDVote.m */,
-			);
-			name = OCDKit;
-			path = ../OCDKit;
-			sourceTree = "<group>";
-		};
 		2FB8AB8618EF440400B45AB7 = {
 			isa = PBXGroup;
 			children = (
 				2FB8ABD118EF4AF600B45AB7 /* main.m */,
 				2FB8ABD318EF4B1300B45AB7 /* OCDKitDemo-Prefix.pch */,
-				2FB5B23418EF5DCE008B0028 /* OCDKit */,
 				2FB8ABC118EF449A00B45AB7 /* Classes */,
 				2F8BC7DA18F3083C00D9FB0F /* Configuration */,
 				2FB8ABC618EF4A6E00B45AB7 /* Resources */,
@@ -421,29 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FB5B27118EF5DCE008B0028 /* OCDVote.m in Sources */,
-				2FB5B26018EF5DCE008B0028 /* OCDChamber.m in Sources */,
-				2FB5B26718EF5DCE008B0028 /* OCDJurisdiction.m in Sources */,
-				2FB5B26418EF5DCE008B0028 /* OCDEvent.m in Sources */,
-				2FB5B26B18EF5DCE008B0028 /* OCDPerson.m in Sources */,
-				2FB5B26D18EF5DCE008B0028 /* OCDResultSet.m in Sources */,
-				2FB5B26918EF5DCE008B0028 /* OCDObject.m in Sources */,
-				2FB5B26218EF5DCE008B0028 /* OCDContact.m in Sources */,
-				2FB5B25E18EF5DCE008B0028 /* OCDBill.m in Sources */,
-				2FB5B27018EF5DCE008B0028 /* OCDURL.m in Sources */,
-				2FB5B26318EF5DCE008B0028 /* OCDDivision.m in Sources */,
-				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
 				2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */,
-				2FB5B26518EF5DCE008B0028 /* OCDGeometry.m in Sources */,
-				2FB5B26818EF5DCE008B0028 /* OCDName.m in Sources */,
-				2FB5B26C18EF5DCE008B0028 /* OCDPost.m in Sources */,
-				2FB5B26618EF5DCE008B0028 /* OCDIdentifier.m in Sources */,
-				2FB5B26118EF5DCE008B0028 /* OCDClient.m in Sources */,
-				2FB5B25F18EF5DCE008B0028 /* OCDBoundary.m in Sources */,
 				2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */,
-				2FB5B26A18EF5DCE008B0028 /* OCDOrganization.m in Sources */,
-				2FB5B26F18EF5DCE008B0028 /* OCDTerm.m in Sources */,
-				2FB5B26E18EF5DCE008B0028 /* OCDSession.m in Sources */,
+				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
