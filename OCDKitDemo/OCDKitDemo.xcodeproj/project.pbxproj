@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
 		2FB5B25E18EF5DCE008B0028 /* OCDBill.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23618EF5DCE008B0028 /* OCDBill.m */; };
 		2FB5B25F18EF5DCE008B0028 /* OCDBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23818EF5DCE008B0028 /* OCDBoundary.m */; };
 		2FB5B26018EF5DCE008B0028 /* OCDChamber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB5B23A18EF5DCE008B0028 /* OCDChamber.m */; };
@@ -54,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		2D1E2B91FF91410292C323E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDConfiguration.h; sourceTree = "<group>"; };
+		2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDConfiguration.m; sourceTree = "<group>"; };
 		2FB5B23518EF5DCE008B0028 /* OCDBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBill.h; sourceTree = "<group>"; };
 		2FB5B23618EF5DCE008B0028 /* OCDBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBill.m; sourceTree = "<group>"; };
 		2FB5B23718EF5DCE008B0028 /* OCDBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBoundary.h; sourceTree = "<group>"; };
@@ -139,6 +142,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F8BC7DA18F3083C00D9FB0F /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */,
+				2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		2FB5B23418EF5DCE008B0028 /* OCDKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +207,7 @@
 				2FB8ABD318EF4B1300B45AB7 /* OCDKitDemo-Prefix.pch */,
 				2FB5B23418EF5DCE008B0028 /* OCDKit */,
 				2FB8ABC118EF449A00B45AB7 /* Classes */,
+				2F8BC7DA18F3083C00D9FB0F /* Configuration */,
 				2FB8ABC618EF4A6E00B45AB7 /* Resources */,
 				2FB8ABB118EF440400B45AB7 /* OCDKitDemoTests */,
 				2FB8AB9118EF440400B45AB7 /* Frameworks */,
@@ -420,6 +433,7 @@
 				2FB5B27018EF5DCE008B0028 /* OCDURL.m in Sources */,
 				2FB5B26318EF5DCE008B0028 /* OCDDivision.m in Sources */,
 				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
+				2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */,
 				2FB5B26518EF5DCE008B0028 /* OCDGeometry.m in Sources */,
 				2FB5B26818EF5DCE008B0028 /* OCDName.m in Sources */,
 				2FB5B26C18EF5DCE008B0028 /* OCDPost.m in Sources */,

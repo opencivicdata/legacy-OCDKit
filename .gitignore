@@ -22,3 +22,6 @@ DerivedData
 
 # Pods
 Pods/
+
+# Ignore configuration file
+OCDKitDemo/Configuration/OCDConfiguration.m

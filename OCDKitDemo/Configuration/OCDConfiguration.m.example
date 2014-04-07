@@ -1,0 +1,15 @@
+//
+//  OCDConfiguration.m
+//  OCDKitDemo
+//
+//  Created by Daniel Cloud on 4/7/14.
+//  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
+//
+
+#import "OCDConfiguration.h"
+
+#pragma mark - OpenCivicDataAPI
+
+#error You need to fill in OCDConfiguration.m with your API credentials
+
+NSString *const kSunlightAPIKey = @"YOUR_API_KEY";

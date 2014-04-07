@@ -8,6 +8,7 @@
 
 #import "OCDAppDelegate.h"
 #import "OCDKit.h"
+#import "OCDConfiguration.h"
 
 @implementation OCDAppDelegate
 
@@ -18,7 +19,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    OCDClient *client = [OCDClient clientWithKey:@"foo"];
+    OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     return YES;
 }
