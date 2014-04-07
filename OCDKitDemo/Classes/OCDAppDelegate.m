@@ -7,8 +7,7 @@
 //
 
 #import "OCDAppDelegate.h"
-#import "OCDKit.h"
-#import "OCDConfiguration.h"
+#import "OCDBillsTableViewController.h"
 
 @implementation OCDAppDelegate
 
@@ -16,10 +15,25 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+//    UIColor *ocdGreen = [UIColor colorWithRed:0.851 green:0.878 blue:0.129 alpha:1.000];
+    NSString *jurisdictionId = @"ocd-jurisdiction/country:us/state:me/legislature";
+    OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
+
+    OCDBillsTableViewController *billsVC = [[OCDBillsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:billsVC];
+
+    __weak OCDBillsTableViewController *weakBillsVC = billsVC;
+    [client bills:@{@"jurisdiction_id": jurisdictionId} completionBlock:^(OCDResultSet *results) {
+        __strong OCDBillsTableViewController *strongBillsVC = weakBillsVC;
+        strongBillsVC.billsSource.rows = results.items;
+        [strongBillsVC.tableView reloadData];
+    }];
+
+    [self.window setRootViewController:navController];
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     return YES;
 }
