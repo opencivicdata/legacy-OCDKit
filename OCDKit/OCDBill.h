@@ -18,13 +18,15 @@ typedef enum : NSUInteger {
 
 @interface OCDBill : OCDObject
 
-@property (nonatomic, copy, readonly) OCDOrganization *organization;
-@property (nonatomic, copy, readonly) OCDSession *session;
+//@property (nonatomic, copy, readonly) OCDOrganization *organization;
+//@property (nonatomic, copy, readonly) OCDSession *session;
 
+@property (nonatomic, copy, readonly) NSString *ocdId;
+@property (nonatomic, copy, readonly) NSString *organizationId;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, assign, readonly) NSUInteger chamber;
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) NSArray *types;
+@property (nonatomic, copy, readonly) NSArray *type;
 @property (nonatomic, copy, readonly) NSArray *subjects;
 @property (nonatomic, copy, readonly) NSArray *summaries; // ????? (note, text)
 @property (nonatomic, copy, readonly) NSArray *otherTitles; // (note, title)

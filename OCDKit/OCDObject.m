@@ -10,12 +10,23 @@
 
 @implementation OCDObject
 
+// Allows subclasses to automatically add keyPaths from OCDObject rather than
+// doing the same override on JSONKeyPathsByPropertyKey each time
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
+    return nil;
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
+    NSDictionary *keyPaths =  @{
              @"createdAt": @"created_at",
              @"updatedAt": @"updated_at",
              @"sources": @"sources"
             };
+    NSDictionary *additionalKeyPaths = [self ocd_JSONKeyPathsByPropertyKey];
+    if (additionalKeyPaths) {
+        keyPaths = [keyPaths mtl_dictionaryByAddingEntriesFromDictionary:additionalKeyPaths];
+    }
+    return keyPaths;
 }
 
 

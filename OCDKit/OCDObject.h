@@ -11,6 +11,8 @@
 
 @interface OCDObject : MTLModel <MTLJSONSerializing>
 
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey;
+
 @property (nonatomic, copy, readonly) NSDate *updatedAt;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSArray *sources; // OCDURL
