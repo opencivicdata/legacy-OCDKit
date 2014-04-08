@@ -1,14 +1,14 @@
 //
-//  OCDBillsTableDataSource.m
+//  OCDSimpleDataSource.m
 //  OCDKitDemo
 //
-//  Created by Daniel Cloud on 4/7/14.
+//  Created by Daniel Cloud on 4/8/14.
 //  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
 //
 
-#import "OCDBillsTableDataSource.h"
+#import "OCDSimpleDataSource.h"
 
-@implementation OCDBillsTableDataSource
+@implementation OCDSimpleDataSource
 
 - (instancetype)init {
     self = [super init];

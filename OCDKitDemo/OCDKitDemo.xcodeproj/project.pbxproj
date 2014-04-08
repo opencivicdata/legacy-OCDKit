@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0A814F18F4879100210706 /* OCDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A814E18F4879100210706 /* OCDTableViewController.m */; };
+		2F0A815318F492E100210706 /* OCDBillsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815218F492E100210706 /* OCDBillsTableDataSource.m */; };
+		2F0A815918F4949400210706 /* OCDSimpleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815818F4949400210706 /* OCDSimpleDataSource.m */; };
 		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
 		2F8BC7F318F3554E00D9FB0F /* OCDBillsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F218F3554E00D9FB0F /* OCDBillsTableViewController.m */; };
-		2F8BC7F618F3559E00D9FB0F /* OCDBillsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F418F3559E00D9FB0F /* OCDBillsTableDataSource.m */; };
 		2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */; };
 		2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */; };
 		2FB8AB9318EF440400B45AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9218EF440400B45AB7 /* Foundation.framework */; };
@@ -39,12 +41,16 @@
 
 /* Begin PBXFileReference section */
 		2D1E2B91FF91410292C323E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		2F0A814D18F4879100210706 /* OCDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTableViewController.h; sourceTree = "<group>"; };
+		2F0A814E18F4879100210706 /* OCDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTableViewController.m; sourceTree = "<group>"; };
+		2F0A815218F492E100210706 /* OCDBillsTableDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCDBillsTableDataSource.m; sourceTree = "<group>"; };
+		2F0A815618F4945F00210706 /* OCDBillsTableDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDBillsTableDataSource.h; sourceTree = "<group>"; };
+		2F0A815718F4949400210706 /* OCDSimpleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDSimpleDataSource.h; sourceTree = "<group>"; };
+		2F0A815818F4949400210706 /* OCDSimpleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSimpleDataSource.m; sourceTree = "<group>"; };
 		2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDConfiguration.h; sourceTree = "<group>"; };
 		2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDConfiguration.m; sourceTree = "<group>"; };
 		2F8BC7F118F3554E00D9FB0F /* OCDBillsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBillsTableViewController.h; sourceTree = "<group>"; };
 		2F8BC7F218F3554E00D9FB0F /* OCDBillsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillsTableViewController.m; sourceTree = "<group>"; };
-		2F8BC7F418F3559E00D9FB0F /* OCDBillsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillsTableDataSource.m; sourceTree = "<group>"; };
-		2F8BC7F518F3559E00D9FB0F /* OCDBillsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBillsTableDataSource.h; sourceTree = "<group>"; };
 		2F8BC7F718F3582B00D9FB0F /* OCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTableViewCell.h; sourceTree = "<group>"; };
 		2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTableViewCell.m; sourceTree = "<group>"; };
 		2F8BC7FA18F4500300D9FB0F /* OCDStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDStyle.h; sourceTree = "<group>"; };
@@ -93,6 +99,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0A815018F491BD00210706 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				2F0A815618F4945F00210706 /* OCDBillsTableDataSource.h */,
+				2F0A815218F492E100210706 /* OCDBillsTableDataSource.m */,
+				2F0A815718F4949400210706 /* OCDSimpleDataSource.h */,
+				2F0A815818F4949400210706 /* OCDSimpleDataSource.m */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
 		2F8BC7DA18F3083C00D9FB0F /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +179,7 @@
 				2FB8ABD418EF4B2500B45AB7 /* OCDAppDelegate.h */,
 				2FB8ABD518EF4B2500B45AB7 /* OCDAppDelegate.m */,
 				2FB8ABC218EF449A00B45AB7 /* Controllers */,
+				2F0A815018F491BD00210706 /* DataSources */,
 				2FB8ABC318EF449A00B45AB7 /* Views */,
 			);
 			path = Classes;
@@ -170,10 +188,10 @@
 		2FB8ABC218EF449A00B45AB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2F8BC7F518F3559E00D9FB0F /* OCDBillsTableDataSource.h */,
-				2F8BC7F418F3559E00D9FB0F /* OCDBillsTableDataSource.m */,
 				2F8BC7F118F3554E00D9FB0F /* OCDBillsTableViewController.h */,
 				2F8BC7F218F3554E00D9FB0F /* OCDBillsTableViewController.m */,
+				2F0A814D18F4879100210706 /* OCDTableViewController.h */,
+				2F0A814E18F4879100210706 /* OCDTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -330,10 +348,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0A814F18F4879100210706 /* OCDTableViewController.m in Sources */,
 				2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */,
+				2F0A815918F4949400210706 /* OCDSimpleDataSource.m in Sources */,
 				2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */,
 				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
-				2F8BC7F618F3559E00D9FB0F /* OCDBillsTableDataSource.m in Sources */,
+				2F0A815318F492E100210706 /* OCDBillsTableDataSource.m in Sources */,
 				2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */,
 				2F8BC7F318F3554E00D9FB0F /* OCDBillsTableViewController.m in Sources */,
 				2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */,

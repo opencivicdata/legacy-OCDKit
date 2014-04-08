@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OCDTableViewController.h"
 #import "OCDBillsTableDataSource.h"
 
-@interface OCDBillsTableViewController : UITableViewController
-
-@property (nonatomic, strong) OCDBillsTableDataSource *billsSource;
+@interface OCDBillsTableViewController : OCDTableViewController
 
 @end

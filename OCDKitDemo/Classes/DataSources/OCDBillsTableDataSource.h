@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OCDSimpleDataSource.h"
 
-@interface OCDBillsTableDataSource : NSObject <UITableViewDataSource>
+@interface OCDBillsTableDataSource : OCDSimpleDataSource <OCDSimpleDataLoader>
 
-@property (nonatomic, strong) NSArray *rows;
+- (void)loadDataWithCompletion:(void (^)(BOOL success))completionBlock;
 
 @end
