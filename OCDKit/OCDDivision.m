@@ -10,4 +10,11 @@
 
 @implementation OCDDivision
 
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
+    return @{
+             @"ocdId":          @"id",
+             @"displayName": @"display_name",
+             };
+}
+
 @end

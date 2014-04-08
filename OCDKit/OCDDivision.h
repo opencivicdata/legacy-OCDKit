@@ -10,7 +10,6 @@
 
 @interface OCDDivision : OCDObject
 
-@property (nonatomic, copy, readonly) NSString *divisionId;
 @property (nonatomic, copy, readonly) NSString *country;
 @property (nonatomic, copy, readonly) NSString *displayName;
 @property (nonatomic, copy, readonly) NSArray *children;
