@@ -11,6 +11,12 @@
 
     #import "OCDClient.h"
 
-    #import "OCDBaseModels.h"
+    #import "OCDDivision.h"
+    #import "OCDJurisdiction.h"
+    #import "OCDOrganization.h"
+    #import "OCDPerson.h"
+    #import "OCDBill.h"
+    #import "OCDVote.h"
+    #import "OCDEvent.h"
 
 #endif /* _OCDKIT_ */

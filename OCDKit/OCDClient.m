@@ -7,7 +7,13 @@
 //
 
 #import "OCDClient.h"
-#import "OCDBaseModels.h"
+#import "OCDDivision.h"
+#import "OCDJurisdiction.h"
+#import "OCDOrganization.h"
+#import "OCDPerson.h"
+#import "OCDBill.h"
+#import "OCDVote.h"
+#import "OCDEvent.h"
 
 NSString *const BASEURL = @"https://api.opencivicdata.org";
 
@@ -74,10 +80,8 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
           resultsClass:(Class)responseClass
               completionBlock:(void (^)(OCDResultSet *results))completionBlock {
 
-    NSURLSessionDataTask *task = [self GET:URLString
-                                parameters:parameters
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-        OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:OCDBill.class];
+    NSURLSessionDataTask *task = [self GET:URLString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:responseClass];
         completionBlock(resultSet);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completionBlock(nil);
