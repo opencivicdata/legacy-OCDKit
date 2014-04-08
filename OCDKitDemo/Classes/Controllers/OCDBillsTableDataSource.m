@@ -30,11 +30,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OCDBillTableViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OCDTableViewCell" forIndexPath:indexPath];
 
     OCDBill *bill = self.rows[indexPath.row];
 
-    cell.textLabel.text = bill.title;
+    cell.textLabel.text = [bill.title capitalizedString];
 
     return cell;
 }

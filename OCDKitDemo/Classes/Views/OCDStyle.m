@@ -36,7 +36,7 @@
     [UIView appearance].tintColor = [self highlightColorDark];
     [UINavigationBar appearance].tintColor = [self highlightColorDark];
     [UINavigationBar appearance].barTintColor = [self lightGrey];
-    [UINavigationBar appearance].titleTextAttributes = @{ NSForegroundColorAttributeName: [self bodyTextColor] };
+    [UINavigationBar appearance].titleTextAttributes = @{ NSForegroundColorAttributeName: [self highlightColorDark] };
     [UILabel appearance].textColor = [self bodyTextColor];
 
 }

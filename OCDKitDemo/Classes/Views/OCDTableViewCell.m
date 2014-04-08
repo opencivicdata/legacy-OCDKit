@@ -16,7 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.textLabel.numberOfLines = 3;
-        self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         self.textLabel.textColor = [OCDStyle bodyTextColor];
     }
     return self;

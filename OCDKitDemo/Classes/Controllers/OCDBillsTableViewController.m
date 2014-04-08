@@ -7,9 +7,9 @@
 //
 
 #import "OCDBillsTableViewController.h"
-#import "OCDBillTableViewCell.h"
+#import "OCDTableViewCell.h"
 
-@interface OCDBillsTableViewController ()
+@interface OCDBillsTableViewController () <UITableViewDelegate>
 
 @end
 
@@ -17,8 +17,7 @@
 
 @synthesize billsSource;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         self.billsSource = [OCDBillsTableDataSource new];
@@ -26,18 +25,28 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.tableView registerClass:OCDBillTableViewCell.class forCellReuseIdentifier:@"OCDBillTableViewCell"];
+
+    self.tableView.allowsSelection = NO;
+    self.tableView.estimatedRowHeight = 100.0f;
+
+    [self.tableView registerClass:OCDTableViewCell.class forCellReuseIdentifier:@"OCDTableViewCell"];
     self.tableView.dataSource = self.billsSource;
+    self.tableView.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100.0f;
 }
 
 @end
