@@ -16,11 +16,11 @@
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
     return @{
-        @"ocdId":   @"id",
+        @"ocdId":          @"id",
         @"organizationId": @"organization_id",
-        @"otherNames":   @"other_names",
-        @"otherTitles":  @"other_titles",
-        @"relatedBills": @"related_bills",
+        @"otherNames":     @"other_names",
+        @"otherTitles":    @"other_titles",
+        @"relatedBills":   @"related_bills",
     };
 }
 

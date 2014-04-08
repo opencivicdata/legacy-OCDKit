@@ -18,7 +18,6 @@ typedef NS_ENUM(NSInteger, OCDChamber){
 
 @interface OCDBill : OCDObject
 
-@property (nonatomic, copy, readonly) NSString *ocdId;
 @property (nonatomic, copy, readonly) NSString *organizationId;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, assign, readonly) OCDChamber chamber;

@@ -20,7 +20,7 @@
     NSDictionary *keyPaths =  @{
              @"createdAt": @"created_at",
              @"updatedAt": @"updated_at",
-             @"sources": @"sources"
+               @"sources": @"sources"
             };
     NSDictionary *additionalKeyPaths = [self ocd_JSONKeyPathsByPropertyKey];
     if (additionalKeyPaths) {

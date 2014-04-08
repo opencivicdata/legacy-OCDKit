@@ -13,6 +13,7 @@
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey;
 
+@property (nonatomic, copy, readonly) NSString *ocdId; // Subclasses should map this to their id, if one exists
 @property (nonatomic, copy, readonly) NSDate *updatedAt;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSArray *sources; // OCDURL

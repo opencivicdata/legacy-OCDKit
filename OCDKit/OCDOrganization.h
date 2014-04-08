@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, OCDOrganizationType) {
 
 @interface OCDOrganization : OCDObject
 
-@property (nonatomic, copy, readonly) NSString *ocdId;
 @property (nonatomic, copy, readonly) NSString *jurisdictionId;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, assign, readonly) OCDOrganizationType classification;
