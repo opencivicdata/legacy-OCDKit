@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Jeremy Carbaugh. All rights reserved.
 //
 
-#import "OCDClient.h"
+#ifndef _OCDKIT_
+    #define _OCDKIT_
 
-#import "OCDDivision.h"
-#import "OCDJurisdiction.h"
-#import "OCDOrganization.h"
-#import "OCDPerson.h"
-#import "OCDBill.h"
-#import "OCDVote.h"
-#import "OCDEvent.h"
+    #import "OCDClient.h"
+
+    #import "OCDBaseModels.h"
+
+#endif /* _OCDKIT_ */
