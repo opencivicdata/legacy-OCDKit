@@ -86,7 +86,12 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
     //
 }
 - (void)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    //
+    [self GET:@"organizations/" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:OCDOrganization.class];
+        completionBlock(resultSet);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completionBlock(nil);
+    }];
 }
 - (void)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
     //

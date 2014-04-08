@@ -13,11 +13,12 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
         self.textLabel.numberOfLines = 3;
         self.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         self.textLabel.textColor = [OCDStyle bodyTextColor];
+        self.detailTextLabel.textColor = [OCDStyle highlightColorDark];
     }
     return self;
 }

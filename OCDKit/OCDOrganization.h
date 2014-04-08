@@ -8,18 +8,20 @@
 
 #import "OCDObject.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSInteger, OCDOrganizationType) {
     OCDOrganizationTypeCommission,
     OCDOrganizationTypeCommittee,
     OCDOrganizationTypeLegislature,
     OCDOrganizationTypeParty
-} OCDOrganizationType;
+};
 
 @interface OCDOrganization : OCDObject
 
+@property (nonatomic, copy, readonly) NSString *ocdId;
+@property (nonatomic, copy, readonly) NSString *jurisdictionId;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, assign, readonly) NSUInteger *classification;
-@property (nonatomic, copy, readonly) OCDOrganization *parent;
+@property (nonatomic, assign, readonly) OCDOrganizationType classification;
+//@property (nonatomic, copy, readonly) OCDOrganization *parent;
 @property (nonatomic, copy, readonly) NSArray *contactDetails; // OCDContact
 @property (nonatomic, copy, readonly) NSArray *links; // OCDURL
 @property (nonatomic, copy, readonly) NSArray *posts; // OCDPost

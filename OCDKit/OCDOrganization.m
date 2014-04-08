@@ -10,4 +10,22 @@
 
 @implementation OCDOrganization
 
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
+    return @{
+             @"ocdId":   @"id",
+             @"jurisdictionId": @"orgjurisdiction_idanization_id",
+             @"otherNames":   @"other_names",
+             };
+}
+
+
++ (NSValueTransformer *)classificationJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               @"commission": @(OCDOrganizationTypeCommission),
+               @"committee": @(OCDOrganizationTypeCommittee),
+               @"legislature": @(OCDOrganizationTypeLegislature),
+               @"party": @(OCDOrganizationTypeParty)
+           }];
+}
+
 @end

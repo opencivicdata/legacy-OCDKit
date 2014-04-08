@@ -10,21 +10,18 @@
 #import "OCDOrganization.h"
 #import "OCDSession.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSInteger, OCDChamber){
     OCDChamberUpper,
     OCDChamberLower,
     OCDChamberJoint
-} OCDChamber;
+};
 
 @interface OCDBill : OCDObject
-
-//@property (nonatomic, copy, readonly) OCDOrganization *organization;
-//@property (nonatomic, copy, readonly) OCDSession *session;
 
 @property (nonatomic, copy, readonly) NSString *ocdId;
 @property (nonatomic, copy, readonly) NSString *organizationId;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, assign, readonly) NSUInteger chamber;
+@property (nonatomic, assign, readonly) OCDChamber chamber;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSArray *type;
 @property (nonatomic, copy, readonly) NSArray *subjects;

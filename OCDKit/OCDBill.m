@@ -24,13 +24,14 @@
     };
 }
 
-//+ (NSValueTransformer *)organizationJSONTransformer {
-//    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[OCDOrganization class]];
-//}
-//
-//+ (NSValueTransformer *)sessionJSONTransformer {
-//    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[OCDSession class]];
-//}
++ (NSValueTransformer *)chamberJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               @"upper": @(OCDChamberUpper),
+               @"lower": @(OCDChamberLower),
+               @"joint": @(OCDChamberJoint)
+           }];
+}
+
 
 + (NSValueTransformer *)otherNamesJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDName class]];

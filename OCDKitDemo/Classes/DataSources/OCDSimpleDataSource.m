@@ -30,11 +30,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    Override implamentation, duh.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OCDTableViewCell" forIndexPath:indexPath];
 
-    OCDBill *bill = self.rows[indexPath.row];
-
-    cell.textLabel.text = [bill.title capitalizedString];
+    cell.textLabel.text = @"OCD Object";
 
     return cell;
 }

@@ -14,6 +14,7 @@
     self = [super initWithStyle:style];
     if (self) {
         self.dataController = [OCDBillsTableDataSource new];
+        self.title = @"Bills";
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Bills" image:[UIImage imageNamed:@"Bill"] tag:0];
     }
     return self;
