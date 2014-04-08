@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
 //
 
-#import "OCDBillTableViewCell.h"
+#import "OCDTableViewCell.h"
+#import "OCDStyle.h"
 
-@implementation OCDBillTableViewCell
+@implementation OCDTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -16,6 +17,7 @@
     if (self) {
         self.textLabel.numberOfLines = 3;
         self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.textLabel.textColor = [OCDStyle bodyTextColor];
     }
     return self;
 }

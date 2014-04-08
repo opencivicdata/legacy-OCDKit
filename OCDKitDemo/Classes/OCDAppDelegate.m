@@ -7,6 +7,7 @@
 //
 
 #import "OCDAppDelegate.h"
+#import "OCDStyle.h"
 #import "OCDBillsTableViewController.h"
 
 @implementation OCDAppDelegate
@@ -14,12 +15,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    UIColor *ocdGreen = [UIColor colorWithRed:0.851 green:0.878 blue:0.129 alpha:1.000];
+
+    [OCDStyle setUpAppearance];
+
     NSString *jurisdictionId = @"ocd-jurisdiction/country:us/state:me/legislature";
     OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     OCDBillsTableViewController *billsVC = [[OCDBillsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    billsVC.title = @"Bills";
+
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:billsVC];
 
     __weak OCDBillsTableViewController *weakBillsVC = billsVC;

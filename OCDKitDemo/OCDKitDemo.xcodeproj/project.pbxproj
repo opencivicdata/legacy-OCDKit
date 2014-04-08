@@ -10,7 +10,8 @@
 		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
 		2F8BC7F318F3554E00D9FB0F /* OCDBillsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F218F3554E00D9FB0F /* OCDBillsTableViewController.m */; };
 		2F8BC7F618F3559E00D9FB0F /* OCDBillsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F418F3559E00D9FB0F /* OCDBillsTableDataSource.m */; };
-		2F8BC7F918F3582B00D9FB0F /* OCDBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F818F3582B00D9FB0F /* OCDBillTableViewCell.m */; };
+		2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */; };
+		2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */; };
 		2FB8AB9318EF440400B45AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9218EF440400B45AB7 /* Foundation.framework */; };
 		2FB8AB9518EF440400B45AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */; };
 		2FB8AB9718EF440400B45AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9618EF440400B45AB7 /* UIKit.framework */; };
@@ -44,8 +45,10 @@
 		2F8BC7F218F3554E00D9FB0F /* OCDBillsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillsTableViewController.m; sourceTree = "<group>"; };
 		2F8BC7F418F3559E00D9FB0F /* OCDBillsTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillsTableDataSource.m; sourceTree = "<group>"; };
 		2F8BC7F518F3559E00D9FB0F /* OCDBillsTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBillsTableDataSource.h; sourceTree = "<group>"; };
-		2F8BC7F718F3582B00D9FB0F /* OCDBillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBillTableViewCell.h; sourceTree = "<group>"; };
-		2F8BC7F818F3582B00D9FB0F /* OCDBillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillTableViewCell.m; sourceTree = "<group>"; };
+		2F8BC7F718F3582B00D9FB0F /* OCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTableViewCell.h; sourceTree = "<group>"; };
+		2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTableViewCell.m; sourceTree = "<group>"; };
+		2F8BC7FA18F4500300D9FB0F /* OCDStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDStyle.h; sourceTree = "<group>"; };
+		2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDStyle.m; sourceTree = "<group>"; };
 		2FB8AB8F18EF440400B45AB7 /* OCDKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCDKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB8AB9218EF440400B45AB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,8 +181,10 @@
 		2FB8ABC318EF449A00B45AB7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2F8BC7F718F3582B00D9FB0F /* OCDBillTableViewCell.h */,
-				2F8BC7F818F3582B00D9FB0F /* OCDBillTableViewCell.m */,
+				2F8BC7F718F3582B00D9FB0F /* OCDTableViewCell.h */,
+				2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */,
+				2F8BC7FA18F4500300D9FB0F /* OCDStyle.h */,
+				2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,8 +334,9 @@
 				2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */,
 				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
 				2F8BC7F618F3559E00D9FB0F /* OCDBillsTableDataSource.m in Sources */,
+				2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */,
 				2F8BC7F318F3554E00D9FB0F /* OCDBillsTableViewController.m in Sources */,
-				2F8BC7F918F3582B00D9FB0F /* OCDBillTableViewCell.m in Sources */,
+				2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OCDBillTableViewCell : UITableViewCell
+@interface OCDTableViewCell : UITableViewCell
 
 @end
