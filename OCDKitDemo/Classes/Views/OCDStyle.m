@@ -33,12 +33,15 @@
 }
 
 + (void)setUpAppearance {
-    [UIView appearance].tintColor = [self highlightColorDark];
+    [[UIApplication sharedApplication] keyWindow].tintColor = [self highlightColorDark];
+
     [UINavigationBar appearance].tintColor = [self highlightColorDark];
     [UINavigationBar appearance].barTintColor = [self lightGrey];
     [UINavigationBar appearance].titleTextAttributes = @{ NSForegroundColorAttributeName: [self highlightColorDark] };
+
     [UITabBar appearance].barStyle = UIBarStyleBlack;
     [UITabBar appearance].tintColor = [self highlightColorBright];
+
     [UILabel appearance].textColor = [self bodyTextColor];
 
 }
