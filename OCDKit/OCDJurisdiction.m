@@ -10,4 +10,10 @@
 
 @implementation OCDJurisdiction
 
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
+    return @{
+             @"ocdId":          @"id",
+             };
+}
+
 @end

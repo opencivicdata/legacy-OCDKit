@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
 //
 
-#import "OCDBillsTableViewController.h"
+#import "OCDBillsViewController.h"
 
-@implementation OCDBillsTableViewController
+@implementation OCDBillsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         self.dataController = [OCDBillsTableDataSource new];
         self.title = @"Bills";
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Bills" image:[UIImage imageNamed:@"Bill"] tag:0];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Bills" image:[UIImage imageNamed:@"Bill"]  selectedImage:nil];
     }
     return self;
 }
@@ -23,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    __weak OCDBillsTableViewController *weakSelf = self;
+    __weak OCDBillsViewController *weakSelf = self;
     [self.dataController loadDataWithCompletion:^(BOOL success) {
-        __strong OCDBillsTableViewController *strongSelf = weakSelf;
+        __strong OCDBillsViewController *strongSelf = weakSelf;
         [strongSelf.tableView reloadData];
     }];
 }

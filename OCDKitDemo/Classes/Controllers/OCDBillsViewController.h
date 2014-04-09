@@ -10,6 +10,6 @@
 #import "OCDTableViewController.h"
 #import "OCDBillsTableDataSource.h"
 
-@interface OCDBillsTableViewController : OCDTableViewController
+@interface OCDBillsViewController : OCDTableViewController
 
 @end

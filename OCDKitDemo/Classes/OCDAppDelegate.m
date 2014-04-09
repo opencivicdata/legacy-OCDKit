@@ -8,9 +8,10 @@
 
 #import "OCDAppDelegate.h"
 #import "OCDStyle.h"
-#import "OCDBillsTableViewController.h"
+#import "OCDBillsViewController.h"
 #import "OCDOrganizationsViewController.h"
 #import "OCDDivisionsViewController.h"
+#import "OCDJurisdictionViewController.h"
 
 @implementation OCDAppDelegate
 
@@ -20,12 +21,13 @@
 
     [OCDStyle setUpAppearance];
 
-    OCDBillsTableViewController *billsVC = [[OCDBillsTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    OCDBillsViewController *billsVC = [[OCDBillsViewController alloc] initWithStyle:UITableViewStylePlain];
     OCDOrganizationsViewController *organizationsVC = [[OCDOrganizationsViewController alloc] initWithStyle:UITableViewStylePlain];
     OCDDivisionsViewController *divisionsVC = [[OCDDivisionsViewController alloc] initWithStyle:UITableViewStylePlain];
+    OCDJurisdictionViewController *jurisdictionsVC = [[OCDJurisdictionViewController alloc] initWithStyle:UITableViewStylePlain];
 
     UITabBarController *tabController = [[UITabBarController alloc] init];
-    tabController.viewControllers = @[billsVC, organizationsVC, divisionsVC];
+    tabController.viewControllers = @[billsVC, organizationsVC, divisionsVC, jurisdictionsVC];
     tabController.selectedViewController = billsVC;
     [self.window setRootViewController:tabController];
 

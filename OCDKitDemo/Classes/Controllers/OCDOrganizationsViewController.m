@@ -20,7 +20,7 @@
     if (self) {
         self.dataController = [OCDOrganizationsDataSource new];
         self.title = @"Organizations";
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Organizations" image:[UIImage imageNamed:@"Organization"] tag:0];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Organizations" image:[UIImage imageNamed:@"Organization"]  selectedImage:nil];
     }
     return self;
 }

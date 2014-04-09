@@ -20,7 +20,7 @@
     if (self) {
         self.dataController = [OCDDivisionsDataSource new];
         self.title = @"Divisions";
-        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Divisions" image:[UIImage imageNamed:@"Division"] tag:0];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Divisions" image:[UIImage imageNamed:@"Division"]  selectedImage:nil];
     }
     return self;
 }
