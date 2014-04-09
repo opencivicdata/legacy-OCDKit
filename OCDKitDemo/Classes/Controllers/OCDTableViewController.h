@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OCDSimpleDataSource.h"
 
 @interface OCDTableViewController : UITableViewController
 
-@property (nonatomic, strong) id dataController;
++ (instancetype)tableControllerWithDataSource:(id<OCDSimpleDataLoader,UITableViewDataSource>)source title:(NSString *)viewTitle imageNamed:(NSString *)imageName;
+
+@property (nonatomic, strong) id <OCDSimpleDataLoader,UITableViewDataSource> dataController;
 
 @end

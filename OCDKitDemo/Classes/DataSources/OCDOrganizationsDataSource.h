@@ -8,6 +8,6 @@
 
 #import "OCDSimpleDataSource.h"
 
-@interface OCDOrganizationsDataSource : OCDSimpleDataSource
+@interface OCDOrganizationsDataSource : OCDSimpleDataSource <OCDSimpleDataLoader>
 
 @end

@@ -15,6 +15,17 @@
 
 @implementation OCDTableViewController
 
++ (instancetype)tableControllerWithDataSource:(id<OCDSimpleDataLoader,UITableViewDataSource>)source title:(NSString *)viewTitle imageNamed:(NSString *)imageName {
+    OCDTableViewController *instance = [[OCDTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    if (instance) {
+        instance.dataController = source;
+        instance.title = viewTitle;
+        instance.tabBarItem = [[UITabBarItem alloc] initWithTitle:viewTitle image:[UIImage imageNamed:imageName]  selectedImage:nil];
+    }
+    return instance;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -24,7 +35,14 @@
     [self.tableView registerClass:OCDTableViewCell.class forCellReuseIdentifier:@"OCDTableViewCell"];
     self.tableView.dataSource = self.dataController;
     self.tableView.delegate = self;
+
+    __weak OCDTableViewController *weakSelf = self;
+    [self.dataController loadDataWithCompletion:^(BOOL success) {
+        __strong OCDTableViewController *strongSelf = weakSelf;
+        [strongSelf.tableView reloadData];
+    }];
 }
+
 
 #pragma mark - UITableViewDelegate
 

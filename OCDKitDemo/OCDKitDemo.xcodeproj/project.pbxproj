@@ -11,13 +11,9 @@
 		2F0A815318F492E100210706 /* OCDBillsTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815218F492E100210706 /* OCDBillsTableDataSource.m */; };
 		2F0A815918F4949400210706 /* OCDSimpleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815818F4949400210706 /* OCDSimpleDataSource.m */; };
 		2F0A815C18F495AF00210706 /* OCDOrganizationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815B18F495AF00210706 /* OCDOrganizationsDataSource.m */; };
-		2F0A815F18F496A000210706 /* OCDOrganizationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A815E18F496A000210706 /* OCDOrganizationsViewController.m */; };
-		2F0A816418F4ACA600210706 /* OCDDivisionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816318F4ACA600210706 /* OCDDivisionsViewController.m */; };
 		2F0A816718F4ACE600210706 /* OCDDivisionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816618F4ACE600210706 /* OCDDivisionsDataSource.m */; };
-		2F0A816A18F5944100210706 /* OCDJurisdictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816918F5944100210706 /* OCDJurisdictionViewController.m */; };
 		2F0A817018F5970C00210706 /* OCDJurisdictionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816F18F5970C00210706 /* OCDJurisdictionsDataSource.m */; };
 		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
-		2F8BC7F318F3554E00D9FB0F /* OCDBillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F218F3554E00D9FB0F /* OCDBillsViewController.m */; };
 		2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */; };
 		2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */; };
 		2FB8AB9318EF440400B45AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB8AB9218EF440400B45AB7 /* Foundation.framework */; };
@@ -55,20 +51,12 @@
 		2F0A815818F4949400210706 /* OCDSimpleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDSimpleDataSource.m; sourceTree = "<group>"; };
 		2F0A815A18F495AF00210706 /* OCDOrganizationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDOrganizationsDataSource.h; sourceTree = "<group>"; };
 		2F0A815B18F495AF00210706 /* OCDOrganizationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDOrganizationsDataSource.m; sourceTree = "<group>"; };
-		2F0A815D18F496A000210706 /* OCDOrganizationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDOrganizationsViewController.h; sourceTree = "<group>"; };
-		2F0A815E18F496A000210706 /* OCDOrganizationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDOrganizationsViewController.m; sourceTree = "<group>"; };
-		2F0A816218F4ACA600210706 /* OCDDivisionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDDivisionsViewController.h; sourceTree = "<group>"; };
-		2F0A816318F4ACA600210706 /* OCDDivisionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivisionsViewController.m; sourceTree = "<group>"; };
 		2F0A816518F4ACE600210706 /* OCDDivisionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDDivisionsDataSource.h; sourceTree = "<group>"; };
 		2F0A816618F4ACE600210706 /* OCDDivisionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivisionsDataSource.m; sourceTree = "<group>"; };
-		2F0A816818F5944100210706 /* OCDJurisdictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDJurisdictionViewController.h; sourceTree = "<group>"; };
-		2F0A816918F5944100210706 /* OCDJurisdictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdictionViewController.m; sourceTree = "<group>"; };
 		2F0A816E18F5970C00210706 /* OCDJurisdictionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDJurisdictionsDataSource.h; sourceTree = "<group>"; };
 		2F0A816F18F5970C00210706 /* OCDJurisdictionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdictionsDataSource.m; sourceTree = "<group>"; };
 		2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDConfiguration.h; sourceTree = "<group>"; };
 		2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDConfiguration.m; sourceTree = "<group>"; };
-		2F8BC7F118F3554E00D9FB0F /* OCDBillsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDBillsViewController.h; sourceTree = "<group>"; };
-		2F8BC7F218F3554E00D9FB0F /* OCDBillsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillsViewController.m; sourceTree = "<group>"; };
 		2F8BC7F718F3582B00D9FB0F /* OCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTableViewCell.h; sourceTree = "<group>"; };
 		2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTableViewCell.m; sourceTree = "<group>"; };
 		2F8BC7FA18F4500300D9FB0F /* OCDStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDStyle.h; sourceTree = "<group>"; };
@@ -212,14 +200,6 @@
 		2FB8ABC218EF449A00B45AB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2F8BC7F118F3554E00D9FB0F /* OCDBillsViewController.h */,
-				2F8BC7F218F3554E00D9FB0F /* OCDBillsViewController.m */,
-				2F0A816218F4ACA600210706 /* OCDDivisionsViewController.h */,
-				2F0A816318F4ACA600210706 /* OCDDivisionsViewController.m */,
-				2F0A816818F5944100210706 /* OCDJurisdictionViewController.h */,
-				2F0A816918F5944100210706 /* OCDJurisdictionViewController.m */,
-				2F0A815D18F496A000210706 /* OCDOrganizationsViewController.h */,
-				2F0A815E18F496A000210706 /* OCDOrganizationsViewController.m */,
 				2F0A814D18F4879100210706 /* OCDTableViewController.h */,
 				2F0A814E18F4879100210706 /* OCDTableViewController.m */,
 			);
@@ -381,17 +361,13 @@
 				2F0A817018F5970C00210706 /* OCDJurisdictionsDataSource.m in Sources */,
 				2F0A815C18F495AF00210706 /* OCDOrganizationsDataSource.m in Sources */,
 				2F0A814F18F4879100210706 /* OCDTableViewController.m in Sources */,
-				2F0A816A18F5944100210706 /* OCDJurisdictionViewController.m in Sources */,
 				2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */,
 				2F0A815918F4949400210706 /* OCDSimpleDataSource.m in Sources */,
 				2F0A816718F4ACE600210706 /* OCDDivisionsDataSource.m in Sources */,
-				2F0A816418F4ACA600210706 /* OCDDivisionsViewController.m in Sources */,
 				2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */,
 				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
 				2F0A815318F492E100210706 /* OCDBillsTableDataSource.m in Sources */,
-				2F0A815F18F496A000210706 /* OCDOrganizationsViewController.m in Sources */,
 				2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */,
-				2F8BC7F318F3554E00D9FB0F /* OCDBillsViewController.m in Sources */,
 				2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

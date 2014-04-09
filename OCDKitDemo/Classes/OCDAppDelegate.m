@@ -8,10 +8,11 @@
 
 #import "OCDAppDelegate.h"
 #import "OCDStyle.h"
-#import "OCDBillsViewController.h"
-#import "OCDOrganizationsViewController.h"
-#import "OCDDivisionsViewController.h"
-#import "OCDJurisdictionViewController.h"
+#import "OCDTableViewController.h"
+#import "OCDBillsTableDataSource.h"
+#import "OCDOrganizationsDataSource.h"
+#import "OCDDivisionsDataSource.h"
+#import "OCDJurisdictionsDataSource.h"
 
 @implementation OCDAppDelegate
 
@@ -21,10 +22,10 @@
 
     [OCDStyle setUpAppearance];
 
-    OCDBillsViewController *billsVC = [[OCDBillsViewController alloc] initWithStyle:UITableViewStylePlain];
-    OCDOrganizationsViewController *organizationsVC = [[OCDOrganizationsViewController alloc] initWithStyle:UITableViewStylePlain];
-    OCDDivisionsViewController *divisionsVC = [[OCDDivisionsViewController alloc] initWithStyle:UITableViewStylePlain];
-    OCDJurisdictionViewController *jurisdictionsVC = [[OCDJurisdictionViewController alloc] initWithStyle:UITableViewStylePlain];
+    OCDTableViewController *billsVC         = [OCDTableViewController tableControllerWithDataSource:[OCDBillsTableDataSource new] title:@"Bills" imageNamed:@"Bill"];
+    OCDTableViewController *organizationsVC = [OCDTableViewController tableControllerWithDataSource:[OCDOrganizationsDataSource new] title:@"Organizations" imageNamed:@"Organization"];
+    OCDTableViewController *divisionsVC     = [OCDTableViewController tableControllerWithDataSource:[OCDDivisionsDataSource new] title:@"Divisions" imageNamed:@"Division"];
+    OCDTableViewController *jurisdictionsVC = [OCDTableViewController tableControllerWithDataSource:[OCDJurisdictionsDataSource new] title:@"Jurisdictions" imageNamed:@"Jurisdiction"];
 
     UITabBarController *tabController = [[UITabBarController alloc] init];
     tabController.viewControllers = @[billsVC, organizationsVC, divisionsVC, jurisdictionsVC];

@@ -29,6 +29,7 @@
     OCDBill *object = self.rows[indexPath.row];
 
     cell.textLabel.text = object.title;
+    cell.detailTextLabel.text = object.ocdId;
 
     return cell;
 }
