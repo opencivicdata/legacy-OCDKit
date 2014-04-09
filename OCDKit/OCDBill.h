@@ -9,18 +9,13 @@
 #import "OCDObject.h"
 #import "OCDOrganization.h"
 #import "OCDSession.h"
-
-typedef NS_ENUM(NSInteger, OCDChamber){
-    OCDChamberUpper,
-    OCDChamberLower,
-    OCDChamberJoint
-};
+#import "OCDChamber.h"
 
 @interface OCDBill : OCDObject
 
 @property (nonatomic, copy, readonly) NSString *organizationId;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, assign, readonly) OCDChamber chamber;
+@property (nonatomic, assign, readonly) OCDChamberType chamber;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSArray *type;
 @property (nonatomic, copy, readonly) NSArray *subjects;

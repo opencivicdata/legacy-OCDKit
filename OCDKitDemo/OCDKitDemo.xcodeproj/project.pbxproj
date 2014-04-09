@@ -14,6 +14,7 @@
 		2F0A816718F4ACE600210706 /* OCDDivisionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816618F4ACE600210706 /* OCDDivisionsDataSource.m */; };
 		2F0A817018F5970C00210706 /* OCDJurisdictionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A816F18F5970C00210706 /* OCDJurisdictionsDataSource.m */; };
 		2F0A817318F5E42800210706 /* OCDPeopleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A817218F5E42800210706 /* OCDPeopleDataSource.m */; };
+		2F0A817618F5E8C600210706 /* OCDVotesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A817518F5E8C600210706 /* OCDVotesDataSource.m */; };
 		2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */; };
 		2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7F818F3582B00D9FB0F /* OCDTableViewCell.m */; };
 		2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8BC7FB18F4500300D9FB0F /* OCDStyle.m */; };
@@ -58,6 +59,8 @@
 		2F0A816F18F5970C00210706 /* OCDJurisdictionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdictionsDataSource.m; sourceTree = "<group>"; };
 		2F0A817118F5E42800210706 /* OCDPeopleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDPeopleDataSource.h; sourceTree = "<group>"; };
 		2F0A817218F5E42800210706 /* OCDPeopleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDPeopleDataSource.m; sourceTree = "<group>"; };
+		2F0A817418F5E8C600210706 /* OCDVotesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDVotesDataSource.h; sourceTree = "<group>"; };
+		2F0A817518F5E8C600210706 /* OCDVotesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDVotesDataSource.m; sourceTree = "<group>"; };
 		2F8BC7DB18F3087900D9FB0F /* OCDConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDConfiguration.h; sourceTree = "<group>"; };
 		2F8BC7DC18F3090600D9FB0F /* OCDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDConfiguration.m; sourceTree = "<group>"; };
 		2F8BC7F718F3582B00D9FB0F /* OCDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTableViewCell.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				2F0A815818F4949400210706 /* OCDSimpleDataSource.m */,
 				2F0A817118F5E42800210706 /* OCDPeopleDataSource.h */,
 				2F0A817218F5E42800210706 /* OCDPeopleDataSource.m */,
+				2F0A817418F5E8C600210706 /* OCDVotesDataSource.h */,
+				2F0A817518F5E8C600210706 /* OCDVotesDataSource.m */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				2F0A817018F5970C00210706 /* OCDJurisdictionsDataSource.m in Sources */,
 				2F0A815C18F495AF00210706 /* OCDOrganizationsDataSource.m in Sources */,
 				2F0A817318F5E42800210706 /* OCDPeopleDataSource.m in Sources */,
+				2F0A817618F5E8C600210706 /* OCDVotesDataSource.m in Sources */,
 				2F0A814F18F4879100210706 /* OCDTableViewController.m in Sources */,
 				2F8BC7DD18F3090600D9FB0F /* OCDConfiguration.m in Sources */,
 				2F0A815918F4949400210706 /* OCDSimpleDataSource.m in Sources */,
