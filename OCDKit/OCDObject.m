@@ -7,6 +7,7 @@
 //
 
 #import "OCDObject.h"
+#import "OCDLink.h"
 
 @implementation OCDObject
 
@@ -51,6 +52,10 @@
     return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
         return [[self datetimeFormatter] dateFromString:str];
     }];
+}
+
++ (NSValueTransformer *)sourcesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDLink.class];
 }
 
 @end
