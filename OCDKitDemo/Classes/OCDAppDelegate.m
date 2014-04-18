@@ -15,6 +15,7 @@
 #import "OCDJurisdictionsDataSource.h"
 #import "OCDPeopleDataSource.h"
 #import "OCDVotesDataSource.h"
+#import "OCDEventsDataSource.h"
 
 @implementation OCDAppDelegate
 
@@ -30,10 +31,10 @@
     OCDTableViewController *jurisdictionsVC = [OCDTableViewController tableControllerWithDataSource:[OCDJurisdictionsDataSource new] title:@"Jurisdictions" imageNamed:@"Jurisdiction"];
     OCDTableViewController *peopleVC         = [OCDTableViewController tableControllerWithDataSource:[OCDPeopleDataSource new] title:@"People" imageNamed:@"Person"];
     OCDTableViewController *votesVC         = [OCDTableViewController tableControllerWithDataSource:[OCDVotesDataSource new] title:@"Votes" imageNamed:@"Vote"];
-//    OCDTableViewController *eventsVC         = [OCDTableViewController tableControllerWithDataSource:[OCDBillsTableDataSource new] title:@"Bills" imageNamed:@"Bill"];
+    OCDTableViewController *eventsVC         = [OCDTableViewController tableControllerWithDataSource:[OCDEventsDataSource new] title:@"Events" imageNamed:@"Event"];
 
     UITabBarController *tabController = [[UITabBarController alloc] init];
-    tabController.viewControllers = @[billsVC, organizationsVC, divisionsVC, jurisdictionsVC, peopleVC, votesVC];
+    tabController.viewControllers = @[billsVC, organizationsVC, divisionsVC, jurisdictionsVC, peopleVC, votesVC, eventsVC];
     tabController.selectedViewController = billsVC;
     [self.window setRootViewController:tabController];
 

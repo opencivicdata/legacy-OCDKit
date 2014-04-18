@@ -30,6 +30,7 @@
 		2FB8ABCB18EF4A6E00B45AB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB8ABC918EF4A6E00B45AB7 /* Images.xcassets */; };
 		2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB8ABD118EF4AF600B45AB7 /* main.m */; };
 		2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB8ABD518EF4B2500B45AB7 /* OCDAppDelegate.m */; };
+		2FC3860D19019B30009316BA /* OCDEventsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3860C19019B30009316BA /* OCDEventsDataSource.m */; };
 		FF8F4BB31B4F4C198752E83F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C39DAE45F9490394CE3D75 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		2FB8ABD318EF4B1300B45AB7 /* OCDKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCDKitDemo-Prefix.pch"; sourceTree = "<group>"; };
 		2FB8ABD418EF4B2500B45AB7 /* OCDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDAppDelegate.h; sourceTree = "<group>"; };
 		2FB8ABD518EF4B2500B45AB7 /* OCDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDAppDelegate.m; sourceTree = "<group>"; };
+		2FC3860B19019B30009316BA /* OCDEventsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDEventsDataSource.h; sourceTree = "<group>"; };
+		2FC3860C19019B30009316BA /* OCDEventsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDEventsDataSource.m; sourceTree = "<group>"; };
 		D0C39DAE45F9490394CE3D75 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,14 +121,16 @@
 				2F0A815218F492E100210706 /* OCDBillsTableDataSource.m */,
 				2F0A816518F4ACE600210706 /* OCDDivisionsDataSource.h */,
 				2F0A816618F4ACE600210706 /* OCDDivisionsDataSource.m */,
+				2FC3860B19019B30009316BA /* OCDEventsDataSource.h */,
+				2FC3860C19019B30009316BA /* OCDEventsDataSource.m */,
 				2F0A816E18F5970C00210706 /* OCDJurisdictionsDataSource.h */,
 				2F0A816F18F5970C00210706 /* OCDJurisdictionsDataSource.m */,
 				2F0A815A18F495AF00210706 /* OCDOrganizationsDataSource.h */,
 				2F0A815B18F495AF00210706 /* OCDOrganizationsDataSource.m */,
-				2F0A815718F4949400210706 /* OCDSimpleDataSource.h */,
-				2F0A815818F4949400210706 /* OCDSimpleDataSource.m */,
 				2F0A817118F5E42800210706 /* OCDPeopleDataSource.h */,
 				2F0A817218F5E42800210706 /* OCDPeopleDataSource.m */,
+				2F0A815718F4949400210706 /* OCDSimpleDataSource.h */,
+				2F0A815818F4949400210706 /* OCDSimpleDataSource.m */,
 				2F0A817418F5E8C600210706 /* OCDVotesDataSource.h */,
 				2F0A817518F5E8C600210706 /* OCDVotesDataSource.m */,
 			);
@@ -378,6 +383,7 @@
 				2F0A816718F4ACE600210706 /* OCDDivisionsDataSource.m in Sources */,
 				2FB8ABD618EF4B2500B45AB7 /* OCDAppDelegate.m in Sources */,
 				2FB8ABD218EF4AF600B45AB7 /* main.m in Sources */,
+				2FC3860D19019B30009316BA /* OCDEventsDataSource.m in Sources */,
 				2F0A815318F492E100210706 /* OCDBillsTableDataSource.m in Sources */,
 				2F8BC7FC18F4500300D9FB0F /* OCDStyle.m in Sources */,
 				2F8BC7F918F3582B00D9FB0F /* OCDTableViewCell.m in Sources */,
