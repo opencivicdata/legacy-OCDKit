@@ -21,6 +21,7 @@
 
 + (NSValueTransformer *)classificationJSONTransformer {
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               NSNull.null: @(OCDOrganizationTypeUnknown),
                @"commission": @(OCDOrganizationTypeCommission),
                @"committee": @(OCDOrganizationTypeCommittee),
                @"legislature": @(OCDOrganizationTypeLegislature),

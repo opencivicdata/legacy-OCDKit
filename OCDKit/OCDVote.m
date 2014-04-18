@@ -27,15 +27,16 @@
            }];
 }
 
-//+ (NSValueTransformer *)typeJSONTransformer {
-//    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-//               @"passage": @(OCDVoteTypePassage),
-//               @"amendment": @(OCDVoteTypeAmendment),
-//               @"reading:2": @(OCDVoteTypeReading2),
-//               @"reading:3": @(OCDVoteTypeReading3),
-//               @"veto_override": @(OCDVoteTypeVetoOverride),
-//               @"other": @(OCDVoteTypeVetoOther)
-//           }];
-//}
++ (NSValueTransformer *)typeJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               NSNull.null: @(OCDVoteTypeNone),
+               @"passage": @(OCDVoteTypePassage),
+               @"amendment": @(OCDVoteTypeAmendment),
+               @"reading:2": @(OCDVoteTypeReading2),
+               @"reading:3": @(OCDVoteTypeReading3),
+               @"veto_override": @(OCDVoteTypeVetoOverride),
+               @"other": @(OCDVoteTypeVetoOther)
+           }];
+}
 
 @end

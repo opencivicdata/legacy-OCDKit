@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, OCDVoteType){
 };
 
 typedef NS_ENUM(NSInteger, OCDVoteValue){
+    OCDVoteValueUnknown,
     OCDVoteValueYes,
     OCDVoteValueNo,
     OCDVoteValueAbstain,

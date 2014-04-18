@@ -9,6 +9,7 @@
 #import "OCDObject.h"
 
 typedef NS_ENUM(NSInteger, OCDChamberType){
+    OCDChamberTypeUnknown,
     OCDChamberUpper,
     OCDChamberLower,
     OCDChamberJoint
