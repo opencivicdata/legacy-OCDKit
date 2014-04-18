@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
+#import "ISO8601DateFormatter.h"
 
 @interface OCDObject : MTLModel <MTLJSONSerializing>
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey;
++ (ISO8601DateFormatter *)datetimeFormatter;
 
 @property (nonatomic, copy, readonly) NSString *ocdId; // Subclasses should map this to their id, if one exists
 @property (nonatomic, copy, readonly) NSDate *updatedAt;

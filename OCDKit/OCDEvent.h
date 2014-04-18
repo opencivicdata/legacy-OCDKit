@@ -10,4 +10,10 @@
 
 @interface OCDEvent : OCDObject
 
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *eventDescription;
+@property (nonatomic, copy, readonly) NSDate *when;
+@property (nonatomic, copy, readonly) NSDate *end;
+@property (nonatomic, copy, readonly) NSDictionary *location;
+
 @end

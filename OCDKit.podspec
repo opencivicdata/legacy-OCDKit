@@ -31,5 +31,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.dependency "AFNetworking/NSURLSession", "~> 2.2.0"
   s.dependency "Mantle", "~> 1.4.0"
+  s.dependency "ISO8601DateFormatter", "~> 0.7"
 
 end

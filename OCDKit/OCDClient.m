@@ -7,6 +7,7 @@
 //
 
 #import "OCDClient.h"
+#import "ISO8601DateFormatter.h"
 #import "OCDDivision.h"
 #import "OCDJurisdiction.h"
 #import "OCDOrganization.h"
@@ -45,7 +46,7 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
     if (self) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.requestSerializer = [AFHTTPRequestSerializer serializer];
-        
+
         [self.requestSerializer setValue:@"OCDKit" forHTTPHeaderField:@"User-Agent"];
     };
     return self;
@@ -80,7 +81,24 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
           resultsClass:(Class)responseClass
               completionBlock:(void (^)(OCDResultSet *results))completionBlock {
 
-    NSURLSessionDataTask *task = [self GET:URLString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    static ISO8601DateFormatter *_dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _dateFormatter = [[ISO8601DateFormatter alloc] init];
+        _dateFormatter.includeTime = YES;
+        _dateFormatter.defaultTimeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    });
+
+    NSMutableDictionary *preEncodedParams = [[NSMutableDictionary alloc] initWithCapacity:parameters.count];
+    [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass:NSDate.class]) {
+            NSString *almostThere = [_dateFormatter stringFromDate:obj];
+            obj = [almostThere substringToIndex:(almostThere.length-1)];
+        }
+        [preEncodedParams setObject:obj forKey:key];
+    }];
+
+    NSURLSessionDataTask *task = [self GET:URLString parameters:preEncodedParams success:^(NSURLSessionDataTask *task, id responseObject) {
         OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:responseClass];
         completionBlock(resultSet);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

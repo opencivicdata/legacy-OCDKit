@@ -10,4 +10,23 @@
 
 @implementation OCDEvent
 
++ (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
+    return @{
+             @"ocdId": @"id",
+             @"eventDescription": @"description"
+             };
+}
+
++ (NSValueTransformer *)whenJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)endJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
 @end

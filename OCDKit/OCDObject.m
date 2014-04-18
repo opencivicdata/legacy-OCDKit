@@ -29,5 +29,28 @@
     return keyPaths;
 }
 
++ (ISO8601DateFormatter *)datetimeFormatter {
+    static ISO8601DateFormatter *_datetimeFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _datetimeFormatter = [[ISO8601DateFormatter alloc] init];
+        _datetimeFormatter.includeTime = YES;
+        _datetimeFormatter.defaultTimeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    });
+
+    return _datetimeFormatter;
+}
+
++ (NSValueTransformer *)updatedAtJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)createdAtJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
 
 @end
