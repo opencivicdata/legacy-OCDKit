@@ -17,7 +17,7 @@
 @property (nonatomic, copy, readonly) OCDOrganization *organization;
 
 @property (nonatomic, copy, readonly) NSArray *contactDetails; // OCDContact
-@property (nonatomic, copy, readonly) NSArray *links; // OCDURL
+@property (nonatomic, copy, readonly) NSArray *links; // OCDLink
 
 @property (nonatomic, copy, readonly) NSDate *startDate;
 @property (nonatomic, copy, readonly) NSDate *endDate;

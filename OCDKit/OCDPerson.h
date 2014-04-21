@@ -14,7 +14,7 @@
 @property (nonatomic, copy, readonly) NSString *sortName;
 @property (nonatomic, copy, readonly) NSURL *image;
 @property (nonatomic, copy, readonly) NSArray *contactDetails; // OCDContact
-@property (nonatomic, copy, readonly) NSArray *links; // OCDURL
+@property (nonatomic, copy, readonly) NSArray *links; // OCDLink
 @property (nonatomic, copy, readonly) NSArray *identifiers; // OCDIdentifier
 @property (nonatomic, copy, readonly) NSArray *otherNames; // OCDName
 
@@ -24,6 +24,8 @@
 
 @property (nonatomic, copy, readonly) NSDate *birthDate;
 @property (nonatomic, copy, readonly) NSDate *deathDate;
+
+@property (nonatomic, copy, readonly) NSArray *sources;
 
 - (BOOL)isAlive;
 

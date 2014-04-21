@@ -7,14 +7,21 @@
 //
 
 #import "OCDOrganization.h"
+#import "OCDIdentifier.h"
+#import "OCDLink.h"
+#import "OCDPost.h"
+#import "OCDName.h"
 
 @implementation OCDOrganization
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
     return @{
-             @"ocdId":          @"id",
-             @"jurisdictionId": @"orgjurisdiction_idanization_id",
-             @"otherNames":     @"other_names",
+             @"ocdId":           @"id",
+             @"jurisdictionId":  @"jurisdiction_id",
+             @"contactDetails":  @"contact_details",
+             @"foundingDate":    @"founding_date",
+             @"dissolutionDate": @"dissolution_date",
+             @"otherNames":      @"other_names",
              };
 }
 
@@ -27,6 +34,22 @@
                @"legislature": @(OCDOrganizationTypeLegislature),
                @"party": @(OCDOrganizationTypeParty)
            }];
+}
+
++ (NSValueTransformer *)identifiersJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDIdentifier.class];
+}
+
++ (NSValueTransformer *)linksJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDLink.class];
+}
+
++ (NSValueTransformer *)postsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDPost.class];
+}
+
++ (NSValueTransformer *)otherNamesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDName.class];
 }
 
 @end
