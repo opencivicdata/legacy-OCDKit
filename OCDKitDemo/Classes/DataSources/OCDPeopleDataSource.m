@@ -24,7 +24,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OCDTableViewCell" forIndexPath:indexPath];
 
-    OCDOrganization *object = self.rows[indexPath.row];
+    OCDPerson *object = self.rows[indexPath.row];
 
     cell.textLabel.text = object.name;
     cell.detailTextLabel.text = object.ocdId;
