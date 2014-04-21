@@ -7,7 +7,12 @@
 //
 
 #import "OCDTerm.h"
+#import "OCDSession.h"
 
 @implementation OCDTerm
+
++ (NSValueTransformer *)sessionsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDSession.class];
+}
 
 @end

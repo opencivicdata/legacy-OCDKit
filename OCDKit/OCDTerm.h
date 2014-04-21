@@ -13,7 +13,7 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSArray *sessions;
 
-@property (nonatomic, assign) int endYear;
-@property (nonatomic, assign) int startYear;
+@property (nonatomic, assign) NSUInteger endYear;
+@property (nonatomic, assign) NSUInteger startYear;
 
 @end

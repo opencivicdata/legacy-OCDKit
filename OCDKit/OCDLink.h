@@ -11,7 +11,7 @@
 
 @interface OCDLink : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSURL *URL;
+@property (nonatomic, copy, readonly) NSURL *url;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *note;
 @property (nonatomic, copy, readonly) NSString *mimetype;

@@ -12,14 +12,13 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"URL":      @"url",
              @"name":     @"name",
              @"note":     @"note",
              @"mimetype": @"mimetype"
              };
 }
 
-+ (NSValueTransformer *)URLJSONTransformer {
++ (NSValueTransformer *)urlJSONTransformer {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 

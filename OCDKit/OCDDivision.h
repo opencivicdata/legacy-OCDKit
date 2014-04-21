@@ -13,5 +13,6 @@
 @property (nonatomic, copy, readonly) NSString *country;
 @property (nonatomic, copy, readonly) NSString *displayName;
 @property (nonatomic, copy, readonly) NSArray *children;
+@property (nonatomic, copy, readonly) NSArray *geometries;
 
 @end

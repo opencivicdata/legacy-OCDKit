@@ -10,7 +10,7 @@
 
 @interface OCDBoundary : OCDObject
 
-@property (nonatomic, copy, readonly) NSArray *centroid;
+@property (nonatomic, copy, readonly) NSDictionary *centroid;
 @property (nonatomic, copy, readonly) NSArray *extent;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "OCDDivision.h"
+#import "OCDGeometry.h"
 
 @implementation OCDDivision
 
@@ -15,6 +16,14 @@
              @"ocdId":          @"id",
              @"displayName": @"display_name",
              };
+}
+
++ (NSValueTransformer *)childrenJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDDivision.class];
+}
+
++ (NSValueTransformer *)geometriesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDGeometry.class];
 }
 
 @end
