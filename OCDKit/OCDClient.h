@@ -19,6 +19,14 @@ FOUNDATION_EXPORT NSString *const BASEURL;
 
 - (void)setKey:(NSString *)key;
 
+- (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass completionBlock:(void (^)(id responseObject))completionBlock;
+- (void)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (void)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+
 - (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
 - (void)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
 - (void)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;

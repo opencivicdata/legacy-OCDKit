@@ -110,6 +110,44 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 
 #pragma mark - OCDClient API methods
 
+- (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass completionBlock:(void (^)(id responseObject))completionBlock {
+    NSDictionary *params = @{};
+    if (fields) {
+        params = @{ @"fields": [fields componentsJoinedByString:@","] };
+    }
+    NSURLSessionDataTask *task = [self GET:ocdId parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        id obj = [MTLJSONAdapter modelOfClass:responseClass fromJSONDictionary:responseObject error:NULL];
+        completionBlock(obj);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completionBlock(nil);
+    }];
+    return task;
+}
+
+- (void)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDBill.class completionBlock:completionBlock];
+}
+
+- (void)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDDivision.class completionBlock:completionBlock];
+}
+
+- (void)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDEvent.class completionBlock:completionBlock];
+}
+
+- (void)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDJurisdiction.class completionBlock:completionBlock];
+}
+
+- (void)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDOrganization.class completionBlock:completionBlock];
+}
+
+- (void)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    [self objectWithId:ocdId fields:fields class:OCDPerson.class completionBlock:completionBlock];
+}
+
 - (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
     [self GET:@"bills/" parameters:params resultsClass:OCDBill.class completionBlock:completionBlock];
 }
