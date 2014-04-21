@@ -14,5 +14,6 @@
 + (instancetype)tableControllerWithDataSource:(id<OCDSimpleDataLoader,UITableViewDataSource>)source title:(NSString *)viewTitle imageNamed:(NSString *)imageName;
 
 @property (nonatomic, strong) id <OCDSimpleDataLoader,UITableViewDataSource> dataController;
+@property (nonatomic, strong) OCDClient *client;
 
 @end

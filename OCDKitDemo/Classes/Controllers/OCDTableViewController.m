@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tableView.allowsSelection = NO;
+//    self.tableView.allowsSelection = NO;
     self.tableView.estimatedRowHeight = 100.0f;
 
     [self.tableView registerClass:OCDTableViewCell.class forCellReuseIdentifier:@"OCDTableViewCell"];
@@ -41,6 +41,8 @@
         __strong OCDTableViewController *strongSelf = weakSelf;
         [strongSelf.tableView reloadData];
     }];
+
+    self.client = [OCDClient clientWithKey:kSunlightAPIKey];
 }
 
 
@@ -54,6 +56,18 @@
     return 100.0f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    id object = self.dataController.rows[indexPath.row];
+    Class objectClass = [object class];
+    NSString *className = NSStringFromClass(objectClass);
+    NSString *objectOCDId = [object ocdId];
+    NSLog(@"Selected a %@ object", className);
+
+    [self.client objectWithId:objectOCDId fields:nil class:objectClass completionBlock:^(id object) {
+        NSLog(@"object: %@", object);
+    }];
+
+}
 
 @end

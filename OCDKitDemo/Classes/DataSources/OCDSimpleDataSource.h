@@ -12,6 +12,8 @@
 
 - (void)loadDataWithCompletion:(void (^)(BOOL success))completionBlock;
 
+@property (nonatomic, strong) NSArray *rows;
+
 @end
 
 @interface OCDSimpleDataSource : NSObject <UITableViewDataSource>
