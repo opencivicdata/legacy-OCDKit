@@ -23,8 +23,9 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 - (OCDResultSet *)resultSetForResponse:(id)responseObject class:(Class)responseClass;
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(NSDictionary *)parameters
-          resultsClass:(Class)responseClass
-              completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+                 resultsClass:(Class)responseClass
+                      success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                      failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure;
 @end
 
 @implementation OCDClient
@@ -78,8 +79,9 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 
 - (NSURLSessionDataTask *)GET:(NSString *)URLString
                    parameters:(NSDictionary *)parameters
-          resultsClass:(Class)responseClass
-              completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+                 resultsClass:(Class)responseClass
+                      success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                      failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
 
     static ISO8601DateFormatter *_dateFormatter = nil;
     static dispatch_once_t onceToken;
@@ -100,80 +102,118 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 
     NSURLSessionDataTask *task = [self GET:URLString parameters:preEncodedParams success:^(NSURLSessionDataTask *task, id responseObject) {
         OCDResultSet *resultSet = [self resultSetForResponse:responseObject class:responseClass];
-        completionBlock(resultSet);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completionBlock(nil);
-    }];
+        success(task, resultSet);
+    } failure:failure];
 
     return task;
 }
 
 #pragma mark - OCDClient API methods
 
-- (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass completionBlock:(void (^)(id responseObject))completionBlock {
+- (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass
+                               success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
     NSDictionary *params = @{};
     if (fields) {
         params = @{ @"fields": [fields componentsJoinedByString:@","] };
     }
     NSURLSessionDataTask *task = [self GET:ocdId parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         id obj = [MTLJSONAdapter modelOfClass:responseClass fromJSONDictionary:responseObject error:NULL];
-        completionBlock(obj);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completionBlock(nil);
-    }];
+        success(task, obj);
+    } failure:failure];
     return task;
 }
 
-- (NSURLSessionDataTask *)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDBill.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)billWithId:(NSString *)ocdId fields:(NSArray *)fields
+                             success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                             failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDBill.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDDivision.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields
+                                 success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                                 failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDDivision.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDEvent.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)eventWithId:(NSString *)ocdId fields:(NSArray *)fields
+                              success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                              failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDEvent.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDJurisdiction.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields
+                                     success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                                     failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDJurisdiction.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDOrganization.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields
+                                     success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                                     failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDOrganization.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self objectWithId:ocdId fields:fields class:OCDPerson.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)personWithId:(NSString *)ocdId fields:(NSArray *)fields
+                               success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self objectWithId:ocdId fields:fields class:OCDPerson.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"bills/" parameters:params resultsClass:OCDBill.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)bills:(NSDictionary *)params
+                        success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                           failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"bills/" parameters:params resultsClass:OCDBill.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"divisions/" parameters:params resultsClass:OCDDivision.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)divisions:(NSDictionary *)params
+                            success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"divisions/" parameters:params resultsClass:OCDDivision.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"events/" parameters:params resultsClass:OCDEvent.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)events:(NSDictionary *)params
+                         success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"events/" parameters:params resultsClass:OCDEvent.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"jurisdictions/" parameters:params resultsClass:OCDJurisdiction.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)jurisdictions:(NSDictionary *)params
+                                success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"jurisdictions/" parameters:params resultsClass:OCDJurisdiction.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"organizations/" parameters:params resultsClass:OCDOrganization.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)organizations:(NSDictionary *)params
+                                success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"organizations/" parameters:params resultsClass:OCDOrganization.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"people/" parameters:params resultsClass:OCDPerson.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)people:(NSDictionary *)params
+                         success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"people/" parameters:params resultsClass:OCDPerson.class success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    return [self GET:@"votes/" parameters:params resultsClass:OCDVote.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)votes:(NSDictionary *)params
+                        success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
+                               failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+
+    return [self GET:@"votes/" parameters:params resultsClass:OCDVote.class success:success failure:failure];
 }
 
 @end
