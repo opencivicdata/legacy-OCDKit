@@ -33,9 +33,9 @@
 - (void)testGetDivision {
     __block id blockResponseObject = nil;
 
-    NSURLSessionDataTask *task = [self.client divisionWithId:@"ocd-division/country:us/district:dc" fields:nil completionBlock:^(id responseObject) {
+    NSURLSessionDataTask *task = [self.client divisionWithId:@"ocd-division/country:us/district:dc" fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-    }];
+    } failure:nil];
 
 //  Check the task
     expect(task.state).will.equal(NSURLSessionTaskStateRunning);
@@ -53,9 +53,9 @@
 
     NSString *ocdId = @"ocd-division/country:us/district:dc";
 
-    NSURLSessionDataTask *task = [self.client divisionWithId:ocdId fields:nil completionBlock:^(id responseObject) {
+    NSURLSessionDataTask *task = [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-    }];
+    } failure:nil];
 
     //  Check the task
     expect(task.state).will.equal(NSURLSessionTaskStateRunning);
