@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F7B3DEF1906FA40000E082D /* OCDDivisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */; };
+		2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF11906FACE000E082D /* OCDTestsBase.m */; };
+		2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */; };
 		2F97ADE81906D6DE006995DC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADB51906D06C006995DC /* XCTest.framework */; };
 		2F97ADF01906D6DE006995DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F97ADEE1906D6DE006995DC /* InfoPlist.strings */; };
 		2F97ADF91906D748006995DC /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADF81906D748006995DC /* libPods-ios.a */; };
@@ -16,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivisionTests.m; sourceTree = "<group>"; };
+		2F7B3DF01906FACE000E082D /* OCDTestsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTestsBase.h; sourceTree = "<group>"; };
+		2F7B3DF11906FACE000E082D /* OCDTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTestsBase.m; sourceTree = "<group>"; };
+		2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-division-district-dc.json"; sourceTree = "<group>"; };
 		2F97ADB51906D06C006995DC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2F97ADB71906D06C006995DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2F97ADB91906D06C006995DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -48,15 +55,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F7B3DF41907012C000E082D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2F97ADA71906D052006995DC = {
 			isa = PBXGroup;
 			children = (
-				2F97ADCA1906D497006995DC /* Tests */,
-				2F97ADEB1906D6DE006995DC /* iOS Tests */,
 				2F97ADB41906D06C006995DC /* Frameworks */,
-				2F97ADB31906D06C006995DC /* Products */,
+				2F97ADEB1906D6DE006995DC /* iOS Tests */,
 				A2B2496FC7114A4A9DF795A0 /* Pods-ios.xcconfig */,
 				931BB64F22694ADDBA3CF011 /* Pods.xcconfig */,
+				2F97ADB31906D06C006995DC /* Products */,
+				2F7B3DF41907012C000E082D /* Resources */,
+				2F97ADCA1906D497006995DC /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +102,9 @@
 		2F97ADCA1906D497006995DC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */,
+				2F7B3DF01906FACE000E082D /* OCDTestsBase.h */,
+				2F7B3DF11906FACE000E082D /* OCDTestsBase.m */,
 				2F97ADFF1906D854006995DC /* OCDKitTests.m */,
 			);
 			path = Tests;
@@ -161,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */,
 				2F97ADF01906D6DE006995DC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F97AE001906D854006995DC /* OCDKitTests.m in Sources */,
+				2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */,
+				2F7B3DEF1906FA40000E082D /* OCDDivisionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

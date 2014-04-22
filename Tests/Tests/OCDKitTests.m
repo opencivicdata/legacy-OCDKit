@@ -6,11 +6,9 @@
 //
 //
 
-#import <XCTest/XCTest.h>
+#import "OCDTestsBase.h"
 
-#import "OCDClient.h"
-
-@interface OCDKitTests : XCTestCase
+@interface OCDKitTests : OCDTestsBase
 
 @end
 
@@ -26,14 +24,8 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
-
-- (void)testClient {
-    OCDClient *client = [OCDClient clientWithKey:@"foo"];
-    XCTAssertEqual(client.baseURL.absoluteString , @"https://api.opencivicdata.org");
+- (void)testClientURL {
+    XCTAssertEqual(self.client.baseURL.absoluteString , @"https://api.opencivicdata.org");
 }
 
 @end

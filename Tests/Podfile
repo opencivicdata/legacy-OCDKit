@@ -1,7 +1,8 @@
 inhibit_all_warnings!
 
 def import_pods
-  pod 'OCMock', '~> 2.2.4'
+  pod 'OHHTTPStubs', '~> 3.1.0'
+  pod 'Expecta', '~> 0.3.0'
   pod 'OCDKit', :path => '../'
 end
 
