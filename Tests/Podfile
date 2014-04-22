@@ -1,5 +1,3 @@
-xcodeproj 'OCDKit Tests'
-workspace '../OCDKit'
 inhibit_all_warnings!
 
 def import_pods

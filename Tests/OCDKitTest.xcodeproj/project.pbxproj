@@ -11,7 +11,7 @@
 		2F97ADB81906D06C006995DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADB71906D06C006995DC /* Foundation.framework */; };
 		2F97ADBA1906D06C006995DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADB91906D06C006995DC /* UIKit.framework */; };
 		2F97ADC01906D06C006995DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F97ADBE1906D06C006995DC /* InfoPlist.strings */; };
-		2F97ADC21906D06C006995DC /* iOS_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97ADC11906D06C006995DC /* iOS_Tests.m */; };
+		2F97ADCE1906D4B3006995DC /* OCDKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97ADCD1906D4B3006995DC /* OCDKitTests.m */; };
 		3073BD1005CE4D0E9F93750C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74DD439E90414DDBB71B0786 /* libPods-ios.a */; };
 /* End PBXBuildFile section */
 
@@ -22,8 +22,8 @@
 		2F97ADB91906D06C006995DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2F97ADBD1906D06C006995DC /* iOS Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS Tests-Info.plist"; sourceTree = "<group>"; };
 		2F97ADBF1906D06C006995DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2F97ADC11906D06C006995DC /* iOS_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_Tests.m; sourceTree = "<group>"; };
 		2F97ADC31906D06C006995DC /* iOS Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Tests-Prefix.pch"; sourceTree = "<group>"; };
+		2F97ADCD1906D4B3006995DC /* OCDKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDKitTests.m; sourceTree = "<group>"; };
 		74DD439E90414DDBB71B0786 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B2496FC7114A4A9DF795A0 /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +46,7 @@
 		2F97ADA71906D052006995DC = {
 			isa = PBXGroup;
 			children = (
+				2F97ADCA1906D497006995DC /* Tests */,
 				2F97ADBB1906D06C006995DC /* iOS Tests */,
 				2F97ADB41906D06C006995DC /* Frameworks */,
 				2F97ADB31906D06C006995DC /* Products */,
@@ -75,7 +76,6 @@
 		2F97ADBB1906D06C006995DC /* iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2F97ADC11906D06C006995DC /* iOS_Tests.m */,
 				2F97ADBC1906D06C006995DC /* Supporting Files */,
 			);
 			path = "iOS Tests";
@@ -89,6 +89,14 @@
 				2F97ADC31906D06C006995DC /* iOS Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F97ADCA1906D497006995DC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2F97ADCD1906D4B3006995DC /* OCDKitTests.m */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +129,7 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 2F97ADAB1906D052006995DC /* Build configuration list for PBXProject "OCDKit Tests" */;
+			buildConfigurationList = 2F97ADAB1906D052006995DC /* Build configuration list for PBXProject "OCDKitTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -187,7 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F97ADC21906D06C006995DC /* iOS_Tests.m in Sources */,
+				2F97ADCE1906D4B3006995DC /* OCDKitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2F97ADAB1906D052006995DC /* Build configuration list for PBXProject "OCDKit Tests" */ = {
+		2F97ADAB1906D052006995DC /* Build configuration list for PBXProject "OCDKitTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F97ADAC1906D052006995DC /* Debug */,
