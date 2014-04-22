@@ -32,10 +32,13 @@
 
 - (void)testGetDivision {
     __block id blockResponseObject = nil;
+    __block id blockError = nil;
 
     NSURLSessionDataTask *task = [self.client divisionWithId:@"ocd-division/country:us/district:dc" fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-    } failure:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
 
 //  Check the task
     expect(task.state).will.equal(NSURLSessionTaskStateRunning);
@@ -43,6 +46,7 @@
     expect(task.state).willNot.equal(NSURLSessionTaskStateCanceling);
 
 //    Check the response
+    expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
     expect([blockResponseObject valueForKeyPath:@"country"]).will.equal(@"us");
@@ -50,12 +54,15 @@
 
 - (void)testGetDivisionCompleteness {
     __block id blockResponseObject = nil;
+    __block id blockError = nil;
 
     NSString *ocdId = @"ocd-division/country:us/district:dc";
 
     NSURLSessionDataTask *task = [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-    } failure:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
 
     //  Check the task
     expect(task.state).will.equal(NSURLSessionTaskStateRunning);
@@ -63,6 +70,7 @@
     expect(task.state).willNot.equal(NSURLSessionTaskStateCanceling);
 
     //    Check the response
+    expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
     expect([blockResponseObject valueForKey:@"country"]).will.equal(@"us");
