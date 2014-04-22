@@ -1,16 +1,18 @@
 //
-//  OCDKitDemoTests.m
-//  OCDKitDemoTests
+//  OCDKitTests.m
+//  iOS Tests
 //
-//  Created by Daniel Cloud on 4/4/14.
-//  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
+//  Created by Daniel Cloud on 4/22/14.
+//
 //
 
 #import <XCTest/XCTest.h>
 
-#import "OCDClient.h"
+@interface OCDKitTests : XCTestCase
 
-@implementation OCDKitDemoTests
+@end
+
+@implementation OCDKitTests
 
 - (void)setUp
 {

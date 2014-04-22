@@ -25,3 +25,8 @@ Pods/
 
 # Ignore configuration file
 OCDKitDemo/Configuration/OCDConfiguration.m
+
+# Tests related
+Tests/Pods
+Tests/Podfile.lock
+Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes/
