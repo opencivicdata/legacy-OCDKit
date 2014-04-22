@@ -124,56 +124,56 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
     return task;
 }
 
-- (void)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDBill.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDBill.class completionBlock:completionBlock];
 }
 
-- (void)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDDivision.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDDivision.class completionBlock:completionBlock];
 }
 
-- (void)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDEvent.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDEvent.class completionBlock:completionBlock];
 }
 
-- (void)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDJurisdiction.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDJurisdiction.class completionBlock:completionBlock];
 }
 
-- (void)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDOrganization.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDOrganization.class completionBlock:completionBlock];
 }
 
-- (void)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self objectWithId:ocdId fields:fields class:OCDPerson.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self objectWithId:ocdId fields:fields class:OCDPerson.class completionBlock:completionBlock];
 }
 
-- (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"bills/" parameters:params resultsClass:OCDBill.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"bills/" parameters:params resultsClass:OCDBill.class completionBlock:completionBlock];
 }
 
-- (void)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"divisions/" parameters:params resultsClass:OCDDivision.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"divisions/" parameters:params resultsClass:OCDDivision.class completionBlock:completionBlock];
 }
 
-- (void)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"events/" parameters:params resultsClass:OCDEvent.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"events/" parameters:params resultsClass:OCDEvent.class completionBlock:completionBlock];
 }
 
-- (void)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"jurisdictions/" parameters:params resultsClass:OCDJurisdiction.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"jurisdictions/" parameters:params resultsClass:OCDJurisdiction.class completionBlock:completionBlock];
 }
 
-- (void)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"organizations/" parameters:params resultsClass:OCDOrganization.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"organizations/" parameters:params resultsClass:OCDOrganization.class completionBlock:completionBlock];
 }
 
-- (void)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"people/" parameters:params resultsClass:OCDPerson.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"people/" parameters:params resultsClass:OCDPerson.class completionBlock:completionBlock];
 }
 
-- (void)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
-    [self GET:@"votes/" parameters:params resultsClass:OCDVote.class completionBlock:completionBlock];
+- (NSURLSessionDataTask *)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock {
+    return [self GET:@"votes/" parameters:params resultsClass:OCDVote.class completionBlock:completionBlock];
 }
 
 @end

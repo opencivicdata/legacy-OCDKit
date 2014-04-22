@@ -20,19 +20,19 @@ FOUNDATION_EXPORT NSString *const BASEURL;
 - (void)setKey:(NSString *)key;
 
 - (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass completionBlock:(void (^)(id responseObject))completionBlock;
-- (void)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)billWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)divisionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)eventWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)jurisdictionWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)organizationWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)personWithId:(NSString *)ocdId fields:(NSArray *)fields completionBlock:(void (^)(OCDResultSet *results))completionBlock;
 
-- (void)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
-- (void)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)bills:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)divisions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)events:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)jurisdictions:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)organizations:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)people:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
+- (NSURLSessionDataTask *)votes:(NSDictionary *)params completionBlock:(void (^)(OCDResultSet *results))completionBlock;
 
 @end
