@@ -7,6 +7,7 @@
 //
 
 #import "OCDTestsBase.h"
+#import <AFNetworking/AFURLConnectionOperation.h>
 
 @interface OCDKitTests : OCDTestsBase
 
@@ -16,16 +17,43 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+//    [super tearDown];
 }
 
 - (void)testClientURL {
-    XCTAssertEqual(self.client.baseURL.absoluteString , @"https://api.opencivicdata.org");
+    expect(self.client.baseURL.absoluteString).to.equal(@"https://api.opencivicdata.org");
+}
+
+- (void)testClientExpectsJSON {
+    expect(self.client.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
+}
+
+- (void)testClientWithBadKeyFails {
+    OCDClient *badClient = [OCDClient clientWithKey:@"foobar"];
+
+    expect([badClient.requestSerializer.HTTPRequestHeaders valueForKey:@"X-APIKEY"]).to.equal(@"foobar");
+    expect([badClient.requestSerializer.HTTPRequestHeaders valueForKey:@"User-Agent"]).to.equal(@"OCDKit");
+
+    __block id blockResponseObject = nil;
+    __block id blockError = nil;
+    __block id blockErrorTask = nil;
+
+    [badClient GET:@"ocd-division/country:us/district:dc/" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        blockResponseObject = responseObject;
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+        blockErrorTask = task;
+    }];
+
+    expect(blockError).willNot.beNil();
+    expect([blockError domain]).will.equal(AFNetworkingErrorDomain);
+    expect([blockError code]).will.equal(-1011);
+    expect(blockErrorTask).willNot.beNil();
+    expect(blockResponseObject).will.beNil();
+
 }
 
 @end

@@ -11,13 +11,15 @@
 
 @interface OCDDivisionTests : OCDTestsBase
 
+@property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
+
 @end
 
 @implementation OCDDivisionTests
 
 - (void)setUp {
     [super setUp];
-    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+    self.stub = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return [request.URL.path isEqualToString:@"/ocd-division/country:us/district:dc"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(@"ocd-division-district-dc.json",nil)
@@ -27,6 +29,7 @@
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [OHHTTPStubs removeStub:self.stub];
     [super tearDown];
 }
 
