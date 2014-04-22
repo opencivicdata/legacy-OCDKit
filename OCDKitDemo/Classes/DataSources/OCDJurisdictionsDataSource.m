@@ -15,11 +15,11 @@
     OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     __weak OCDJurisdictionsDataSource *weakSelf = self;
-    [client jurisdictions:@{@"jurisdiction_id": jurisdictionId} completionBlock:^(OCDResultSet *results) {
+    [client jurisdictions:@{@"jurisdiction_id": jurisdictionId} success:^(NSURLSessionDataTask *task, OCDResultSet *results) {
         __strong OCDJurisdictionsDataSource *strongSelf = weakSelf;
         strongSelf.rows = results.items;
         completionBlock(YES);
-    }];
+    } failure:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

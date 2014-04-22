@@ -15,11 +15,11 @@
     OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     __weak OCDEventsDataSource *weakSelf = self;
-    [client events:@{@"when__gt": [NSDate date]} completionBlock:^(OCDResultSet *results) {
+    [client events:@{@"when__gt": [NSDate date]} success:^(NSURLSessionDataTask *task, OCDResultSet *results) {
         __strong OCDEventsDataSource *strongSelf = weakSelf;
         strongSelf.rows = results.items;
         completionBlock(YES);
-    }];
+    } failure:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

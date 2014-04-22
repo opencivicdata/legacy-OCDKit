@@ -64,9 +64,9 @@
     NSString *objectOCDId = [object ocdId];
     NSLog(@"Selected a %@ object", className);
 
-    [self.client objectWithId:objectOCDId fields:nil class:objectClass completionBlock:^(id object) {
-        NSLog(@"object: %@", object);
-    }];
+    [self.client objectWithId:objectOCDId fields:nil class:objectClass success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"object: %@", responseObject);
+    } failure:nil];
 
 }
 

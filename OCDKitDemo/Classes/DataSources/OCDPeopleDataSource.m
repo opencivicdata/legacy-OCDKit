@@ -14,11 +14,11 @@
     OCDClient *client = [OCDClient clientWithKey:kSunlightAPIKey];
 
     __weak OCDPeopleDataSource *weakSelf = self;
-    [client people:@{} completionBlock:^(OCDResultSet *results) {
+    [client people:@{} success:^(NSURLSessionDataTask *task, OCDResultSet *results) {
         __strong OCDPeopleDataSource *strongSelf = weakSelf;
         strongSelf.rows = results.items;
         completionBlock(YES);
-    }];
+    } failure:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

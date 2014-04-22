@@ -16,11 +16,11 @@
     NSDictionary *searchParams = @{@"lat": @(42.358056), @"lon": @(-71.063611)};
 
     __weak OCDDivisionsDataSource *weakSelf = self;
-    [client divisions:searchParams completionBlock:^(OCDResultSet *results) {
+    [client divisions:searchParams success:^(NSURLSessionDataTask *task, OCDResultSet *results) {
         __strong OCDDivisionsDataSource *strongSelf = weakSelf;
         strongSelf.rows = results.items;
         completionBlock(YES);
-    }];
+    } failure:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
