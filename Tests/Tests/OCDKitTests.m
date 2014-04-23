@@ -20,7 +20,7 @@
 }
 
 - (void)tearDown {
-//    [super tearDown];
+    [super tearDown];
 }
 
 - (void)testClientURL {
@@ -32,6 +32,7 @@
 }
 
 - (void)testClientWithBadKeyFails {
+    [OHHTTPStubs setEnabled:NO];
     OCDClient *badClient = [OCDClient clientWithKey:@"foobar"];
 
     expect([badClient.requestSerializer.HTTPRequestHeaders valueForKey:@"X-APIKEY"]).to.equal(@"foobar");
@@ -54,6 +55,7 @@
     expect(blockErrorTask).willNot.beNil();
     expect(blockResponseObject).will.beNil();
 
+    [OHHTTPStubs setEnabled:YES];
 }
 
 @end
