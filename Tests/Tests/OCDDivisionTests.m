@@ -8,6 +8,7 @@
 
 #import "OCDTestsBase.h"
 #import "OCDDivision.h"
+#import "OCDGeometry.h"
 
 @interface OCDDivisionTests : OCDTestsBase
 
@@ -77,7 +78,6 @@
     expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(ocdId);
     expect([blockResponseObject valueForKey:@"country"]).will.equal(@"us");
     expect([blockResponseObject valueForKey:@"displayName"]).will.equal(@"District of Columbia");
-    expect([blockResponseObject valueForKey:@"children"]).will.haveCountOf(102);
 }
 
 - (void)testDivisionChildren {
@@ -88,7 +88,7 @@
 
     [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-        [[responseObject valueForKeyPath:@"children"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [[responseObject valueForKey:@"children"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDDivision class]);
             expect([obj valueForKey:@"ocdId"]).notTo.beNil();
             expect([obj valueForKey:@"displayName"]).notTo.beNil();
@@ -102,7 +102,35 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
 
-    expect([blockResponseObject valueForKeyPath:@"children"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"children"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"children"]).will.haveCountOf(102);
+}
+
+- (void)testDivisionGeometry {
+    __block id blockResponseObject = nil;
+    __block id blockError = nil;
+
+    NSString *ocdId = @"ocd-division/country:us/district:dc";
+
+    [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        blockResponseObject = responseObject;
+        [[responseObject valueForKey:@"geometries"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDGeometry class]);
+            expect([obj valueForKey:@"start"]).notTo.beNil();
+            expect([obj valueForKey:@"end"]).notTo.beNil();
+            expect([obj valueForKey:@"boundary"]).to.beInstanceOf([OCDBoundary class]);;
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
+
+    //    Check the response
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+    expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
+
+    expect([blockResponseObject valueForKey:@"geometries"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"geometries"]).willNot.beEmpty();
 }
 
 @end
