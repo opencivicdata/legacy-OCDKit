@@ -54,7 +54,7 @@
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
 }
 
-- (void)testDivisionCompleteness {
+- (void)testDivisionExpectedFields {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
@@ -66,15 +66,11 @@
         blockError = error;
     }];
 
-    //  Check the task
-    expect(task.state).will.equal(NSURLSessionTaskStateRunning);
-    expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
-    expect(task.state).willNot.equal(NSURLSessionTaskStateCanceling);
-
     //    Check the response
     expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
+    
     expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(ocdId);
     expect([blockResponseObject valueForKey:@"country"]).will.equal(@"us");
     expect([blockResponseObject valueForKey:@"displayName"]).will.equal(@"District of Columbia");
@@ -115,7 +111,7 @@
     [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
         [[responseObject valueForKey:@"geometries"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            expect(obj).to.beKindOf([OCDGeometry class]);
+            expect(obj).to.beInstanceOf([OCDGeometry class]);
             expect([obj valueForKey:@"start"]).notTo.beNil();
             expect([obj valueForKey:@"end"]).notTo.beNil();
             expect([obj valueForKey:@"boundary"]).to.beInstanceOf([OCDBoundary class]);;

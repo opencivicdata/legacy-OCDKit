@@ -16,6 +16,7 @@
 		2F97ADFC1906D7F2006995DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADFA1906D7F2006995DC /* Foundation.framework */; };
 		2F97ADFD1906D7F2006995DC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F97ADFB1906D7F2006995DC /* UIKit.framework */; };
 		2F97AE001906D854006995DC /* OCDKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F97ADFF1906D854006995DC /* OCDKitTests.m */; };
+		2F983C431909B21B00D6529B /* OCDJurisdictionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F983C421909B21B00D6529B /* OCDJurisdictionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2F97ADFA1906D7F2006995DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2F97ADFB1906D7F2006995DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2F97ADFF1906D854006995DC /* OCDKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDKitTests.m; sourceTree = "<group>"; };
+		2F983C421909B21B00D6529B /* OCDJurisdictionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDJurisdictionTests.m; sourceTree = "<group>"; };
 		5CA4449E159D4BA1A7D8D7D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		74DD439E90414DDBB71B0786 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		931BB64F22694ADDBA3CF011 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				2F7B3DF01906FACE000E082D /* OCDTestsBase.h */,
 				2F7B3DF11906FACE000E082D /* OCDTestsBase.m */,
 				2F97ADFF1906D854006995DC /* OCDKitTests.m */,
+				2F983C421909B21B00D6529B /* OCDJurisdictionTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F97AE001906D854006995DC /* OCDKitTests.m in Sources */,
+				2F983C431909B21B00D6529B /* OCDJurisdictionTests.m in Sources */,
 				2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */,
 				2F7B3DEF1906FA40000E082D /* OCDDivisionTests.m in Sources */,
 			);
