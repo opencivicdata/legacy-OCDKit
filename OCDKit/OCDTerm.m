@@ -11,8 +11,4 @@
 
 @implementation OCDTerm
 
-+ (NSValueTransformer *)sessionsJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDSession.class];
-}
-
 @end
