@@ -11,6 +11,7 @@
 #import "OCDLink.h"
 #import "OCDPost.h"
 #import "OCDName.h"
+#import "OCDContact.h"
 
 @implementation OCDOrganization
 
@@ -34,6 +35,10 @@
                @"legislature": @(OCDOrganizationTypeLegislature),
                @"party": @(OCDOrganizationTypeParty)
            }];
+}
+
++ (NSValueTransformer *)contactDetailsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDContact.class];
 }
 
 + (NSValueTransformer *)identifiersJSONTransformer {
