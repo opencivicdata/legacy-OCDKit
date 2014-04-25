@@ -146,8 +146,9 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
 
-    expect([blockResponseObject valueForKey:@"sessionDetails"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"sessionDetails"]).will.beKindOf([NSDictionary class]);
     expect([blockResponseObject valueForKey:@"sessionDetails"]).willNot.beEmpty();
+    XCTFail(@"Need to test contents of sessionDetails");
 }
 
 
