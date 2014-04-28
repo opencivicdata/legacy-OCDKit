@@ -11,6 +11,8 @@
 #import "OCDName.h"
 #import "OCDOrganization.h"
 #import "OCDSession.h"
+#import "OCDPerson.h"
+#import "OCDMediaReference.h"
 
 @implementation OCDBill
 
@@ -25,28 +27,25 @@
 }
 
 + (NSValueTransformer *)chamberJSONTransformer {
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-               @"upper": @(OCDChamberUpper),
-               @"lower": @(OCDChamberLower),
-               @"joint": @(OCDChamberJoint)
-           }];
+    return [OCDChamber typeJSONTransformer];
 }
-
 
 + (NSValueTransformer *)otherNamesJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDName class]];
 }
 
-+ (NSValueTransformer *)typeJSONTransformer {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id idArr) {
-        return idArr;
-    }];
++ (NSValueTransformer *)relatedBillsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDBill class]];
 }
 
-+ (NSValueTransformer *)subjectsJSONTransformer {
-    return [MTLValueTransformer reversibleTransformerWithBlock:^id(id idArr) {
-        return idArr;
-    }];
+//TODO: Make a sponsorsJSONTransformer that can process an OCDPerson or OCDOrganization
+
+//+ (NSValueTransformer *)sponsorsJSONTransformer {
+//    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDPerson class]];
+//}
+
++ (NSValueTransformer *)documentsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDMediaReference class]];
 }
 
 @end

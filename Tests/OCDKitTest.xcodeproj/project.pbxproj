@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F55D5F5190AA29300F80020 /* OCDOrganizationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55D5F4190AA29300F80020 /* OCDOrganizationTests.m */; };
 		2F55D5F7190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */; };
+		2F55D5F9190AE0BC00F80020 /* OCDBillTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55D5F8190AE0BC00F80020 /* OCDBillTests.m */; };
+		2F55D5FB190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */; };
 		2F7B3DEF1906FA40000E082D /* OCDDivisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */; };
 		2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF11906FACE000E082D /* OCDTestsBase.m */; };
 		2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		2F55D5F4190AA29300F80020 /* OCDOrganizationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDOrganizationTests.m; sourceTree = "<group>"; };
 		2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json"; sourceTree = "<group>"; };
+		2F55D5F8190AE0BC00F80020 /* OCDBillTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillTests.m; sourceTree = "<group>"; };
+		2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json"; sourceTree = "<group>"; };
 		2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivisionTests.m; sourceTree = "<group>"; };
 		2F7B3DF01906FACE000E082D /* OCDTestsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTestsBase.h; sourceTree = "<group>"; };
 		2F7B3DF11906FACE000E082D /* OCDTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTestsBase.m; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 		2F7B3DF41907012C000E082D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */,
 				2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */,
 				2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */,
 			);
@@ -109,12 +114,13 @@
 		2F97ADCA1906D497006995DC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2F55D5F8190AE0BC00F80020 /* OCDBillTests.m */,
 				2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */,
 				2F983C421909B21B00D6529B /* OCDJurisdictionTests.m */,
 				2F97ADFF1906D854006995DC /* OCDKitTests.m */,
+				2F55D5F4190AA29300F80020 /* OCDOrganizationTests.m */,
 				2F7B3DF01906FACE000E082D /* OCDTestsBase.h */,
 				2F7B3DF11906FACE000E082D /* OCDTestsBase.m */,
-				2F55D5F4190AA29300F80020 /* OCDOrganizationTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F55D5FB190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json in Resources */,
 				2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */,
 				2F97ADF01906D6DE006995DC /* InfoPlist.strings in Resources */,
 				2F55D5F7190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json in Resources */,
@@ -236,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F55D5F5190AA29300F80020 /* OCDOrganizationTests.m in Sources */,
+				2F55D5F9190AE0BC00F80020 /* OCDBillTests.m in Sources */,
 				2F97AE001906D854006995DC /* OCDKitTests.m in Sources */,
 				2F983C431909B21B00D6529B /* OCDJurisdictionTests.m in Sources */,
 				2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */,
