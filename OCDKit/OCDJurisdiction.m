@@ -25,7 +25,16 @@
 }
 
 + (NSValueTransformer *)chambersJSONTransformer {
-    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:OCDChamber.class];
+    return [MTLValueTransformer transformerWithBlock:^id(NSDictionary *dictionary) {
+        NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+        NSValueTransformer *chamberTransformer = [OCDChamber typeJSONTransformer];
+        [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            obj = [MTLJSONAdapter modelOfClass:[OCDChamber class] fromJSONDictionary:obj error:nil];
+            OCDChamberType chamberType = (OCDChamberType)[[chamberTransformer transformedValue:key] intValue];
+            [newDict setObject:obj forKey:@(chamberType)];
+        }];
+        return [newDict copy];
+    }];
 }
 
 + (NSValueTransformer *)termsJSONTransformer {

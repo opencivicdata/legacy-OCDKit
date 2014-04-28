@@ -85,10 +85,15 @@
 
     [self.client jurisdictionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-        expect([blockResponseObject valueForKey:@"chambers"]).to.beInstanceOf([NSDictionary class]);
-        [[blockResponseObject valueForKey:@"chambers"] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            expect(obj).to.beInstanceOf([OCDChamber class]);
-        }];
+        id chambersObj = [blockResponseObject valueForKey:@"chambers"];
+        expect(chambersObj).toNot.beNil();
+        expect(chambersObj).to.beKindOf([NSDictionary class]);
+        if (chambersObj) {
+            [chambersObj enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                expect(obj).to.beInstanceOf([OCDChamber class]);
+                expect(key).to.beKindOf([NSNumber class]); // OCDChamberType values that are converted to NSNumber
+            }];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
     }];
@@ -98,7 +103,7 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
 
-    expect([blockResponseObject valueForKey:@"chambers"]).will.beInstanceOf([NSDictionary class]);
+    expect([blockResponseObject valueForKey:@"chambers"]).will.beKindOf([NSDictionary class]);
 }
 
 - (void)testJurisdictionTerms {

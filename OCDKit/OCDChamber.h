@@ -10,12 +10,14 @@
 
 typedef NS_ENUM(NSInteger, OCDChamberType){
     OCDChamberTypeUnknown,
-    OCDChamberUpper,
-    OCDChamberLower,
-    OCDChamberJoint
+    OCDChamberTypeUpper,
+    OCDChamberTypeLower,
+    OCDChamberTypeJoint
 };
 
 @interface OCDChamber : OCDObject
+
++ (NSValueTransformer *)typeJSONTransformer;
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *title;

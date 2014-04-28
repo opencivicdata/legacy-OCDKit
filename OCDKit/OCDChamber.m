@@ -10,4 +10,14 @@
 
 @implementation OCDChamber
 
++ (NSValueTransformer *)typeJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               NSNull.null: @(OCDChamberTypeUnknown),
+               @"upper":    @(OCDChamberTypeUpper),
+               @"lower":    @(OCDChamberTypeLower),
+               @"joint":    @(OCDChamberTypeJoint),
+           }];
+}
+
+
 @end

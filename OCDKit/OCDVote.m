@@ -20,11 +20,7 @@
 }
 
 + (NSValueTransformer *)chamberJSONTransformer {
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-               @"upper": @(OCDChamberUpper),
-               @"lower": @(OCDChamberLower),
-               @"joint": @(OCDChamberJoint)
-           }];
+    return [OCDChamber typeJSONTransformer];
 }
 
 + (NSValueTransformer *)typeJSONTransformer {
