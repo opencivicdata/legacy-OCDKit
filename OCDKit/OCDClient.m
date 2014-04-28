@@ -108,7 +108,7 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
     return task;
 }
 
-#pragma mark - OCDClient API methods
+#pragma mark - Object lookup methods
 
 - (NSURLSessionDataTask *)objectWithId:(NSString *)ocdId fields:(NSArray *)fields class:(Class)responseClass
                                success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
@@ -166,6 +166,14 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
 
     return [self objectWithId:ocdId fields:fields class:OCDPerson.class success:success failure:failure];
 }
+
+- (NSURLSessionDataTask *)voteWithId:(NSString *)ocdId fields:(NSArray *)fields
+                             success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                             failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
+    return [self objectWithId:ocdId fields:fields class:OCDVote.class success:success failure:failure];
+}
+
+#pragma mark - Object search methods
 
 - (NSURLSessionDataTask *)bills:(NSDictionary *)params
                         success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success

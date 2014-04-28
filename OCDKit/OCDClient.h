@@ -40,6 +40,9 @@ FOUNDATION_EXPORT NSString *const BASEURL;
 - (NSURLSessionDataTask *)personWithId:(NSString *)ocdId fields:(NSArray *)fields
                                success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
                                failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure;
+- (NSURLSessionDataTask *)voteWithId:(NSString *)ocdId fields:(NSArray *)fields
+                             success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
+                             failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure;
 
 - (NSURLSessionDataTask *)bills:(NSDictionary *)params
                                success:(void (^) (NSURLSessionDataTask *task, OCDResultSet *results))success
