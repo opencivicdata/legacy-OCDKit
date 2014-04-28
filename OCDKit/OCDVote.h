@@ -29,6 +29,13 @@ typedef NS_ENUM(NSInteger, OCDVoteValue){
     OCDVoteValueOther,
 };
 
+@interface OCDVoteCount : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, assign, readonly) NSUInteger count;
+@property (nonatomic, assign, readonly) OCDVoteValue voteValue;
+
+@end
+
 @interface OCDVote : OCDObject
 
 @property (nonatomic, copy, readonly) NSString *organizationId;
