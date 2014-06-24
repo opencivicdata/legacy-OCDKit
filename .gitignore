@@ -30,3 +30,4 @@ OCDKitDemo/Configuration/OCDConfiguration.m
 Tests/Pods
 Tests/Podfile.lock
 Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes/
+Tests/Tests/OCDTestSettings.m

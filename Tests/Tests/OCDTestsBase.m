@@ -7,6 +7,7 @@
 //
 
 #import "OCDTestsBase.h"
+#import "OCDTestSettings.h"
 
 @implementation OCDTestsBase
 
@@ -15,7 +16,7 @@
 - (void)setUp {
     [super setUp];
     [Expecta setAsynchronousTestTimeout:5.0];
-    self.client = [OCDClient clientWithKey:@"***REMOVED***"];
+    self.client = [OCDClient clientWithKey:kSFAPIKey];
 }
 
 - (void)tearDown {
