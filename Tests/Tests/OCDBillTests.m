@@ -13,6 +13,12 @@
 #import "OCDSession.h"
 #import "OCDMediaReference.h"
 
+NSString * const OCDRealBillId = @"ocd-bill/0a660630-5385-11e3-b05f-1231391cd4ec";
+NSString * const OCDRealBillPath = @"ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json";
+
+NSString * const OCDFakeBillId = @"ocd-bill/this-is-a-fake-bill";
+NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
+
 @interface OCDBillTests : OCDTestsBase
 
 @property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
@@ -26,13 +32,16 @@
 - (void)setUp
 {
     [super setUp];
-    self.stubOCDId = @"ocd-bill/0a660630-5385-11e3-b05f-1231391cd4ec";
+    self.stubOCDId = OCDFakeBillId;
     self.stub = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.path isEqualToString:[@"/" stringByAppendingString:self.stubOCDId]];
+        return [request.URL.host isEqualToString:self.client.baseURL.host];
+
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(@"ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json",nil)
+        NSString *stubPath = OHPathForFileInBundle(OCDFakeBillPath,nil);
+        return [OHHTTPStubsResponse responseWithFileAtPath:stubPath
                                                 statusCode:200 headers:@{@"Content-Type":@"text/json"}];
     }];
+    self.stub.name = @"Bill Stub";
 }
 
 - (void)tearDown
@@ -62,6 +71,34 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 }
 
+- (void)testFakeBill {
+    __block id blockResponseObject = nil;
+    __block id blockError = nil;
+
+    [self.client billWithId:self.stubOCDId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        blockResponseObject = responseObject;
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
+
+    //    Check the response
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+    expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
+
+    // Our fake bill should have all optional values filled in
+    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(@"ocd-bill/this-is-a-fake-bill");
+    expect([blockResponseObject valueForKey:@"type"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"relatedBills"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"subject"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"summaries"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"otherTitles"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"otherNames"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"documents"]).willNot.beEmpty();
+    expect([blockResponseObject valueForKey:@"versions"]).willNot.beEmpty();
+}
+
+
 - (void)testBillExpectedFields {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
@@ -78,9 +115,7 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(self.stubOCDId);
-    expect([blockResponseObject valueForKey:@"organizationId"]).will.equal(@"ocd-organization/c71f7344-3b46-11e3-9ac3-1231391cd4ec");
     expect([blockResponseObject valueForKey:@"chamber"]).will.equal(OCDChamberTypeUpper);
-    expect([blockResponseObject valueForKey:@"title"]).will.equal(@"An Act establishing a sick leave bank for Cynthia (Bouchard) White, an employee of the Trial Court");
     expect([blockResponseObject valueForKey:@"type"]).will.beKindOf([NSArray class]);
     expect([blockResponseObject valueForKey:@"subject"]).will.beKindOf([NSArray class]);
     expect([blockResponseObject valueForKey:@"summaries"]).will.beKindOf([NSArray class]);
@@ -107,7 +142,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"type"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"type"]).willNot.beEmpty(); // type actually can be empty
 }
 
 - (void)testBillSubject {
@@ -130,7 +164,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"subject"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"subject"]).willNot.beEmpty(); // subject actually can be empty
 }
 
 - (void)testBillSummaries {
@@ -157,7 +190,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"summaries"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"summaries"]).willNot.beEmpty(); // summaries actually can be empty
 }
 
 - (void)testBillOtherTitles {
@@ -184,7 +216,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"otherTitles"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"otherTitles"]).willNot.beEmpty(); // otherTitles actually can be empty
 }
 
 - (void)testBillOtherNames {
@@ -207,7 +238,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"otherNames"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"otherNames"]).willNot.beEmpty(); // otherTitles actually can be empty
 }
 
 - (void)testBillRelatedBills {
@@ -236,7 +266,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"relatedBills"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"relatedBills"]).willNot.beEmpty(); // otherTitles actually can be empty
 }
 
 - (void)testBillDocuments {
@@ -260,7 +289,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"documents"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"documents"]).willNot.beEmpty(); // otherTitles actually can be empty
 }
 
 - (void)testBillVersions {
@@ -284,7 +312,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"versions"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"versions"]).willNot.beEmpty(); // otherTitles actually can be empty
 }
 
 @end

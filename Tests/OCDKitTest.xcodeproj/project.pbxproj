@@ -13,6 +13,7 @@
 		2F55D5F7190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */; };
 		2F55D5F9190AE0BC00F80020 /* OCDBillTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55D5F8190AE0BC00F80020 /* OCDBillTests.m */; };
 		2F55D5FB190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */; };
+		2F7675D7195A144E007886DD /* ocd-fake-bill.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7675D6195A144E007886DD /* ocd-fake-bill.json */; };
 		2F7B3DEF1906FA40000E082D /* OCDDivisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */; };
 		2F7B3DF21906FACE000E082D /* OCDTestsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF11906FACE000E082D /* OCDTestsBase.m */; };
 		2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */; };
@@ -33,6 +34,7 @@
 		2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json"; sourceTree = "<group>"; };
 		2F55D5F8190AE0BC00F80020 /* OCDBillTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDBillTests.m; sourceTree = "<group>"; };
 		2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json"; sourceTree = "<group>"; };
+		2F7675D6195A144E007886DD /* ocd-fake-bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-fake-bill.json"; sourceTree = "<group>"; };
 		2F7B3DEE1906FA40000E082D /* OCDDivisionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDDivisionTests.m; sourceTree = "<group>"; };
 		2F7B3DF01906FACE000E082D /* OCDTestsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTestsBase.h; sourceTree = "<group>"; };
 		2F7B3DF11906FACE000E082D /* OCDTestsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTestsBase.m; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */,
 				2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */,
 				2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */,
+				2F7675D6195A144E007886DD /* ocd-fake-bill.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -179,7 +182,7 @@
 		2F97ADA81906D052006995DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 			};
 			buildConfigurationList = 2F97ADAB1906D052006995DC /* Build configuration list for PBXProject "OCDKitTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -206,6 +209,7 @@
 				2F55D5FB190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json in Resources */,
 				2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */,
 				2F97ADF01906D6DE006995DC /* InfoPlist.strings in Resources */,
+				2F7675D7195A144E007886DD /* ocd-fake-bill.json in Resources */,
 				2F55D5F7190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};

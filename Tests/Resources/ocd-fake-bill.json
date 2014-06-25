@@ -1,0 +1,126 @@
+{
+  "actions": [
+    {
+      "actor": "upper",
+      "date": "2370-04-24",
+      "description": "Referred by the Federation Science Council",
+      "related_entities": [],
+      "type": []
+    },
+    {
+      "actor": "upper",
+      "date": "2370-04-24",
+      "description": "Recommended new draft of measure",
+      "related_entities": [],
+      "type": []
+    },
+    {
+      "actor": "upper",
+      "date": "2370-04-24",
+      "description": "Substituted as a new draft for measure",
+      "related_entities": [],
+      "type": []
+    },
+  ],
+  "chamber": "upper",
+  "created_at": "2370-04-24T21:59:45",
+  "documents": [
+    {
+        "date": "2370-04-24T00:00:00",
+        "type": "fake",
+        "name": "Fake document for a fake world",
+        "links": [
+            {
+                "mimetype": null,
+                "url": "http://www.data.fake/foo/bar/baz/"
+            }
+        ]
+    }
+  ],
+  "extras": {
+    "action_dates": {
+      "first": "2370-04-24T21:59:45",
+      "last": "2370-04-25T19:01:12",
+      "passed_lower": "2370-04-25T00:00:00",
+      "passed_upper": "2370-04-25T00:00:00",
+      "signed": null
+    }
+  },
+  "id": "ocd-bill/this-is-a-fake-bill",
+  "identifiers": [
+    {
+      "identifier": "FC40277-261",
+      "scheme": "lcars-id"
+    }
+  ],
+  "jurisdiction_id": "ocd-jurisdiction/country:xx/state:yy/legislature",
+  "name": "FC 40277-261",
+  "organization": "Federation Council",
+  "organization_id": "ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a",
+  "other_names": [
+    {
+        "name": "SFRA 47314.5",
+        "note": "Starfleet regulation"
+    }
+  ],
+  "other_titles": [
+    {
+        "note": "colloquial name",
+        "title": "The Don't Go Fast Directive"
+    }
+  ],
+  "related_bills": [
+    {
+        "session": "40278",
+        "name": "FC 40278-771",
+        "relation_type": "companion"
+    }
+  ],
+  "session": "40277",
+  "sources": [
+    {
+      "note": "Federation Council",
+      "url": "http://en.memory-alpha.org/wiki/Federation_Council"
+    }
+  ],
+  "sponsors": [
+    {
+      "chamber": null,
+      "id": "ocd-organization/dd5e6666-0f1e-5ac9-ad00-bc4598d00018",
+      "name": "Federation Council",
+      "primary": true,
+      "sponsorship_type": "primary"
+    }
+  ],
+  "subject": [
+    "warp drive",
+    "transwarp threshold",
+    "subspace emissions"
+  ],
+  "summaries": [
+    {
+      "note": "summary",
+      "text": "Based on the Science Council's recommendation concerning new findings on the effects of warp fields as reported by the USS Enterprise at Hekaras II, all Federation vessels will be limited to a speed of Warp 5, except in cases of extreme emergency."
+    }
+  ],
+  "title": "A measure limiting the maximum warp of Federation vessels.",
+  "type": [
+    "bill"
+  ],
+  "updated_at": "2370-04-25T19:01:12",
+  "versions": [
+    {
+      "date": null,
+      "document_id": "FC40277-261",
+      "links": [
+        {
+          "mimetype": "text/html",
+          "url": "http://en.memory-alpha.org/wiki/Force_of_Nature_(episode)"
+        }
+      ],
+      "name": "Current Text",
+      "offset": null,
+      "type": null
+    }
+  ]
+}
