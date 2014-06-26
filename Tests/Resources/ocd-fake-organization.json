@@ -20,7 +20,7 @@
       "scheme": "lcars-id"
     }
   ],
-  "jurisdiction_id": "ocd-jurisdiction/country:xx/state:yy/legislature",
+  "jurisdiction_id": "ocd-jurisdiction/conglomerate:ufp/planet:earth/legislature",
   "links": [
     {
       "note": "Memory Alpha page",

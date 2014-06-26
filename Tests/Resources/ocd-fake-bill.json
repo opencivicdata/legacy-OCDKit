@@ -53,7 +53,7 @@
       "scheme": "lcars-id"
     }
   ],
-  "jurisdiction_id": "ocd-jurisdiction/country:xx/state:yy/legislature",
+  "jurisdiction_id": "ocd-jurisdiction/conglomerate:ufp/planet:earth/legislature",
   "name": "FC 40277-261",
   "organization": "Federation Council",
   "organization_id": "ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a",
