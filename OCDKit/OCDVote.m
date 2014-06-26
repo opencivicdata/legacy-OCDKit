@@ -9,7 +9,7 @@
 #import "OCDVote.h"
 #import "OCDBill.h"
 
-@implementation OCDVoteCount : MTLModel
+@implementation OCDVoteCount
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
@@ -18,7 +18,7 @@
              };
 }
 
-+ (NSValueTransformer *)voteTypeJSONTransformer {
++ (NSValueTransformer *)voteValueJSONTransformer {
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
         NSNull.null: @(OCDVoteValueUnknown),
         @"yes": @(OCDVoteValueYes),

@@ -1,0 +1,69 @@
+{
+  "chamber": "lower",
+  "classification": "legislature",
+  "contact_details": [
+    {
+      "label": "Federation Council Building",
+      "note": "coordinates",
+      "type": "earth coordinate system",
+      "value": "37.8224904,-122.5292745"
+    }
+  ],
+  "created_at": "2370-04-24T21:59:45",
+  "dissolution_date": null,
+  "extras": {},
+  "founding_date": "2161-01-01T00:00:00",
+  "id": "ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a",
+  "identifiers": [
+    {
+      "identifier": "UFP-FC",
+      "scheme": "lcars-id"
+    }
+  ],
+  "jurisdiction_id": "ocd-jurisdiction/country:xx/state:yy/legislature",
+  "links": [
+    {
+      "note": "Memory Alpha page",
+      "url": "http://en.memory-alpha.org/wiki/Federation_Council"
+    }
+  ],
+  "name": "Federation Council",
+  "other_names": [
+    {
+      "end_date": "2161-01-0T00:00:00",
+      "name": "Assembly of the Coalition of Planets",
+      "note": "Provisional body of the immediate pre-Federation period.",
+      "start_date": "2155-01-0T00:00:00"
+    }
+  ],
+  "parent_id": "ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a",
+  "posts": [
+    {
+      "contact_details": [
+        {
+          "label": "Federation Council Building",
+          "note": "coordinates",
+          "type": "earth coordinate system",
+          "value": "37.8224904,-122.5292745"
+        }
+      ],
+      "end_date": null,
+      "id": "ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a/federation-councilor",
+      "label": "Councilor",
+      "links": [
+        {
+          "note": "Federation Council LCARS entry",
+          "url": "http://en.memory-alpha.org/wiki/Federation_Council"
+        }
+      ],
+      "role": "councilor",
+      "start_date": "2161-01-01T00:00:00"
+    }
+  ],
+  "sources": [
+    {
+      "url": "http://en.memory-alpha.org/wiki/Federation_Council"
+    }
+  ],
+  "updated_at": "2375-11-11T08:59:16.000"
+}
