@@ -13,6 +13,47 @@
 #import "OCDSession.h"
 #import "OCDPerson.h"
 #import "OCDMediaReference.h"
+#import "OCDLink.h"
+
+@implementation OCDBillVersion
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"date":  @"date",
+             @"name":  @"name",
+             @"type":  @"type",
+             @"links": @"links"
+             };
+}
+
++ (NSValueTransformer *)linksJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDLink class]];
+}
+
+@end
+
+@implementation OCDRelatedBill
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"session":      @"session",
+             @"name":         @"name",
+             @"relationType": @"relation_type",
+             };
+}
+
++ (NSValueTransformer *)linksJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDLink class]];
+}
+
++ (NSValueTransformer *)relationTypeJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+        NSNull.null:  @(OCDBillRelationTypeUnknown),
+        @"companion": @(OCDBillRelationTypeCompanion),
+    }];
+}
+
+@end
 
 @implementation OCDBill
 
@@ -35,7 +76,11 @@
 }
 
 + (NSValueTransformer *)relatedBillsJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDBill class]];
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDRelatedBill class]];
+}
+
++ (NSValueTransformer *)versionsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[OCDBillVersion class]];
 }
 
 //TODO: Make a sponsorsJSONTransformer that can process an OCDPerson or OCDOrganization

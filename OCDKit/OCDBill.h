@@ -11,6 +11,29 @@
 #import "OCDSession.h"
 #import "OCDChamber.h"
 
+
+typedef NS_ENUM(NSInteger, OCDBillRelationType) {
+    OCDBillRelationTypeUnknown,
+    OCDBillRelationTypeCompanion
+};
+
+@interface OCDBillVersion : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy, readonly) NSDate *date;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *type;
+@property (nonatomic, copy, readonly) NSArray *links;
+
+@end
+
+@interface OCDRelatedBill : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy, readonly) NSDate *session;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, assign, readonly) OCDBillRelationType relationType;
+
+@end
+
 @interface OCDBill : OCDObject
 
 @property (nonatomic, copy, readonly) NSString *organizationId;
@@ -26,7 +49,6 @@
 @property (nonatomic, copy, readonly) NSArray *relatedBills; // (session, name, relation_type:companion)
 @property (nonatomic, copy, readonly) NSArray *sponsors; // OCDPerson or OCDOrganization
 @property (nonatomic, copy, readonly) NSArray *documents; // OCDMediaReference
-@property (nonatomic, copy, readonly) NSArray *versions; // ???: (date, type, name, links)
-//TODO: class for OCDBillVersions?
+@property (nonatomic, copy, readonly) NSArray *versions; // OCDBillVersion: (date, type, name, links)
 
 @end

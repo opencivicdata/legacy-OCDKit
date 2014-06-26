@@ -77,6 +77,17 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
 
     [self.client billWithId:self.stubOCDId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
+        [[responseObject valueForKey:@"relatedBills"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDRelatedBill class]);
+            expect(obj).toNot.beNil();
+            expect([obj valueForKey:@"session"]).to.equal(@"40278");
+            expect([obj valueForKey:@"name"]).to.equal(@"FC 40278-771");
+            expect([obj valueForKey:@"relationType"]).to.equal(OCDBillRelationTypeCompanion);
+        }];
+        [[responseObject valueForKey:@"type"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([NSString class]);
+            expect(obj).toNot.beNil();
+        }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
     }];
@@ -88,6 +99,7 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
 
     // Our fake bill should have all optional values filled in
     expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(@"ocd-bill/this-is-a-fake-bill");
+    expect([blockResponseObject valueForKey:@"chamber"]).will.equal(OCDChamberTypeUpper);
     expect([blockResponseObject valueForKey:@"type"]).willNot.beEmpty();
     expect([blockResponseObject valueForKey:@"relatedBills"]).willNot.beEmpty();
     expect([blockResponseObject valueForKey:@"subject"]).willNot.beEmpty();
@@ -115,7 +127,6 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
     expect(blockResponseObject).will.beInstanceOf([OCDBill class]);
 
     expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(self.stubOCDId);
-    expect([blockResponseObject valueForKey:@"chamber"]).will.equal(OCDChamberTypeUpper);
     expect([blockResponseObject valueForKey:@"type"]).will.beKindOf([NSArray class]);
     expect([blockResponseObject valueForKey:@"subject"]).will.beKindOf([NSArray class]);
     expect([blockResponseObject valueForKey:@"summaries"]).will.beKindOf([NSArray class]);
@@ -247,14 +258,14 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
     [self.client billWithId:self.stubOCDId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
         [[responseObject valueForKey:@"relatedBills"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            expect(obj).to.beKindOf([OCDBill class]);
+            expect(obj).to.beKindOf([OCDRelatedBill class]);
             expect(obj).toNot.beNil();
             expect([obj valueForKeyPath:@"name"]).toNot.beNil();
             expect([obj valueForKeyPath:@"name"]).to.beKindOf([NSString class]);
             expect([obj valueForKeyPath:@"session"]).toNot.beNil();
             expect([obj valueForKeyPath:@"session"]).to.beKindOf([NSString class]);
             expect([obj valueForKeyPath:@"relationType"]).toNot.beNil();
-            expect([obj valueForKeyPath:@"relationType"]).to.beKindOf([NSString class]);
+            expect([obj valueForKeyPath:@"relationType"]).to.to.beGreaterThanOrEqualTo(0);
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
@@ -298,9 +309,10 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
     [self.client billWithId:self.stubOCDId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
         [[responseObject valueForKey:@"versions"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            expect(obj).to.beInstanceOf([OCDMediaReference class]);
+            expect(obj).to.beInstanceOf([OCDBillVersion class]);
             expect(obj).toNot.beNil();
-            XCTFail(@"Can't pass until we have some class for an OCDBillVersion");
+            expect([obj valueForKeyPath:@"name"]).toNot.beNil();
+            expect([obj valueForKeyPath:@"links"]).to.beKindOf([NSArray class]);
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
