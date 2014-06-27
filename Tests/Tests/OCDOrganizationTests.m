@@ -14,6 +14,13 @@
 #import "OCDName.h"
 #import "OCDContact.h"
 
+NSString * const OCDRealOrgId = @"ocd-organization/cc82145e-3b46-11e3-9ac3-1231391cd4ec";
+NSString * const OCDRealOrgPath = @"ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json";
+
+NSString * const OCDFakeOrgId = @"ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a";
+NSString * const OCDFakeOrgPath = @"ocd-fake-organization.json";
+
+
 @interface OCDOrganizationTests : OCDTestsBase
 
 @property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
@@ -26,11 +33,11 @@
 - (void)setUp
 {
     [super setUp];
-    self.stubOCDId = @"ocd-organization/cc82145e-3b46-11e3-9ac3-1231391cd4ec";
+    self.stubOCDId = OCDFakeOrgId;
     self.stub = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return [request.URL.path isEqualToString:[@"/" stringByAppendingString:self.stubOCDId]];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(@"ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json",nil)
+        return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(OCDFakeOrgPath,nil)
                                                 statusCode:200 headers:@{@"Content-Type":@"text/json"}];
     }];
 }
@@ -62,6 +69,50 @@
     expect(blockResponseObject).will.beInstanceOf([OCDOrganization class]);
 }
 
+- (void)testFakeOrganization {
+    __block id blockResponseObject = nil;
+    __block id blockError = nil;
+
+    [self.client organizationWithId:self.stubOCDId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        blockResponseObject = responseObject;
+
+        expect(responseObject).to.beInstanceOf([OCDOrganization class]);
+        OCDOrganization *orgObject = (OCDOrganization *)responseObject;
+        expect(orgObject.contactDetails).toNot.beEmpty();
+        [orgObject.contactDetails enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDContact class]);
+        }];
+        expect(orgObject.posts).toNot.beEmpty();
+        [orgObject.posts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDPost class]);
+        }];
+        expect(orgObject.links).toNot.beEmpty();
+        [orgObject.links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDLink class]);
+        }];
+        expect(orgObject.identifiers).toNot.beEmpty();
+        [orgObject.identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDIdentifier class]);
+        }];
+        expect(orgObject.otherNames).toNot.beEmpty();
+        [orgObject.otherNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDName class]);
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
+
+    //    Check the response
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+    expect(blockResponseObject).will.beInstanceOf([OCDOrganization class]);
+
+    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(self.stubOCDId);
+    expect([blockResponseObject valueForKey:@"name"]).will.equal(@"Federation Council");
+    expect([blockResponseObject valueForKey:@"classification"]).will.equal(OCDOrganizationTypeLegislature);
+    expect([blockResponseObject valueForKey:@"jurisdictionId"]).will.equal(@"ocd-jurisdiction/conglomerate:ufp/planet:earth/legislature");
+}
+
 - (void)testOrganizationExpectedFields {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
@@ -77,17 +128,13 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDOrganization class]);
 
-    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(self.stubOCDId);
-    expect([blockResponseObject valueForKey:@"name"]).will.equal(@"Post Audit and Oversight");
-    expect([blockResponseObject valueForKey:@"contactDetails"]).will.beInstanceOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"classification"]).will.equal(OCDOrganizationTypeCommittee);
-    expect([blockResponseObject valueForKey:@"jurisdictionId"]).will.equal(@"ocd-jurisdiction/country:us/state:ma/legislature");
-    expect([blockResponseObject valueForKey:@"foundingDate"]).will.beInstanceOf([NSDate class]);
-    expect([blockResponseObject valueForKey:@"dissolutionDate"]).will.beInstanceOf([NSDate class]);
-    expect([blockResponseObject valueForKey:@"links"]).will.beInstanceOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"posts"]).will.beInstanceOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"identifiers"]).will.beInstanceOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"otherNames"]).will.beInstanceOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"contactDetails"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"foundingDate"]).will.beKindOf([NSDate class]);
+//    expect([blockResponseObject valueForKey:@"dissolutionDate"]).will.beKindOf([NSDate class]); // can be nil
+    expect([blockResponseObject valueForKey:@"links"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"posts"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"identifiers"]).will.beKindOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"otherNames"]).will.beKindOf([NSArray class]);
 }
 
 - (void)testOrganizationContactDetails {
@@ -98,8 +145,8 @@
         blockResponseObject = responseObject;
         [[responseObject valueForKey:@"contactDetails"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beInstanceOf([OCDContact class]);
-            expect([obj valueForKey:@"ocdId"]).notTo.beNil();
-            expect([obj valueForKey:@"displayName"]).notTo.beNil();
+            expect([obj valueForKey:@"type"]).notTo.beNil();
+            expect([obj valueForKey:@"value"]).notTo.beNil();
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
@@ -110,7 +157,7 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDOrganization class]);
 
-    expect([blockResponseObject valueForKey:@"contactDetails"]).will.beInstanceOf([NSArray class]);
+    expect([blockResponseObject valueForKey:@"contactDetails"]).will.beKindOf([NSArray class]);
     expect([blockResponseObject valueForKey:@"contactDetails"]).willNot.beEmpty(); // contactDetails actually can be empty
 }
 
@@ -146,11 +193,13 @@
         blockResponseObject = responseObject;
         [[responseObject valueForKey:@"posts"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beInstanceOf([OCDPost class]);
-            expect([obj valueForKey:@"startDate"]).to.beInstanceOf([NSDate class]);
-            expect([obj valueForKey:@"endDate"]).to.beInstanceOf([NSDate class]);
-            expect([obj valueForKey:@"label"]).notTo.beNil();
-            expect([obj valueForKey:@"role"]).notTo.beNil();
-            expect([obj valueForKey:@"id"]).notTo.beNil();
+            OCDPost *postObject = (OCDPost *)obj;
+            expect(postObject.startDate).to.beKindOf([NSDate class]);
+            expect(postObject.startDate).toNot.beNil();
+//            expect(postObject.endDate).to.beKindOf([NSDate class]); // Can't expect this to be not nil
+            expect(postObject.label).notTo.beNil();
+            expect(postObject.role).notTo.beNil();
+            expect(postObject.postId).notTo.beNil();
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
