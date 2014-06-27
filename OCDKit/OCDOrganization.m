@@ -37,6 +37,18 @@
            }];
 }
 
++ (NSValueTransformer *)dissolutionDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)foundingDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
 + (NSValueTransformer *)contactDetailsJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDContact.class];
 }
