@@ -81,22 +81,59 @@ NSString * const OCDFakeOrgPath = @"ocd-fake-organization.json";
         expect(orgObject.contactDetails).toNot.beEmpty();
         [orgObject.contactDetails enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDContact class]);
+            if (idx == 0) {
+                OCDContact *contactObj = (OCDContact *)obj;
+                expect(contactObj.label).to.equal(@"Federation Council Building");
+                expect(contactObj.type).toNot.beNil();
+                expect(contactObj.type).to.beKindOf([NSString class]);
+                expect(contactObj.value).toNot.beNil();
+                expect(contactObj.value).to.beKindOf([NSString class]);
+            }
         }];
         expect(orgObject.posts).toNot.beEmpty();
         [orgObject.posts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDPost class]);
+            if (idx == 0) {
+                OCDPost *post = (OCDPost *)obj;
+                expect(post.postId).to.equal(@"ocd-organization/cdba1034-b820-52a5-ab03-b311dd92875a/federation-councilor");
+                expect(post.contactDetails).toNot.beNil();
+                expect(post.contactDetails).to.beKindOf([NSArray class]);
+                expect(post.links).toNot.beNil();
+                expect(post.links).to.beKindOf([NSArray class]);
+                expect(post.label).toNot.beNil();
+                expect(post.label).to.equal(@"Councilor");
+            }
         }];
         expect(orgObject.links).toNot.beEmpty();
         [orgObject.links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDLink class]);
+            if (idx == 0) {
+                OCDLink *link = (OCDLink *)obj;
+                expect(link.url).toNot.beNil();
+                expect(link.url).to.beKindOf([NSURL class]);
+                expect([link.url absoluteString]).to.equal(@"http://en.memory-alpha.org/wiki/Federation_Council");
+            }
         }];
         expect(orgObject.identifiers).toNot.beEmpty();
         [orgObject.identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDIdentifier class]);
+            if (idx == 0) {
+                OCDIdentifier *identifier = (OCDIdentifier *)obj;
+                expect(identifier.identifier).to.equal(@"UFP-FC");
+                expect(identifier.scheme).notTo.beNil();
+            }
         }];
         expect(orgObject.otherNames).toNot.beEmpty();
         [orgObject.otherNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDName class]);
+            if (idx == 0) {
+                OCDName *name = (OCDName *)obj;
+                expect(name.name).toNot.beNil();
+                expect(name.name).to.equal(@"Assembly of the Coalition of Planets");
+                expect(name.note).to.equal(@"Provisional body of the immediate pre-Federation period.");
+                expect(name.startDate).to.beKindOf([NSDate class]);
+                expect(name.endDate).toNot.beNil();
+            }
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
