@@ -17,4 +17,16 @@
     };
 }
 
++ (NSValueTransformer *)startDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)endDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
 @end
