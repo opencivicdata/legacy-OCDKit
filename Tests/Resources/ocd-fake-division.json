@@ -1,0 +1,121 @@
+{
+    "geometries": [
+        {
+            "end": null,
+            "boundary": {
+                "external_id": "06075",
+                "metadata": {
+                    "GEOID10": "06075",
+                    "CSAFP10": "488",
+                    "NAME10": "San Francisco",
+                    "CLASSFP10": "H6",
+                    "MTFCC10": "G4020",
+                    "STATEFP10": "06",
+                    "INTPTLON10": "-123.0322294",
+                    "COUNTYNS10": "00277302",
+                    "NAMELSAD10": "San Francisco County",
+                    "LSAD10": "06",
+                    "CBSAFP10": "41860",
+                    "AWATER10": 479141230,
+                    "METDIVFP10": "41884",
+                    "COUNTYFP10": "075",
+                    "ALAND10": 121450205,
+                    "FUNCSTAT10": "C",
+                    "INTPTLAT10": "+37.7272391"
+                },
+                "boundary_set_name": "county-13",
+                "extent": [
+                    -123.17382499999998,
+                    37.63982999999999,
+                    -122.28177999999996,
+                    37.92982399999999
+                ],
+                "related": {
+                    "shape_url": "/boundaries/county-13/ca-san-francisco-county-06075/shape",
+                    "simple_shape_url": "/boundaries/county-13/ca-san-francisco-county-06075/simple_shape",
+                    "centroid_url": "/boundaries/county-13/ca-san-francisco-county-06075/centroid",
+                    "boundaries_url": "/boundaries/county-13/",
+                    "boundary_set_url": "/boundary-sets/county-13/"
+                },
+                "name": "CA San Francisco County 06075",
+                "centroid": {
+                    "coordinates": [
+                        -122.69397562197967,
+                        37.75971500351901
+                    ],
+                    "type": "Point"
+                }
+            },
+            "start": "1980-01-01"
+        }
+    ],
+    "country": "us",
+    "children": [
+        {
+            "display_name": "San Francisco CA city-county council district 1",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:1"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 10",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:10"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 11",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:11"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 2",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:2"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 3",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:3"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 4",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:4"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 5",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:5"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 6",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:6"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 7",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:7"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 8",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:8"
+        },
+        {
+            "display_name": "San Francisco CA city-county council district 9",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/council_district:9"
+        },
+        {
+            "display_name": "san francisco county office of education",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/school_district:san_francisco_county_office_of_education"
+        },
+        {
+            "display_name": "san francisco county rop",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/school_district:san_francisco_county_rop"
+        },
+        {
+            "display_name": "san francisco unified",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/school_district:san_francisco_unified"
+        },
+        {
+            "display_name": "sbe - edison charter academy",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/school_district:sbe_-_edison_charter_academy"
+        },
+        {
+            "display_name": "sbe - san francisco flex academy",
+            "id": "ocd-division/country:us/state:ca/county:san_francisco/school_district:sbe_-_san_francisco_flex_academy"
+        }
+    ],
+    "display_name": "San Francisco County",
+    "id": "ocd-division/country:us/state:ca/county:san_francisco"
+}

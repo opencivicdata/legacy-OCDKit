@@ -10,9 +10,17 @@
 #import "OCDDivision.h"
 #import "OCDGeometry.h"
 
+NSString * const OCDRealDivisionId = @"ocd-division/country:us/district:dc";
+NSString * const OCDRealDivisionPath = @"ocd-division-district-dc.json";
+
+// Okay so SF is a real division, so maybe fake is not the right descriptor here.
+NSString * const OCDFakeDivisionId = @"ocd-division/ocd-fake-division";
+NSString * const OCDFakeDivisionPath = @"ocd-fake-division.json";
+
 @interface OCDDivisionTests : OCDTestsBase
 
-@property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
+@property (nonatomic, weak) id<OHHTTPStubsDescriptor> stub;
+@property (nonatomic, weak) id<OHHTTPStubsDescriptor> fakeDatastub;
 
 @end
 
@@ -26,10 +34,19 @@
         return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(@"ocd-division-district-dc.json",nil)
                                                 statusCode:200 headers:@{@"Content-Type":@"text/json"}];
     }];
+
+    self.fakeDatastub = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        NSString *fakePath = [NSString stringWithFormat:@"/%@", OCDFakeDivisionId];
+        return [request.URL.path isEqualToString:fakePath];
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        return [OHHTTPStubsResponse responseWithFileAtPath:OHPathForFileInBundle(OCDFakeDivisionPath,nil)
+                                                statusCode:200 headers:@{@"Content-Type":@"text/json"}];
+    }];
 }
 
 - (void)tearDown {
     [OHHTTPStubs removeStub:self.stub];
+    [OHHTTPStubs removeStub:self.fakeDatastub];
     [super tearDown];
 }
 
@@ -54,13 +71,41 @@
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
 }
 
+- (void)testFakeDivision {
+    __block id blockResponseObject = nil;
+    __block id blockError = nil;
+
+    [self.client divisionWithId:OCDFakeDivisionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        blockResponseObject = responseObject;
+        expect([blockResponseObject valueForKey:@"geometries"]).to.beKindOf([NSArray class]);
+        [[blockResponseObject valueForKey:@"geometries"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDGeometry class]);
+            OCDGeometry *geom = (OCDGeometry *)obj;
+            expect(geom.start).to.beKindOf([NSDate class]);
+            expect(geom.boundary).toNot.beNil();
+            expect(geom.boundary.extent).toNot.beNil();
+            expect(geom.boundary.extent).toNot.beEmpty();
+        }];
+
+        expect([blockResponseObject valueForKey:@"children"]).to.beKindOf([NSArray class]);
+        [[blockResponseObject valueForKey:@"children"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDDivision class]);
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        blockError = error;
+    }];
+
+    //    Check the response
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+    expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
+}
+
 - (void)testDivisionExpectedFields {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
-    NSString *ocdId = @"ocd-division/country:us/district:dc";
-
-    NSURLSessionDataTask *task = [self.client divisionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.client divisionWithId:OCDRealDivisionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
@@ -71,7 +116,7 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
     
-    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(ocdId);
+    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(OCDRealDivisionId);
     expect([blockResponseObject valueForKey:@"country"]).will.equal(@"us");
     expect([blockResponseObject valueForKey:@"displayName"]).will.equal(@"District of Columbia");
 }
@@ -126,7 +171,6 @@
     expect(blockResponseObject).will.beInstanceOf([OCDDivision class]);
 
     expect([blockResponseObject valueForKey:@"geometries"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"geometries"]).willNot.beEmpty();
 }
 
 @end

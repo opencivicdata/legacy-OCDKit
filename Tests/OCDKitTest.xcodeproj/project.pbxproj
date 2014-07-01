@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2837C019635AE90046E3C1 /* ocd-fake-division.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F2837BF19635AE90046E3C1 /* ocd-fake-division.json */; };
 		2F45B09C190EF93800F7CACF /* OCDVoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F45B09B190EF93800F7CACF /* OCDVoteTests.m */; };
 		2F4792971959FBCF008752AB /* OCDTestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4792961959FBCF008752AB /* OCDTestSettings.m */; };
 		2F55D5F5190AA29300F80020 /* OCDOrganizationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F55D5F4190AA29300F80020 /* OCDOrganizationTests.m */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F2837BF19635AE90046E3C1 /* ocd-fake-division.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ocd-fake-division.json"; sourceTree = "<group>"; };
 		2F45B09B190EF93800F7CACF /* OCDVoteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDVoteTests.m; sourceTree = "<group>"; };
 		2F4792951959FB32008752AB /* OCDTestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDTestSettings.h; sourceTree = "<group>"; };
 		2F4792961959FBCF008752AB /* OCDTestSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDTestSettings.m; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		2F7B3DF41907012C000E082D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F2837BF19635AE90046E3C1 /* ocd-fake-division.json */,
 				2F55D5FA190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json */,
 				2F55D5F6190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json */,
 				2F7B3DF7190701D3000E082D /* ocd-division-district-dc.json */,
@@ -212,6 +215,7 @@
 				2F55D5FB190AE1FE00F80020 /* ocd-bill--0a660630-5385-11e3-b05f-1231391cd4ec.json in Resources */,
 				2F7B3DF8190701D3000E082D /* ocd-division-district-dc.json in Resources */,
 				2F7EE89A195C645A002BB259 /* ocd-fake-organization.json in Resources */,
+				2F2837C019635AE90046E3C1 /* ocd-fake-division.json in Resources */,
 				2F97ADF01906D6DE006995DC /* InfoPlist.strings in Resources */,
 				2F7675D7195A144E007886DD /* ocd-fake-bill.json in Resources */,
 				2F55D5F7190AA47F00F80020 /* ocd-organization--cc82145e-3b46-11e3-9ac3-1231391cd4ec.json in Resources */,
