@@ -10,4 +10,20 @@
 
 @implementation OCDGeometry
 
++ (NSValueTransformer *)startJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)endJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)boundaryJSONTransformer {
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:[OCDBoundary class]];
+}
+
 @end
