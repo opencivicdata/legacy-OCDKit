@@ -23,7 +23,7 @@ NSString * const OCDFakeOrgPath = @"ocd-fake-organization.json";
 
 @interface OCDOrganizationTests : OCDTestsBase
 
-@property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
+@property (nonatomic, weak) id<OHHTTPStubsDescriptor> stub;
 @property (nonatomic, strong) NSString *stubOCDId;
 
 @end

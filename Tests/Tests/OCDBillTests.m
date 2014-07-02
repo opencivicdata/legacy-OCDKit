@@ -21,7 +21,7 @@ NSString * const OCDFakeBillPath = @"ocd-fake-bill.json";
 
 @interface OCDBillTests : OCDTestsBase
 
-@property (nonatomic, strong) id<OHHTTPStubsDescriptor> stub;
+@property (nonatomic, weak) id<OHHTTPStubsDescriptor> stub;
 @property (nonatomic, strong) NSString *stubOCDId;
 
 @end
