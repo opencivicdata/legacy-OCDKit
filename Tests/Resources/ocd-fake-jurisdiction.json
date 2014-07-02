@@ -1,0 +1,19 @@
+{
+  "classification": "government",
+  "division_id": "ocd-division/conglomerate:ufp",
+  "feature_flags": [
+    "interplanetary",
+    "republic"
+  ],
+  "id": "ocd-jurisdiction/conglomerate:ufp/government",
+  "legislative_sessions": [
+    {
+      "classification": "primary",
+      "end_date": "2370-12-24",
+      "name": "First Session of the Federation Council",
+      "start_date": "2370-04-24"
+    }
+  ],
+  "name": "United Federation of Planets",
+  "url": "http://en.memory-alpha.org/wiki/United_Federation_of_Planets"
+}

@@ -10,8 +10,17 @@
 #import "OCDJurisdiction.h"
 #import "OCDChamber.h"
 #import "OCDTerm.h"
+#import "OCDSession.h"
+
+NSString * const OCDRealJurisdictionId = @"ocd-jurisdiction/country:us/state:hi/legislature";
+//NSString * const OCDRealJurisdictionPath = @".json";
+
+NSString * const OCDFakeJurisdictionId = @"ocd-jurisdiction/conglomerate:ufp/government";
+NSString * const OCDFakeJurisdictionPath = @"ocd-fake-jurisdiction.json";
 
 @interface OCDJurisdictionTests : OCDTestsBase
+
+@property (nonatomic, weak) id<OHHTTPStubsDescriptor> fakeJurisdictionStub;
 
 @end
 
@@ -20,12 +29,20 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.fakeJurisdictionStub = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        NSString *urlPath = [NSString stringWithFormat:@"/%@", OCDFakeJurisdictionId];
+        return [request.URL.path isEqualToString:urlPath];
+
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        NSString *stubPath = OHPathForFileInBundle(OCDFakeJurisdictionPath,nil);
+        return [OHHTTPStubsResponse responseWithFileAtPath:stubPath
+                                                statusCode:200 headers:@{@"Content-Type":@"text/json"}];
+    }];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [OHHTTPStubs removeStub:self.fakeJurisdictionStub];
     [super tearDown];
 }
 
@@ -33,7 +50,7 @@
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
-    NSURLSessionDataTask *task = [self.client jurisdictionWithId:@"ocd-jurisdiction/country:us/state:hi/legislature" fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSURLSessionDataTask *task = [self.client jurisdictionWithId:OCDRealJurisdictionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
@@ -50,97 +67,48 @@
     expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
 }
 
-- (void)testJurisdictionExpectedFields {
+- (void)testFakeJurisdiction {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
-    NSString *ocdId = @"ocd-jurisdiction/country:us/state:hi/legislature";
-
-    [self.client jurisdictionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.client jurisdictionWithId:OCDFakeJurisdictionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        blockError = error;
-    }];
+        [[responseObject valueForKey:@"legislativeSessions"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            expect(obj).to.beKindOf([OCDSession class]);
+            OCDSession *session = (OCDSession *)obj;
+            expect(session.startDate).to.beKindOf([NSDate class]);
+            expect(session.endDate).to.beKindOf([NSDate class]);
+//            expect(session.name).toNot.beNil();
 
-    //    Check the response
-    expect(blockError).will.beNil();
-    expect(blockResponseObject).willNot.beNil();
-    expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
-
-    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(ocdId);
-    expect([blockResponseObject valueForKey:@"name"]).will.equal(@"Hawaii State Legislature");
-    expect([blockResponseObject valueForKey:@"abbreviation"]).will.equal(@"hi");
-    expect([blockResponseObject valueForKey:@"url"]).will.equal([NSURL URLWithString:@"http://www.capitol.hawaii.gov/"]);
-    expect([blockResponseObject valueForKey:@"latestUpdate"]).will.beInstanceOf([NSDate class]);
-    expect([blockResponseObject valueForKey:@"chambers"]).willNot.beNil();
-    expect([blockResponseObject valueForKey:@"terms"]).willNot.beNil();
-    expect([blockResponseObject valueForKey:@"sessionDetails"]).willNot.beNil();
-}
-
-- (void)testJurisdictionChambers {
-    __block id blockResponseObject = nil;
-    __block id blockError = nil;
-
-    NSString *ocdId = @"ocd-jurisdiction/country:us/state:hi/legislature";
-
-    [self.client jurisdictionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        blockResponseObject = responseObject;
-        id chambersObj = [blockResponseObject valueForKey:@"chambers"];
-        expect(chambersObj).toNot.beNil();
-        expect(chambersObj).to.beKindOf([NSDictionary class]);
-        if (chambersObj) {
-            [chambersObj enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-                expect(obj).to.beInstanceOf([OCDChamber class]);
-                expect(key).to.beKindOf([NSNumber class]); // OCDChamberType values that are converted to NSNumber
-            }];
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        blockError = error;
-    }];
-
-    //    Check the response
-    expect(blockError).will.beNil();
-    expect(blockResponseObject).willNot.beNil();
-    expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
-
-    expect([blockResponseObject valueForKey:@"chambers"]).will.beKindOf([NSDictionary class]);
-}
-
-- (void)testJurisdictionTerms {
-    __block id blockResponseObject = nil;
-    __block id blockError = nil;
-
-    NSString *ocdId = @"ocd-jurisdiction/country:us/state:hi/legislature";
-
-    [self.client jurisdictionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        blockResponseObject = responseObject;
-        [[responseObject valueForKey:@"terms"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            expect(obj).to.beInstanceOf([OCDTerm class]);
-            expect([obj valueForKey:@"name"]).notTo.beNil();
-            expect([obj valueForKey:@"sessions"]).notTo.beNil();
-            expect([obj valueForKey:@"startYear"]).notTo.beNil();
-            expect([obj valueForKey:@"endYear"]).notTo.beNil();
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
     }];
 
+
     //    Check the response
     expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
 
-    expect([blockResponseObject valueForKey:@"terms"]).will.beKindOf([NSArray class]);
-    expect([blockResponseObject valueForKey:@"terms"]).willNot.beEmpty();
+
+    // Check values
+    OCDJurisdiction *obj = (OCDJurisdiction *)blockResponseObject;
+    expect(obj.name).will.equal(@"United Federation of Planets");
+    expect(obj.url).will.equal([NSURL URLWithString:@"http://en.memory-alpha.org/wiki/United_Federation_of_Planets"]);
+    expect(obj.classification).willNot.beNil();
+    expect(obj.classification).will.equal(OCDJurisdictionClassificationGovernment);
+    expect(obj.divisionId).will.equal(@"ocd-division/conglomerate:ufp");
+    expect(obj.featureFlags).will.beKindOf([NSArray class]);
+    expect(obj.featureFlags).will.contain(@"interplanetary");
+    expect(obj.legislativeSessions).willNot.beNil();
 }
 
-- (void)testJurisdictionSessionDetails {
+- (void)testJurisdictionExpectedFields {
     __block id blockResponseObject = nil;
     __block id blockError = nil;
 
-    NSString *ocdId = @"ocd-jurisdiction/country:us/state:hi/legislature";
-
-    [self.client jurisdictionWithId:ocdId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.client jurisdictionWithId:OCDRealJurisdictionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         blockError = error;
@@ -151,9 +119,11 @@
     expect(blockResponseObject).willNot.beNil();
     expect(blockResponseObject).will.beInstanceOf([OCDJurisdiction class]);
 
-    expect([blockResponseObject valueForKey:@"sessionDetails"]).will.beKindOf([NSDictionary class]);
-    expect([blockResponseObject valueForKey:@"sessionDetails"]).willNot.beEmpty();
-    XCTFail(@"Need to test contents of sessionDetails");
+    expect([blockResponseObject valueForKey:@"ocdId"]).will.equal(OCDRealJurisdictionId);
+    expect([blockResponseObject valueForKey:@"url"]).will.beInstanceOf([NSURL class]);
+    expect([blockResponseObject valueForKey:@"divisionId"]).willNot.beNil();
+    expect([blockResponseObject valueForKey:@"featureFlags"]).willNot.beNil();
+    expect([blockResponseObject valueForKey:@"legislativeSessions"]).willNot.beNil();
 }
 
 
