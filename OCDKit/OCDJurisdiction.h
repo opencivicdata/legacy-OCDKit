@@ -8,15 +8,27 @@
 
 #import "OCDObject.h"
 
+
+typedef NS_ENUM(NSInteger, OCDJurisdictionClassification) {
+    OCDJurisdictionClassificationUnknown,
+    OCDJurisdictionClassificationGovernment,
+    OCDJurisdictionClassificationLegislature,
+    OCDJurisdictionClassificationExecutive,
+    OCDJurisdictionClassificationSchool,
+    OCDJurisdictionClassificationPark,
+    OCDJurisdictionClassificationSewer,
+    OCDJurisdictionClassificationForest,
+    OCDJurisdictionClassificationTransit
+};
+
 @interface OCDJurisdiction : OCDObject
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *abbreviation;
 @property (nonatomic, copy, readonly) NSURL *url;
-@property (nonatomic, copy, readonly) NSDate *latestUpdate;
-@property (nonatomic, copy, readonly) NSDictionary *chambers;
-@property (nonatomic, copy, readonly) NSArray *terms;
-@property (nonatomic, copy, readonly) NSDictionary *sessionDetails;
+@property (nonatomic, assign, readonly) OCDJurisdictionClassification classification;
+@property (nonatomic, copy, readonly) NSString *divisionId;
+@property (nonatomic, copy, readonly) NSArray *featureFlags;
+@property (nonatomic, copy, readonly) NSArray *legislativeSessions;
 
 
 @end

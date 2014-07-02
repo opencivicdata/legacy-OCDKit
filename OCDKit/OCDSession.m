@@ -10,4 +10,23 @@
 
 @implementation OCDSession
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"startDate": @"start_date",
+             @"endDate": @"end_date"
+             };
+}
+
++ (NSValueTransformer *)startDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
++ (NSValueTransformer *)endDateJSONTransformer {
+    return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+        return [[self datetimeFormatter] dateFromString:str];
+    }];
+}
+
 @end

@@ -8,10 +8,11 @@
 
 #import "OCDObject.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSInteger, OCDSessionType) {
+    OCDSessionTypeUnknown,
     OCDSessionTypePrimary,
     OCDSessionTypeSpecial
-} OCDSessionType;
+} ;
 
 @interface OCDSession : OCDObject
 

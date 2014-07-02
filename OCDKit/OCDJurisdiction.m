@@ -9,15 +9,30 @@
 #import "OCDJurisdiction.h"
 #import "OCDChamber.h"
 #import "OCDTerm.h"
+#import "OCDSession.h"
 
 @implementation OCDJurisdiction
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
     return @{
-             @"ocdId":          @"id",
-             @"latestUpdate":   @"latest_update",
-             @"sessionDetails": @"session_details"
+             @"divisionId": @"division_id",
+             @"featureFlags": @"feature_flags",
+             @"legislativeSessions": @"legislative_sessions"
              };
+}
+
++ (NSValueTransformer *)classificationJSONTransformer {
+    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
+               NSNull.null: @(OCDJurisdictionClassificationUnknown),
+               @"government": @(OCDJurisdictionClassificationGovernment),
+               @"legislature": @(OCDJurisdictionClassificationLegislature),
+               @"executive": @(OCDJurisdictionClassificationExecutive),
+               @"school": @(OCDJurisdictionClassificationSchool),
+               @"park": @(OCDJurisdictionClassificationPark),
+               @"sewer": @(OCDJurisdictionClassificationSewer),
+               @"forest": @(OCDJurisdictionClassificationForest),
+               @"transit": @(OCDJurisdictionClassificationTransit),
+           }];
 }
 
 + (NSValueTransformer *)urlJSONTransformer {
@@ -39,6 +54,10 @@
 
 + (NSValueTransformer *)termsJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDTerm.class];
+}
+
++ (NSValueTransformer *)legislativeSessionsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:OCDSession.class];
 }
 
 @end
