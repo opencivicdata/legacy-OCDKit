@@ -21,14 +21,15 @@ Pod::Spec.new do |s|
                      "Daniel Cloud" => "dcloud@sunlightfoundation.com" }
 
 
-  s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/sunlightlabs/OCDKit.git", :tag => "0.0.1" }
   s.source_files  = "OCDKit"
-  # s.public_header_files = "OCDKit/*.h"
-  s.exclude_files = "InstagramKitDemo"
+  s.exclude_files = "OCDKitDemo"
 
   s.requires_arc = true
-  s.ios.deployment_target = '7.0'
+
+  s.ios.deployment_target = '7.1'
+  s.osx.deployment_target = '10.9'
+
   s.dependency "AFNetworking/NSURLSession", "~> 2.2.0"
   s.dependency "Mantle", "~> 1.4.0"
   s.dependency "ISO8601DateFormatter", "~> 0.7"
