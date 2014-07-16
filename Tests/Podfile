@@ -1,3 +1,5 @@
+xcodeproj 'OCDKitTest'
+workspace '../OCDKit'
 inhibit_all_warnings!
 
 def import_pods
@@ -12,8 +14,8 @@ target :ios do
   import_pods
 end
 
-# target :osx do
-#   platform :osx, '10.9'
-#   link_with 'OS X Tests'
-#   import_pods
-# end
+target :osx do
+  platform :osx, '10.9'
+  link_with 'OS X Tests'
+  import_pods
+end

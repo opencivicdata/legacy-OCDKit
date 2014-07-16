@@ -15,7 +15,7 @@ A demo app lives in the *OCDKitDemo* directory. To run:
 ```bash
 $ cd OCDKitDemo/
 $ pod install
-$ open OCDKitDemo.xcworkspace
+$ open ../OCDKit.xcworkspace
 ```
 
 There are no tests on the demo, but...
@@ -27,5 +27,5 @@ Unit tests are in the *Tests* directory and integrate with CocoaPods.
 ```bash
 $ cd Tests/
 $ pod install
-$ open OCDKitTest.xcworkspace
+$ open ../OCDKit.xcworkspace
 ```
