@@ -77,8 +77,8 @@ NSString * const OCDFakeDivisionPath = @"ocd-fake-division.json";
 
     [self.client divisionWithId:OCDFakeDivisionId fields:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         blockResponseObject = responseObject;
-        expect([blockResponseObject valueForKey:@"geometries"]).to.beKindOf([NSArray class]);
-        [[blockResponseObject valueForKey:@"geometries"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        expect([responseObject valueForKey:@"geometries"]).to.beKindOf([NSArray class]);
+        [[responseObject valueForKey:@"geometries"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDGeometry class]);
             OCDGeometry *geom = (OCDGeometry *)obj;
             expect(geom.start).to.beKindOf([NSDate class]);
@@ -87,8 +87,8 @@ NSString * const OCDFakeDivisionPath = @"ocd-fake-division.json";
             expect(geom.boundary.extent).toNot.beEmpty();
         }];
 
-        expect([blockResponseObject valueForKey:@"children"]).to.beKindOf([NSArray class]);
-        [[blockResponseObject valueForKey:@"children"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        expect([responseObject valueForKey:@"children"]).to.beKindOf([NSArray class]);
+        [[responseObject valueForKey:@"children"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             expect(obj).to.beKindOf([OCDDivision class]);
         }];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
