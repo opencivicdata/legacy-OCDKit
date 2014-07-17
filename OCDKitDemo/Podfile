@@ -1,2 +1,8 @@
+xcodeproj 'OCDKitDemo'
+workspace '../OCDKit'
+inhibit_all_warnings!
+
+platform = :ios
+
 pod 'OCDKit', :path => '../'
 
