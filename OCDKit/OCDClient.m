@@ -114,6 +114,8 @@ NSString *const BASEURL = @"https://api.opencivicdata.org";
                                success:(void (^) (NSURLSessionDataTask *task, id responseObject))success
                                failure:(void (^) (NSURLSessionDataTask *task, NSError *error))failure {
 
+    if (ocdId == nil) return nil;
+    
     NSDictionary *params = @{};
     if (fields) {
         params = @{ @"fields": [fields componentsJoinedByString:@","] };

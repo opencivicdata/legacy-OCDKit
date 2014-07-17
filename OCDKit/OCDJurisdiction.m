@@ -15,6 +15,7 @@
 
 + (NSDictionary *)ocd_JSONKeyPathsByPropertyKey {
     return @{
+             @"ocdId": @"id",
              @"divisionId": @"division_id",
              @"featureFlags": @"feature_flags",
              @"legislativeSessions": @"legislative_sessions"
