@@ -59,9 +59,6 @@
 		2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2FB8AB9618EF440400B45AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2FB8ABAB18EF440400B45AB7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2FB8ABB318EF440400B45AB7 /* OCDKitDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OCDKitDemoTests-Info.plist"; sourceTree = "<group>"; };
-		2FB8ABB518EF440400B45AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2FB8ABB718EF440400B45AB7 /* OCDKitDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCDKitDemoTests.m; sourceTree = "<group>"; };
 		2FB8ABC818EF4A6E00B45AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2FB8ABC918EF4A6E00B45AB7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2FB8ABCF18EF4AE400B45AB7 /* OCDKitDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OCDKitDemo-Info.plist"; sourceTree = "<group>"; };
@@ -71,7 +68,6 @@
 		2FB8ABD518EF4B2500B45AB7 /* OCDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDAppDelegate.m; sourceTree = "<group>"; };
 		2FC3860B19019B30009316BA /* OCDEventsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDEventsDataSource.h; sourceTree = "<group>"; };
 		2FC3860C19019B30009316BA /* OCDEventsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDEventsDataSource.m; sourceTree = "<group>"; };
-		D0C39DAE45F9490394CE3D75 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +125,6 @@
 				2FB8ABC118EF449A00B45AB7 /* Classes */,
 				2F8BC7DA18F3083C00D9FB0F /* Configuration */,
 				2FB8ABC618EF4A6E00B45AB7 /* Resources */,
-				2FB8ABB118EF440400B45AB7 /* OCDKitDemoTests */,
 				2FB8AB9118EF440400B45AB7 /* Frameworks */,
 				2FB8AB9018EF440400B45AB7 /* Products */,
 				2D1E2B91FF91410292C323E5 /* Pods.xcconfig */,
@@ -152,27 +147,8 @@
 				2FB8AB9418EF440400B45AB7 /* CoreGraphics.framework */,
 				2FB8AB9618EF440400B45AB7 /* UIKit.framework */,
 				2FB8ABAB18EF440400B45AB7 /* XCTest.framework */,
-				D0C39DAE45F9490394CE3D75 /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2FB8ABB118EF440400B45AB7 /* OCDKitDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				2FB8ABB718EF440400B45AB7 /* OCDKitDemoTests.m */,
-				2FB8ABB218EF440400B45AB7 /* Supporting Files */,
-			);
-			path = OCDKitDemoTests;
-			sourceTree = "<group>";
-		};
-		2FB8ABB218EF440400B45AB7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2FB8ABB318EF440400B45AB7 /* OCDKitDemoTests-Info.plist */,
-				2FB8ABB418EF440400B45AB7 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2FB8ABC118EF449A00B45AB7 /* Classes */ = {
@@ -336,14 +312,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2FB8ABB418EF440400B45AB7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2FB8ABB518EF440400B45AB7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		2FB8ABC718EF4A6E00B45AB7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
