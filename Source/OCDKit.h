@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Sunlight Foundation. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for OCDKit.
 FOUNDATION_EXPORT double OCDKitVersionNumber;

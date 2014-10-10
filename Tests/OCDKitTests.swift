@@ -8,12 +8,15 @@
 
 import UIKit
 import XCTest
+import OCDKit
 
 class OCDKitTests: XCTestCase {
-    
+    var apiKey: String?
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.apiKey = OCDKitApiKey
+        println("OCDKitApiKey: \(OCDKitApiKey)")
     }
     
     override func tearDown() {
@@ -21,11 +24,18 @@ class OCDKitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testBillSubjectLookup() {
+        let api = OpenCivicData(self.apiKey!)
+        var request = api.bills(["subject":"LABOR"])
+
+        XCTAssertNotNil(request.request, "request should not be nil")
+        XCTAssertEqual(request.request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR"), "request URL should be equal")
+        println(request.request.URL)
+        XCTAssertNil(request.response, "response should be nil")
+
+//        XCTAssertEqual(request.description, "GET https://api.opencivicdata.org/bills/?subject=LABOR", "incorrect request description")
     }
-    
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {
