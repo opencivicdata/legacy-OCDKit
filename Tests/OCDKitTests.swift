@@ -24,23 +24,50 @@ class OCDKitTests: XCTestCase {
         super.tearDown()
     }
     
-    func testBillSubjectLookup() {
+    func testBillSubjectSearch() {
         let api = OpenCivicData(self.apiKey!)
-        var request = api.bills(["subject":"LABOR"])
 
-        XCTAssertNotNil(request.request, "request should not be nil")
-        XCTAssertEqual(request.request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR"), "request URL should be equal")
-        println(request.request.URL)
-        XCTAssertNil(request.response, "response should be nil")
+        let expectation = expectationWithDescription("Bills Subject Lookup")
 
-//        XCTAssertEqual(request.description, "GET https://api.opencivicdata.org/bills/?subject=LABOR", "incorrect request description")
-    }
+        api.bills(["subject":"LABOR"])
+            .response { (request, response, _, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR"), "request URL should be equal")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+            }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
         }
     }
-    
+
+    // TODO: Expose OCDRouter to tests (but not otherwise?)
+    func testRouterForObject() {
+        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+        var request = OCDRouter.Object(ocdId)
+    }
+
+    func testObjectLookup() {
+        let api = OpenCivicData(self.apiKey!)
+
+        let expectation = expectationWithDescription("OCD Object Lookup")
+        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+
+        api.object(ocdId)
+            .response { (request, response, _, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/"), "request URL should be equal")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
+
 }

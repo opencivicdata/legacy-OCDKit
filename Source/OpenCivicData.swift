@@ -12,16 +12,13 @@ import Alamofire
 enum OCDRouter: URLRequestConvertible {
     static let baseURLString = "https://api.opencivicdata.org"
 
-    case Root
     case Object(String, [String: AnyObject]?)
     case Bills([String: AnyObject]?)
 
     var path: String {
         switch self {
-        case .Root:
-            return "/"
-        case .Object(let ocdId):
-            return "/\(ocdId)"
+        case .Object(let ocdId, _):
+            return "/\(ocdId)/"
         case .Bills(_):
             return "/bills/"
         }
@@ -36,8 +33,6 @@ enum OCDRouter: URLRequestConvertible {
         let encoding = Alamofire.ParameterEncoding.URL
 
         switch self {
-        case .Root(let parameters):
-            return mutableURLRequest
         case .Object(_):
             return mutableURLRequest
         case .Bills(let parameters):
