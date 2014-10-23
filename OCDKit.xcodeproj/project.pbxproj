@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F760E5419E86E120077E0BB /* TestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F760E5219E86DA00077E0BB /* TestConfiguration.swift */; };
+		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */; };
 		2FDF132919E71DB400F2EF04 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF132819E71DB400F2EF04 /* Bill.swift */; };
@@ -320,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F760E5419E86E120077E0BB /* TestConfiguration.swift in Sources */,
+				2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */,
 				2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

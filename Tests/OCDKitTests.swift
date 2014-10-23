@@ -8,7 +8,7 @@
 
 import UIKit
 import XCTest
-import OCDKit
+import OCDKit // Not really necessary as OCDKit is a member of the test target
 
 class OCDKitTests: XCTestCase {
     var apiKey: String?
@@ -33,7 +33,7 @@ class OCDKitTests: XCTestCase {
             .response { (request, response, _, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR"), "request URL should be equal")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR")!, "request URL should be equal")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
             }
@@ -43,10 +43,10 @@ class OCDKitTests: XCTestCase {
         }
     }
 
-    // TODO: Expose OCDRouter to tests (but not otherwise?)
     func testRouterForObject() {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
-        var request = OCDRouter.Object(ocdId)
+        var urlconvertible = OCDRouter.Object(ocdId, nil)
+        XCTAssertEqual(urlconvertible.URLRequest.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
     }
 
     func testObjectLookup() {
@@ -59,7 +59,7 @@ class OCDKitTests: XCTestCase {
             .response { (request, response, _, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/"), "request URL should be equal")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
         }
