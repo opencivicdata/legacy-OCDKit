@@ -30,12 +30,28 @@ class OCDKitTests: XCTestCase {
         let expectation = expectationWithDescription("Bills Subject Lookup")
 
         api.bills(["subject":"LABOR"])
-            .response { (request, response, _, error) in
+            .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
                 XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR")!, "request URL should be equal")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
+                    if let metaDict = responseDict["meta"] as? NSDictionary {
+                        XCTAssertNotNil(metaDict["count"], "meta dictionary should contain count")
+                    }
+                    XCTAssertNotNil(responseDict["results"], "response dictionary should contain results")
+                    if let resultsArray = responseDict["results"] as? NSArray {
+                        XCTAssertGreaterThanOrEqual(resultsArray.count, 0, "results should be some number, right?")
+                        for result:AnyObject in resultsArray {
+                            if let resultObject = result as? NSDictionary {
+                                XCTAssertNotNil(resultObject["id"], "A result object should have an id.")
+                            }
+                        }
+                    }
+                }
             }
 
         waitForExpectationsWithTimeout(10) { (error) in
