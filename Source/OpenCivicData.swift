@@ -29,7 +29,7 @@ enum OCDRouter: URLRequestConvertible {
     var URLRequest: NSURLRequest {
 
         let URL = NSURL(string: OCDRouter.baseURLString)
-        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
         let encoding = Alamofire.ParameterEncoding.URL
 
         switch self {
