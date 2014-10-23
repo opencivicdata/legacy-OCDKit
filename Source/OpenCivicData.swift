@@ -13,15 +13,16 @@ enum OCDRouter: URLRequestConvertible {
     static let baseURLString = "https://api.opencivicdata.org"
 
     case Object(String, [String: AnyObject]?)
-    case Bills([String: AnyObject]?)
+    case Search(String, [String: AnyObject]?)
 
     var path: String {
         switch self {
         case .Object(let ocdId, _):
             return "/\(ocdId)/"
-        case .Bills(_):
-            return "/bills/"
+        case .Search(let endpoint, _):
+            return "/\(endpoint)/"
         }
+
     }
 
     // MARK: URLRequestConvertible
@@ -35,7 +36,7 @@ enum OCDRouter: URLRequestConvertible {
         switch self {
         case .Object(_):
             return mutableURLRequest
-        case .Bills(let parameters):
+        case .Search(_, let parameters):
             return encoding.encode(mutableURLRequest, parameters: parameters).0
         default:
             return mutableURLRequest
@@ -66,7 +67,32 @@ public class OpenCivicData {
     public func object(ocdId:String) -> Request {
         return self.request(OCDRouter.Object(ocdId, nil))
     }
+
     public func bills(params:[String:AnyObject]) -> Request {
-        return self.request(OCDRouter.Bills(params))
+        return self.request(OCDRouter.Search("bills", params))
+    }
+
+    public func divisions(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("divisions", params))
+    }
+
+    public func events(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("events", params))
+    }
+
+    public func jurisdictions(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("jurisdictions", params))
+    }
+
+    public func organizations(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("organizations", params))
+    }
+
+    public func people(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("people", params))
+    }
+
+    public func votes(params:[String:AnyObject]) -> Request {
+        return self.request(OCDRouter.Search("votes", params))
     }
 }
