@@ -37,7 +37,17 @@ enum OCDRouter: URLRequestConvertible {
         case .Object(_):
             return mutableURLRequest
         case .Search(_, let parameters):
-            return encoding.encode(mutableURLRequest, parameters: parameters).0
+            if var params = parameters {
+                for (key, value) in params {
+                    if let value = params[key] as? Double {
+                        params.updateValue("\(Double(value))", forKey: key)
+                    }
+                }
+                return encoding.encode(mutableURLRequest, parameters: params).0
+            }
+            else {
+                return mutableURLRequest
+            }
         default:
             return mutableURLRequest
         }
