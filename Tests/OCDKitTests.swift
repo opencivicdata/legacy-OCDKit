@@ -61,8 +61,20 @@ class OCDKitTests: XCTestCase {
 
     func testRouterForObject() {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
-        var urlconvertible = OCDRouter.Object(ocdId, nil)
-        XCTAssertEqual(urlconvertible.URLRequest.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
+        var route = OCDRouter.Object(ocdId, nil)
+        XCTAssertEqual(route.URLRequest.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
+    }
+
+    func testRouterForSearch() {
+        let path = "foo"
+        var route = OCDRouter.Search(path, nil)
+        XCTAssertEqual(route.URLRequest.URL, NSURL(string: "https://api.opencivicdata.org/\(path)/")!, "request URL should be equal")
+    }
+
+    func testRouterForSearchWithParameters() {
+        let path = "bills"
+        var route = OCDRouter.Search(path, ["subject":"LABOR"])
+        XCTAssertEqual(route.URLRequest.URL, NSURL(string: "https://api.opencivicdata.org/\(path)/?subject=LABOR")!, "request URL should be equal")
     }
 
     func testObjectLookup() {
@@ -72,12 +84,43 @@ class OCDKitTests: XCTestCase {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
 
         api.object(ocdId)
-            .response { (request, response, _, error) in
+            .responseJSON { (request, response, _, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
                 XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
+    func testObjectLookupWithParameters() {
+        let api = OpenCivicData(self.apiKey!)
+
+        let expectation = expectationWithDescription("OCD Object Lookup")
+        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+        let fieldnames = ["title", "updated_at"]
+        let parameters = ["fields": ",".join(fieldnames)]
+
+        api.object(ocdId)
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/")!, "request URL should be equal")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    for field in fieldnames {
+                        XCTAssertNotNil(responseDict[field], "response dictionary should contain \(field)")
+                    }
+                }
+                else {
+                    XCTFail("Object should have a response as an NSDictionary")
+                }
         }
 
         waitForExpectationsWithTimeout(10) { (error) in
@@ -98,13 +141,10 @@ class OCDKitTests: XCTestCase {
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
                 var requestString: String? = request.URL.absoluteString
-                println(request.URL)
-                println(requestString)
                 XCTAssert(requestString?.hasPrefix("https://api.opencivicdata.org/people/") != nil, "request URL should start with api.opencivicdata.org/people/")
                 let latParam = "lat=\(lat)"
                 XCTAssert(requestString?.rangeOfString(latParam) != nil, "request URL should contain lat")
                 let lonParam = "lon=\(lon)"
-                println(lonParam)
                 XCTAssert(requestString?.rangeOfString(lonParam) != nil, "request URL should contain lon")
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
