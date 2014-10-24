@@ -85,5 +85,49 @@ class OCDKitTests: XCTestCase {
         }
     }
 
+    func testPeopleLatLonLookup() {
+        let api = OpenCivicData(self.apiKey!)
+
+        let expectation = expectationWithDescription("People Lat/Lon Lookup")
+
+        let lat =  42.358056
+        let lon = -71.063611
+
+        api.people(["lat": lat, "lon": lon])
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                var requestString: String? = request.URL.absoluteString
+                println(request.URL)
+                println(requestString)
+                XCTAssert(requestString?.hasPrefix("https://api.opencivicdata.org/people/") != nil, "request URL should start with api.opencivicdata.org/people/")
+                let latParam = "lat=\(lat)"
+                XCTAssert(requestString?.rangeOfString(latParam) != nil, "request URL should contain lat")
+                let lonParam = "lon=\(lon)"
+                println(lonParam)
+                XCTAssert(requestString?.rangeOfString(lonParam) != nil, "request URL should contain lon")
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
+                    if let metaDict = responseDict["meta"] as? NSDictionary {
+                        XCTAssertNotNil(metaDict["count"], "meta dictionary should contain count")
+                    }
+                    XCTAssertNotNil(responseDict["results"], "response dictionary should contain results")
+                    if let resultsArray = responseDict["results"] as? NSArray {
+                        XCTAssertGreaterThanOrEqual(resultsArray.count, 0, "results should be some number, right?")
+                        for result:AnyObject in resultsArray {
+                            if let resultObject = result as? NSDictionary {
+                                XCTAssertNotNil(resultObject["id"], "A result object should have an id.")
+                            }
+                        }
+                    }
+                }
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
 
 }
