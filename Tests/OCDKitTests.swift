@@ -25,7 +25,7 @@ class OCDKitTests: XCTestCase {
     }
     
     func testBillSubjectSearch() {
-        let api = OpenCivicData(self.apiKey!)
+        let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("Bills Subject Lookup")
 
@@ -78,7 +78,7 @@ class OCDKitTests: XCTestCase {
     }
 
     func testObjectLookup() {
-        let api = OpenCivicData(self.apiKey!)
+        let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("OCD Object Lookup")
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
@@ -98,7 +98,7 @@ class OCDKitTests: XCTestCase {
     }
 
     func testObjectLookupWithParameters() {
-        let api = OpenCivicData(self.apiKey!)
+        let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("OCD Object Lookup")
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
@@ -129,7 +129,7 @@ class OCDKitTests: XCTestCase {
     }
 
     func testPeopleLatLonLookup() {
-        let api = OpenCivicData(self.apiKey!)
+        let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("People Lat/Lon Lookup")
 

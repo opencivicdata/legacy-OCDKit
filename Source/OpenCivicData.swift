@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+
 enum OCDRouter: URLRequestConvertible {
     static let baseURLString = "https://api.opencivicdata.org"
 
@@ -58,7 +59,7 @@ public class OpenCivicData {
     let apiKey:String
     let manager:Alamofire.Manager
 
-    public init(_ apiKey:String) {
+    public init(apiKey:String) {
         self.apiKey = apiKey
 
         var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
