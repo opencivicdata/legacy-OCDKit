@@ -79,28 +79,56 @@ public class OpenCivicData {
         return self.request(OCDRouter.Object(ocdId, nil))
     }
 
+    public func bills() -> Request {
+        return self.bills([:])
+    }
+
     public func bills(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("bills", params))
+    }
+
+    public func divisions() -> Request {
+        return self.divisions([:])
     }
 
     public func divisions(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("divisions", params))
     }
 
+    public func events() -> Request {
+        return self.events([:])
+    }
+
     public func events(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("events", params))
+    }
+
+    public func jurisdictions() -> Request {
+        return self.jurisdictions([:])
     }
 
     public func jurisdictions(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("jurisdictions", params))
     }
 
+    public func organizations() -> Request {
+        return self.organizations([:])
+    }
+
     public func organizations(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("organizations", params))
     }
 
+    public func people() -> Request {
+        return self.people([:])
+    }
+
     public func people(params:[String:AnyObject]) -> Request {
         return self.request(OCDRouter.Search("people", params))
+    }
+
+    public func votes() -> Request {
+        return self.votes([:])
     }
 
     public func votes(params:[String:AnyObject]) -> Request {
