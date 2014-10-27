@@ -1,62 +1,53 @@
 // Playground - noun: a place where people can play
 
-import UIKit
-import Alamofire
-import CoreLocation
+import XCPlayground
+import Foundation
+import OCDKit
 
-let URL = NSURL(string: "http://httpbin.org/get")
-var request = NSURLRequest(URL: URL!)
+XCPSetExecutionShouldContinueIndefinitely()
 
-let lat: Double =  42.358056
-let lon: Double = -71.063611
+let mykey = "API_KEY_HERE"
 
-println("lon is \(lon)")
+let ocdkit = OpenCivicData(apiKey: mykey)
 
-var parameters:[String:AnyObject] = ["foo": "bar", "lat": lat, "lon": lon]
+let boston = ["lat": 42.358056, "lon": -71.063611]
 
-for key in parameters.keys {
-    if let value = parameters[key] as? Double {
-        parameters.updateValue("\(Double(value))", forKey: key)
+ocdkit.people(boston)
+.responseJSON { (request, _, JSON, error) in
+    println(request.URLString)
+    println(JSON)
+
+    if (error != nil) {
+        println("Encountered an error: \(error)")
+    }
+    else {
+        var results:NSArray? = JSON?["results"] as? NSArray
+        var meta:NSDictionary? = JSON?["meta"] as? NSDictionary
+        var errorMessage:String? = JSON?["error"] as? String
+        if let results:NSArray = results {
+            for item in results {
+                println("Item")
+            }
+        }
+        else {
+            println("No results!")
+            if let errorMessage:String = errorMessage {
+                println(errorMessage)
+            }
+        }
     }
 }
 
+ocdkit.jurisdictions(["division_id":"ocd-division/country:us/state:wi"])
+.responseJSON { (_, _, JSON, error) in
+    var results:NSArray? = JSON?["results"] as? NSArray
+    var meta:NSDictionary? = JSON?["meta"] as? NSDictionary
+    var errorMessage:String? = JSON?["error"] as? String
 
-let encoding = Alamofire.ParameterEncoding.URL
-
-request = encoding.encode(request, parameters: parameters).0
-
-println("\(request.URL.query!)")
-
-let location:CLLocation = CLLocation(latitude: lat, longitude: lon)
-
-func queryComponents(key: String, value: AnyObject) -> [(String, String)] {
-    var components: [(String, String)] = []
-    if let dictionary = value as? [String: AnyObject] {
-        for (nestedKey, value) in dictionary {
-            components += queryComponents("\(key)[\(nestedKey)]", value)
-        }
-    } else if let array = value as? [AnyObject] {
-        for value in array {
-            components += queryComponents("\(key)[]", value)
-        }
-    } else {
-        println(value)
-        components.extend([(key, "\(value)")])
+    if let resultsList:NSArray = results {
+        println("Found \(resultsList.count) results")
     }
-
-    return components
+    else if let errorMessage = errorMessage {
+        println(errorMessage)
+    }
 }
-
-var components: [(String, String)] = []
-for key in sorted(Array(parameters.keys), <) {
-    let value: AnyObject! = parameters[key]
-    components += queryComponents(key, value)
-}
-
-var paramString = join("&", components.map{"\($0)=\($1)"} as [String])
-
-println(paramString)
-
-parameters
-
-
