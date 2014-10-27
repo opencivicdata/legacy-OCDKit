@@ -6,6 +6,7 @@ A Swift framework for the Open Civic Data API.
 
 ```swift
 let ocdkit = OpenCivicData(apiKey: "YOUR_API_KEY")
+
 ocdkit.jurisdictions(["division_id":"ocd-division/country:us/state:wi"])
 .responseJSON { (_, _, JSON, error) in
     var results:NSArray? = JSON?["results"] as? NSArray
@@ -14,6 +15,26 @@ ocdkit.jurisdictions(["division_id":"ocd-division/country:us/state:wi"])
 
     if let resultsList:NSArray = results {
         println("Found \(resultsList.count) results")
+    }
+    else if let errorMessage = errorMessage {
+        println(errorMessage)
+    }
+}
+
+ocdkit.jurisdictions()
+.responseJSON { (request, _, JSON, error) in
+    println(request.URLString)
+    var results: NSArray? = JSON?["results"] as? NSArray
+    var meta: NSDictionary? = JSON?["meta"] as? NSDictionary
+    var errorMessage: String? = JSON?["error"] as? String
+
+    if let resultsList: NSArray = results {
+        println("Found \(resultsList.count) results")
+        for item in resultsList {
+            if let itemDict = item as? NSDictionary {
+                println(itemDict["name"])
+            }
+        }
     }
     else if let errorMessage = errorMessage {
         println(errorMessage)
