@@ -11,8 +11,6 @@
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */; };
-		2FDF132919E71DB400F2EF04 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF132819E71DB400F2EF04 /* Bill.swift */; };
-		2FDF132B19E71F5700F2EF04 /* OCDBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF132A19E71F5700F2EF04 /* OCDBase.swift */; };
 		2FDF133619E726EF00F2EF04 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDF133219E7269200F2EF04 /* Alamofire.framework */; };
 		2FDF133819E7271300F2EF04 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDF133219E7269200F2EF04 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2FDF133A19E7284300F2EF04 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
@@ -71,8 +69,6 @@
 		2FDF131A19E71BD100F2EF04 /* OCDKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCDKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDF131D19E71BD100F2EF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCDKitTests.swift; sourceTree = "<group>"; };
-		2FDF132819E71DB400F2EF04 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
-		2FDF132A19E71F5700F2EF04 /* OCDBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDBase.swift; sourceTree = "<group>"; };
 		2FDF132C19E7269200F2EF04 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		2FDF133919E7284300F2EF04 /* OpenCivicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenCivicData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,8 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				2FDF131419E71BD100F2EF04 /* OCDKit.h */,
-				2FDF132819E71DB400F2EF04 /* Bill.swift */,
-				2FDF132A19E71F5700F2EF04 /* OCDBase.swift */,
 				2FDF133919E7284300F2EF04 /* OpenCivicData.swift */,
 			);
 			path = Source;
@@ -311,8 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FDF133A19E7284300F2EF04 /* OpenCivicData.swift in Sources */,
-				2FDF132919E71DB400F2EF04 /* Bill.swift in Sources */,
-				2FDF132B19E71F5700F2EF04 /* OCDBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
