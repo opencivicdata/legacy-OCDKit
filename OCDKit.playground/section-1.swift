@@ -6,7 +6,8 @@ import OCDKit
 
 XCPSetExecutionShouldContinueIndefinitely()
 
-let mykey = "***REMOVED***"
+// TODO: Set your api key.
+let mykey = "YOUR_API_KEY"
 
 let ocdkit = OpenCivicData(apiKey: mykey)
 
