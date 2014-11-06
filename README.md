@@ -52,6 +52,8 @@ ocdkit.jurisdictions()
 
 *Coming soon.*
 
+- Install Alamofire submodule `git submodule init` and `git submodule update`
+
 ## Running Tests
 
 For tests to run, you need to create a Configuration.plist with a value for OCD_API_KEY. You can create this on the command line by running `configure.swift` with a `key=value` argument. For example, if you have a SUNLIGHT_KEY environment variable set you can run:
