@@ -1,31 +1,64 @@
-# OCDKit
+OCDKit
+======
 
-An Objective-C framework for the [Open Civic Data API](http://docs.opencivicdata.org/en/latest/api/index.html).
+A Swift framework for the Open Civic Data API.
 
-## Making Requests
 
-    OCDClient client = [OCDClient clientWithKey:@"this-is-my-key"];
-    OCDResultSet result = [client bills:@{}];
-    NSLog(@"Results: %@", result.items)
+```swift
+let ocdkit = OpenCivicData(apiKey: "YOUR_API_KEY")
 
-## Demo
+ocdkit.jurisdictions(["division_id":"ocd-division/country:us/state:wi"])
+.responseJSON { (_, _, JSON, error) in
+    var results:NSArray? = JSON?["results"] as? NSArray
+    var meta:NSDictionary? = JSON?["meta"] as? NSDictionary
+    var errorMessage:String? = JSON?["error"] as? String
 
-A demo app lives in the *OCDKitDemo* directory. To run:
+    if let resultsList:NSArray = results {
+        println("Found \(resultsList.count) results")
+    }
+    else if let errorMessage = errorMessage {
+        println(errorMessage)
+    }
+}
 
-```bash
-$ cd OCDKitDemo/
-$ pod install
-$ open ../OCDKit.xcworkspace
+ocdkit.jurisdictions()
+.responseJSON { (request, _, JSON, error) in
+    println(request.URLString)
+    var results: NSArray? = JSON?["results"] as? NSArray
+    var meta: NSDictionary? = JSON?["meta"] as? NSDictionary
+    var errorMessage: String? = JSON?["error"] as? String
+
+    if let resultsList: NSArray = results {
+        println("Found \(resultsList.count) results")
+        for item in resultsList {
+            if let itemDict = item as? NSDictionary {
+                println(itemDict["name"])
+            }
+        }
+    }
+    else if let errorMessage = errorMessage {
+        println(errorMessage)
+    }
+}
 ```
 
-There are no tests on the demo, but...
+## Requirements
 
-## Testing
+- iOS 7.0+ / Mac OS X 10.9+
+- Xcode 6.1
 
-Unit tests are in the *Tests* directory and integrate with CocoaPods.
 
-```bash
-$ cd Tests/
-$ pod install
-$ open ../OCDKit.xcworkspace
+## Installation
+
+*Coming soon.*
+
+- Install Alamofire submodule `git submodule init` and `git submodule update`
+
+## Running Tests
+
+For tests to run, you need to create a Configuration.plist with a value for OCD_API_KEY. You can create this on the command line by running `configure.swift` with a `key=value` argument. For example, if you have a SUNLIGHT_KEY environment variable set you can run:
+
 ```
+./configure.swift OCD_API_KEY=$SUNLIGHT_KEY
+```
+
