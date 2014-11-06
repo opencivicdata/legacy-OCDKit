@@ -26,4 +26,4 @@ DerivedData
 # Pods/
 
 # Ignore test config file (contains API key)
-TestConfiguration.swift
+Configuration.plist

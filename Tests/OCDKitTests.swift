@@ -15,8 +15,21 @@ class OCDKitTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.apiKey = OCDKitApiKey
-        println("OCDKitApiKey: \(OCDKitApiKey)")
+
+        let bundle = NSBundle(forClass: OCDKitTests.self)
+        if let configPath = bundle.pathForResource("Configuration", ofType: "plist") {
+            let properties = NSDictionary(contentsOfFile: configPath)
+
+            if let apiKey:String = properties?.valueForKey("OCD_API_KEY") as? String {
+                self.apiKey = apiKey
+            }
+
+        } else {
+            // This probably won't occur since there should be an error in the Copy Plist File build phase.
+            assertionFailure("You must have a Configuration.plist with OCD_API_KEY set to run tests.")
+        }
+
+
     }
     
     override func tearDown() {

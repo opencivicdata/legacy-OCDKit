@@ -5,6 +5,9 @@
       location = "group:OCDKit.playground">
    </FileRef>
    <FileRef
+      location = "group:configure.swift">
+   </FileRef>
+   <FileRef
       location = "group:OCDKit.xcodeproj">
    </FileRef>
 </Workspace>

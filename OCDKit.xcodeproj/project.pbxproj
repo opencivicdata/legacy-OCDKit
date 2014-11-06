@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F760E5419E86E120077E0BB /* TestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F760E5219E86DA00077E0BB /* TestConfiguration.swift */; };
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
+		2F96CED11A0C25190011DD06 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F96CECC1A0C1C480011DD06 /* Configuration.plist */; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */; };
 		2FDF133619E726EF00F2EF04 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDF133219E7269200F2EF04 /* Alamofire.framework */; };
@@ -62,7 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2F760E5219E86DA00077E0BB /* TestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConfiguration.swift; sourceTree = "<group>"; };
+		2F96CECC1A0C1C480011DD06 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		2FDF130F19E71BD100F2EF04 /* OCDKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCDKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDF131319E71BD100F2EF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FDF131419E71BD100F2EF04 /* OCDKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDKit.h; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 		2FDF131B19E71BD100F2EF04 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2F760E5219E86DA00077E0BB /* TestConfiguration.swift */,
 				2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */,
 				2FDF131C19E71BD100F2EF04 /* Supporting Files */,
 			);
@@ -150,6 +149,7 @@
 		2FDF131C19E71BD100F2EF04 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F96CECC1A0C1C480011DD06 /* Configuration.plist */,
 				2FDF131D19E71BD100F2EF04 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -193,7 +193,6 @@
 				2FDF130A19E71BD100F2EF04 /* Sources */,
 				2FDF130B19E71BD100F2EF04 /* Frameworks */,
 				2FDF130C19E71BD100F2EF04 /* Headers */,
-				2FDF130D19E71BD100F2EF04 /* Resources */,
 				2FDF133719E726FB00F2EF04 /* Copy Frameworks */,
 			);
 			buildRules = (
@@ -283,17 +282,11 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2FDF130D19E71BD100F2EF04 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2FDF131819E71BD100F2EF04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F96CED11A0C25190011DD06 /* Configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F760E5419E86E120077E0BB /* TestConfiguration.swift in Sources */,
 				2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */,
 				2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */,
 			);
