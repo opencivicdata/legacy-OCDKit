@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import Alamofire;
 
 //! Project version number for OCDKit.
 FOUNDATION_EXPORT double OCDKitVersionNumber;
