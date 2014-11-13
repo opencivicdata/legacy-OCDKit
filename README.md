@@ -42,6 +42,21 @@ ocdkit.jurisdictions()
 }
 ```
 
+We include [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) support if you don't want to handle unwrapping NSDictionary and NSArray optionals:
+
+```swift
+ocdkit.bills()
+      .responseSwiftyJSON { (request, response, json, error) in
+        println(request.URLString)
+        var meta = json["meta"].dictionaryValue
+        var results = json["results"].arrayValue
+        for item in results {
+            println(item["from_organization"]["name"])
+        }
+        println(error)
+}
+```
+
 ## Requirements
 
 - iOS 7.0+ / Mac OS X 10.9+
