@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+import AlamofireSwiftyJSON
 
 
 enum OCDRouter: URLRequestConvertible {

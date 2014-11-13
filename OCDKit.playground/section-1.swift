@@ -39,6 +39,9 @@ ocdkit.people(boston)
     }
 }
 
+let predicate = NSPredicate(format: "division.name == name", argumentArray: [])
+
+
 ocdkit.jurisdictions()
 .responseJSON { (request, _, JSON, error) in
     println(request.URLString)
@@ -51,6 +54,15 @@ ocdkit.jurisdictions()
         for item in resultsList {
             if let itemDict = item as? NSDictionary {
                 println(itemDict["name"])
+            }
+        }
+        var searchResults: NSArray = resultsList.filteredArrayUsingPredicate(predicate)
+        println("search got \(searchResults.count) results")
+        for item in searchResults {
+            if let itemDict = item as? NSDictionary {
+                let name = itemDict["name"] as? String
+                let ocdId = itemDict["id"] as? String
+                println("Search got \(name): \(ocdId)")
             }
         }
     }
@@ -87,3 +99,13 @@ ocdkit.bills(["from_organization": "ocd-organization/88544b41-d989-46ce-86fb-7ac
     
 }
 
+ocdkit.bills()
+      .responseSwiftyJSON { (request, response, json, error) in
+        println(request.URLString)
+        var meta = json["meta"].dictionaryValue
+        var results = json["results"].arrayValue
+        for item in results {
+            println(item["from_organization"]["name"])
+        }
+        println(error)
+}

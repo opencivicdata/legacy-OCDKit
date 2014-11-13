@@ -72,6 +72,33 @@ class OCDKitTests: XCTestCase {
         }
     }
 
+    func testSwiftyBillSubjectSearch() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("Bills Subject Lookup")
+
+        api.bills(["subject":"LABOR"])
+            .responseSwiftyJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/?subject=LABOR")!, "request URL should be equal")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertNotEqual(JSON["meta"].dictionaryValue, [:], "meta dictionary should not be empty")
+                XCTAssertNotNil(JSON["meta"]["count"].number, "meta dictionary should contain count")
+                XCTAssertNotEqual(JSON["results"].arrayValue, [], "response dictionary should not be empty")
+
+                XCTAssertGreaterThanOrEqual(JSON["results"]["count"].intValue, 0, "results should be some number, right?")
+                for result in JSON["results"].arrayValue {
+                    XCTAssertNotEqual(result["id"].stringValue, "", "A result object should have an id.")
+                }
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
     func testRouterForObject() {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
         var route = OCDRouter.Object(ocdId, nil)

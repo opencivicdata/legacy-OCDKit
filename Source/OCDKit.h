@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@import Alamofire;
+@import AlamofireSwiftyJSON;
 
 //! Project version number for OCDKit.
 FOUNDATION_EXPORT double OCDKitVersionNumber;
