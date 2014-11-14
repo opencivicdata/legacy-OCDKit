@@ -16,6 +16,8 @@
 		2F091A4D1A15483200164ABA /* OCDKitExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091A4C1A15483200164ABA /* OCDKitExampleTests.swift */; };
 		2F091A691A15493700164ABA /* OCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F091A5D1A15486F00164ABA /* OCDKit.framework */; };
 		2F091A6B1A155DCB00164ABA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091A6A1A155DCB00164ABA /* Model.swift */; };
+		2FE63E461A16957D00CACA76 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FE63E451A16957D00CACA76 /* Configuration.plist */; };
+		2FE63E491A16969800CACA76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE63E481A16969800CACA76 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		2F091A4C1A15483200164ABA /* OCDKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCDKitExampleTests.swift; sourceTree = "<group>"; };
 		2F091A571A15486E00164ABA /* OCDKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCDKit.xcodeproj; path = ../../../OCDKit.xcodeproj; sourceTree = "<group>"; };
 		2F091A6A1A155DCB00164ABA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2FE63E451A16957D00CACA76 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		2FE63E481A16969800CACA76 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				2F091A361A15483200164ABA /* MasterViewController.swift */,
 				2F091A381A15483200164ABA /* DetailViewController.swift */,
 				2F091A6A1A155DCB00164ABA /* Model.swift */,
+				2FE63E481A16969800CACA76 /* Configuration.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		2F091A321A15483200164ABA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2FE63E451A16957D00CACA76 /* Configuration.plist */,
 				2F091A331A15483200164ABA /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -273,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F091A3C1A15483200164ABA /* Main.storyboard in Resources */,
+				2FE63E461A16957D00CACA76 /* Configuration.plist in Resources */,
 				2F091A411A15483200164ABA /* LaunchScreen.xib in Resources */,
 				2F091A3E1A15483200164ABA /* Images.xcassets in Resources */,
 			);
@@ -293,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F091A391A15483200164ABA /* DetailViewController.swift in Sources */,
+				2FE63E491A16969800CACA76 /* Configuration.swift in Sources */,
 				2F091A371A15483200164ABA /* MasterViewController.swift in Sources */,
 				2F091A351A15483200164ABA /* AppDelegate.swift in Sources */,
 				2F091A6B1A155DCB00164ABA /* Model.swift in Sources */,

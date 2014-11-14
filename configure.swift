@@ -24,7 +24,7 @@ let plistData = NSPropertyListSerialization.dataWithPropertyList(configuration, 
 
 let fileManager:NSFileManager = NSFileManager.defaultManager()
 
-let path = "Tests/Supporting Files/Configuration.plist"
+let path = "./Configuration.plist"
 
 let fileURL = NSURL(fileURLWithPath:path)
 

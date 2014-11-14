@@ -13,7 +13,7 @@ class DetailViewController: UITableViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     var objects: Array<JSON> = []
-    var api:OpenCivicData?
+    var opencivicdata:OpenCivicData = OpenCivicData()
 
 
     var detailType: OCDType? {
@@ -39,17 +39,17 @@ class DetailViewController: UITableViewController {
 
             switch type {
             case .Bill:
-                method = self.api?.bills
+                method = self.opencivicdata.bills
             case .Division:
-                method = self.api?.divisions
+                method = self.opencivicdata.divisions
             case .Event:
-                method = self.api?.events
+                method = self.opencivicdata.events
             case .Jurisdiction:
-                method = self.api?.jurisdictions
+                method = self.opencivicdata.jurisdictions
             case .Person:
-                method = self.api?.people
+                method = self.opencivicdata.people
             case .Vote:
-                method = self.api?.votes
+                method = self.opencivicdata.votes
             }
 
             if let method = method {
@@ -57,7 +57,18 @@ class DetailViewController: UITableViewController {
                     let count = JSON["meta"]["count"].intValue
                     println("Got \(count) objects")
                     self.objects = JSON["results"].arrayValue
+                    let errorMessage:String? = JSON["error"].string
                     self.tableView.reloadData()
+                    if let message = errorMessage {
+                        let alertcontroller = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
+                        alertcontroller.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alertcontroller, animated: true, completion: nil)
+                    }
+                    else if self.objects.count == 0 {
+                        let alertcontroller = UIAlertController(title: "No results", message: "There were no results", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                        alertcontroller.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alertcontroller, animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -66,7 +77,10 @@ class DetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.api = OpenCivicData(apiKey: "")
+        let config = Configuration()
+        if let key = config.properties["OCD_API_KEY"] as? String {
+            self.opencivicdata.apiKey = key
+        }
         self.configureView()
         self.loadData()
     }
