@@ -58,19 +58,31 @@ enum OCDRouter: URLRequestConvertible {
 }
 
 public class OpenCivicData {
-    let apiKey:String
-    let manager:Alamofire.Manager
+    var apiKey:String? {
+        didSet {
+            self.configureManager()
+        }
+    }
+    var manager:Alamofire.Manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 
-    public init(apiKey:String) {
+    public init() {}
+
+    public convenience init(apiKey:String) {
+        self.init()
         self.apiKey = apiKey
+        self.configureManager()
+    }
 
-        var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
-        defaultHeaders["X-APIKEY"] = apiKey
+    private func configureManager() {
+        if let key = self.apiKey {
+            var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
+            defaultHeaders["X-APIKEY"] = key
 
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = defaultHeaders
+            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            configuration.HTTPAdditionalHeaders = defaultHeaders
 
-        self.manager = Alamofire.Manager(configuration: configuration)
+            self.manager = Alamofire.Manager(configuration: configuration)
+        }
     }
 
     func request(URLRequest: URLRequestConvertible) -> Request {
@@ -82,15 +94,15 @@ public class OpenCivicData {
     }
 
     public func bills() -> Request {
-        return self.bills([:])
+        return self.request(OCDRouter.Search("bills", nil))
     }
 
-    public func bills(params:[String:AnyObject]) -> Request {
+    public func bills(params:[String:AnyObject]?) -> Request {
         return self.request(OCDRouter.Search("bills", params))
     }
 
     public func divisions() -> Request {
-        return self.divisions([:])
+        return self.request(OCDRouter.Search("divisions", nil))
     }
 
     public func divisions(params:[String:AnyObject]) -> Request {
@@ -98,7 +110,7 @@ public class OpenCivicData {
     }
 
     public func events() -> Request {
-        return self.events([:])
+        return self.request(OCDRouter.Search("events", nil))
     }
 
     public func events(params:[String:AnyObject]) -> Request {
@@ -106,7 +118,7 @@ public class OpenCivicData {
     }
 
     public func jurisdictions() -> Request {
-        return self.jurisdictions([:])
+        return self.request(OCDRouter.Search("jurisdictions", nil))
     }
 
     public func jurisdictions(params:[String:AnyObject]) -> Request {

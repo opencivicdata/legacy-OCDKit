@@ -36,7 +36,41 @@ class OCDKitTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
+    func testApiKey() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+        XCTAssertNotNil(api.apiKey?, "After setting apiKey, it should not be nil")
+    }
+
+    func testKeylessApiFail() {
+        let api = OpenCivicData()
+        XCTAssertNil(api.apiKey?, "When using default initializer, apiKey should be nil")
+
+        let expectation = expectationWithDescription("OpenCivicData without an api key should fail to get results and instead return an error")
+
+        api.bills()
+           .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                XCTAssertEqual(request.URL, NSURL(string: "https://api.opencivicdata.org/bills/")!, "request URL should be equal")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    XCTAssertNil(responseDict["meta"], "response dictionary should NOT contain meta")
+                    XCTAssertNil(responseDict["results"], "response dictionary should NOT contain results")
+                    XCTAssertNotNil(responseDict["error"], "response dictionary should contain error")
+                    if let responseError: String = responseDict["error"] as? String {
+                        XCTAssert(responseError.hasPrefix("Authorization Required"), "Should get an 'Authorization Required' message")
+                    }
+                }
+            }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
     func testBillSubjectSearch() {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
