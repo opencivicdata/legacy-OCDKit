@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2F4FC7A51A16A15C00897D38 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A31A16A15C00897D38 /* Alamofire.framework */; };
 		2F4FC7A61A16A15C00897D38 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */; };
-		2F4FC7A91A16A18400897D38 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A31A16A15C00897D38 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2F4FC7AA1A16A18400897D38 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 		2F96CED11A0C25190011DD06 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F96CECC1A0C1C480011DD06 /* Configuration.plist */; };
 		2FBC860A1A151D5600456E7A /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC86071A151D1B00456E7A /* AlamofireSwiftyJSON.framework */; };
@@ -58,8 +56,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2F4FC7A91A16A18400897D38 /* Alamofire.framework in Copy Frameworks */,
-				2F4FC7AA1A16A18400897D38 /* SwiftyJSON.framework in Copy Frameworks */,
 				2FBC860B1A151D5E00456E7A /* AlamofireSwiftyJSON.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
