@@ -63,7 +63,7 @@ enum OCDRouter: URLRequestConvertible {
 /// API Wrapper for the OpenCivicData API
 public class OpenCivicData {
     /// The API Key for the OpenCivicData API
-    var apiKey:String? {
+    public var apiKey:String? {
         didSet {
             self.configureManager()
         }
