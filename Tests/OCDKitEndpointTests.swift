@@ -232,6 +232,69 @@ class OCDBillEndpointTests: OCDTestsBase {
 
 class OCDDivisionEndpointTests: OCDTestsBase {
 
+    func testDivisionFetchResults() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("Division Fetch Results")
+
+        api.divisions(fields: OCDFields.Division.defaultFields, parameters: [:])
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+
+                self.measureBlock({ _ in
+                    if let responseDict = JSON as? NSDictionary {
+                        let results = responseDict["results"] as? NSArray
+                    }
+                })
+        }
+
+        waitForExpectationsWithTimeout(10, handler: { (error) in
+            XCTAssertNil(error, "\(error)")
+        })
+    }
+
+    func testSwiftDivisionFetchResults() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("Swifty Division Fetch Results")
+
+        api.divisions(fields: OCDFields.Division.defaultFields, parameters: [:])
+            .responseSwiftyJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+
+                self.measureBlock({ _ in
+                    let results = JSON["results"].arrayValue
+                })
+        }
+
+        waitForExpectationsWithTimeout(10, handler: { (error) in
+            XCTAssertNil(error, "\(error)")
+        })
+    }
+
+    func testSwiftDivisionFetchJurisdictions() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("Swifty Division Fetch Jurisdictions")
+
+        api.divisions(fields: OCDFields.Division.defaultFields, parameters: [:])
+            .responseSwiftyJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+
+                self.measureBlock({ _ in
+                    for division in JSON["results"].arrayValue {
+                        let jurisdictions = division["jurisdictions"].arrayValue
+                        for item in jurisdictions {
+                            println(item["id"])
+                        }
+                    }
+                })
+        }
+
+        waitForExpectationsWithTimeout(10, handler: { (error) in
+            XCTAssertNil(error, "\(error)")
+        })
+    }
     func testSwiftyDivisionGeoSearch() {
         let latitude: Double = 42.358056
         let longitude: Double = -71.063611
