@@ -82,7 +82,7 @@ class OCDKitTests: XCTestCase {
 
     func testDefaultFieldsForBill() {
         let fields: [String] = OCDFields.Bill.defaultFields
-        let expectedFields: [String] = ["id", "created_at", "updated_at", "identifier", "legislative_session", "title", "from_organization_id", "classification"]
+        let expectedFields: [String] = ["id", "created_at", "updated_at", "identifier", "legislative_session_id", "title", "from_organization_id", "classification"]
         let expectedFieldStr: String = join(", ", expectedFields)
         XCTAssertEqual(fields, expectedFields, "Default fields for OCDFields.Bill should include \"\(expectedFieldStr)\"")
     }
@@ -150,31 +150,12 @@ class OCDKitTests: XCTestCase {
 
     // MARK: - Object Lookup Tests
 
-    func testObjectLookup() {
+    func testBillObjectLookup() {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("OCD Object Lookup")
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
-
-        api.object(ocdId, fields: ["id"], parameters: nil)
-            .responseJSON { (request, response, _, error) in
-                expectation.fulfill()
-                XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
-                XCTAssertNotNil(response, "response should not be nil")
-        }
-
-        waitForExpectationsWithTimeout(10) { (error) in
-            XCTAssertNil(error, "\(error)")
-        }
-    }
-
-    func testObjectLookupWithParameters() {
-        let api = OpenCivicData(apiKey: self.apiKey!)
-
-        let expectation = expectationWithDescription("OCD Object Lookup")
-        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
-        let fields = ["title", "updated_at"]
+        let fields = OCDFields.Bill.defaultFields
 
         api.object(ocdId, fields: fields, parameters: nil)
             .responseJSON { (request, response, JSON, error) in
@@ -182,11 +163,75 @@ class OCDKitTests: XCTestCase {
                 XCTAssertNotNil(request, "request should not be nil")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
                 if let responseDict = JSON as? NSDictionary {
                     for f in fields {
                         XCTAssertNotNil(responseDict[f], "response dictionary should contain \(f)")
                     }
+                }
+                else {
+                    XCTFail("Object should have a response as an NSDictionary")
+                }
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
+    func testObjectLookupWithCustomFields() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("OCD Object Lookup with custom fields")
+        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+        let fields = ["title", "updated_at", "identifier"]
+
+        api.object(ocdId, fields: fields, parameters: nil)
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    for f in fields {
+                        XCTAssertNotNil(responseDict[f], "response dictionary should contain \(f)")
+                    }
+                }
+                else {
+                    XCTFail("Object should have a response as an NSDictionary")
+                }
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
+    func testPersonObjectLookup() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("OCD Person Object Lookup")
+        let ocdId = "ocd-person/0006efa7-70bf-41a0-8b0b-4bf8f999e7c1/";
+        let expectedName = "Stephen R. Archambault"
+        let fields = OCDFields.Person.defaultFields
+
+        api.object(ocdId, fields: fields, parameters: nil)
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    for f in fields {
+                        XCTAssertNotNil(responseDict[f], "response dictionary should contain \(f)")
+                    }
+                    let resultName: String = responseDict["name"] as String
+                    XCTAssertEqual(resultName, expectedName, "expect name for person to be \"\(expectedName)\"")
                 }
                 else {
                     XCTFail("Object should have a response as an NSDictionary")
@@ -214,6 +259,7 @@ class OCDKitTests: XCTestCase {
                 XCTAssertNotNil(request, "request should not be nil")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
                 if let responseDict = JSON as? NSDictionary {
                     XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
@@ -239,6 +285,47 @@ class OCDKitTests: XCTestCase {
         }
     }
 
+    func testBillSearchByOrganization() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("Bills by Organiation ID Lookup")
+
+        let organization_id = "ocd-organization/98004f81-af38-4600-82a9-d1f23200be0b"
+        let fields = OCDFields.Bill.defaultFields
+
+        api.bills(fields: fields, parameters: ["from_organization_id": organization_id])
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+                XCTAssertNotNil(request, "request should not be nil")
+                println(request.URL)
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
+                    if let metaDict = responseDict["meta"] as? NSDictionary {
+                        XCTAssertNotNil(metaDict["count"], "meta dictionary should contain count")
+                    }
+                    XCTAssertNotNil(responseDict["results"], "response dictionary should contain results")
+                    if let resultsArray = responseDict["results"] as? NSArray {
+                        XCTAssertGreaterThanOrEqual(resultsArray.count, 0, "results should be some number, right?")
+                        for result:AnyObject in resultsArray {
+                            if let resultObject = result as? NSDictionary {
+                                for f in fields {
+                                    println("\(f): \(resultObject[f])")
+                                    XCTAssertNotNil(resultObject[f], "A result object should have a \"\(f)\" field.")
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
     func testSwiftyBillSubjectSearch() {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
@@ -250,6 +337,7 @@ class OCDKitTests: XCTestCase {
                 XCTAssertNotNil(request, "request should not be nil")
                 println(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotEqual(JSON["meta"].dictionaryValue, [:], "meta dictionary should not be empty")
                 XCTAssertNotNil(JSON["meta"]["count"].number, "meta dictionary should contain count")
                 XCTAssertNotEqual(JSON["results"].arrayValue, [], "response dictionary should not be empty")
@@ -286,6 +374,7 @@ class OCDKitTests: XCTestCase {
                 let lonParam = "lon=\(lon)"
                 XCTAssert(requestString?.rangeOfString(lonParam) != nil, "request URL should contain lon")
                 XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
                 if let responseDict = JSON as? NSDictionary {
                     XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
