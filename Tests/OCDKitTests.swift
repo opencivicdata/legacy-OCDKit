@@ -353,6 +353,47 @@ class OCDKitTests: XCTestCase {
         }
     }
 
+    // MARK: - Division Endpoint Tests
+
+    func testSwiftyDivisionGeoSearch() {
+        let latitude: Double = 42.358056
+        let longitude: Double = -71.063611
+
+        let api = OpenCivicData()
+        api.apiKey = self.apiKey
+
+        let expectation = expectationWithDescription("Division Lat/Lon Lookup")
+
+        api.divisions(fields: OCDFields.Division.defaultFields, parameters: ["lat": latitude, "lon": longitude])
+           .responseSwiftyJSON { (request, response, JSON, error) in
+            expectation.fulfill()
+
+            // Check URL request
+            XCTAssertNotNil(request, "request should not be nil")
+            var requestString: String? = request.URL.absoluteString
+            XCTAssert(requestString?.hasPrefix("https://api.opencivicdata.org/divisions/") != nil, "request URL should start with api.opencivicdata.org/divisions/")
+            // Check lat/lon values were preserved
+            let latParam = "lat=\(latitude)"
+            XCTAssert(requestString?.rangeOfString(latParam) != nil, "request URL should contain lat")
+            let lonParam = "lon=\(longitude)"
+            XCTAssert(requestString?.rangeOfString(lonParam) != nil, "request URL should contain lon")
+
+            // Check response
+            XCTAssertNotNil(response, "response should not be nil")
+            XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+
+            // Check JSON
+            XCTAssertNotEqual(JSON["meta"].dictionaryValue, [:], "meta dictionary should not be empty")
+            XCTAssertNotNil(JSON["meta"]["count"].number, "meta dictionary should contain count")
+            XCTAssertNotEqual(JSON["results"].arrayValue, [], "response dictionary should not be empty")
+
+        }
+
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
     // MARK: - Person Endpoint Tests
 
     func testPeopleLatLonLookup() {
