@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F41E57C1A23E9150063012B /* OCDFieldsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57B1A23E9150063012B /* OCDFieldsTests.swift */; };
+		2F41E57E1A23E9930063012B /* OCDTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57D1A23E9930063012B /* OCDTestsBase.swift */; };
+		2F41E5801A23EB8E0063012B /* OCDKitEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */; };
 		2F4FC7A51A16A15C00897D38 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A31A16A15C00897D38 /* Alamofire.framework */; };
 		2F4FC7A61A16A15C00897D38 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */; };
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
@@ -14,7 +17,7 @@
 		2FBC860A1A151D5600456E7A /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC86071A151D1B00456E7A /* AlamofireSwiftyJSON.framework */; };
 		2FBC860B1A151D5E00456E7A /* AlamofireSwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBC86071A151D1B00456E7A /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */; };
+		2FDF131F19E71BD100F2EF04 /* OCDKitBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitBasicTests.swift */; };
 		2FDF133A19E7284300F2EF04 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F41E57B1A23E9150063012B /* OCDFieldsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDFieldsTests.swift; sourceTree = "<group>"; };
+		2F41E57D1A23E9930063012B /* OCDTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDTestsBase.swift; sourceTree = "<group>"; };
+		2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDKitEndpointTests.swift; sourceTree = "<group>"; };
 		2F4FC7A31A16A15C00897D38 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Build/Products/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		2F96CECC1A0C1C480011DD06 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
@@ -73,7 +79,7 @@
 		2FDF131419E71BD100F2EF04 /* OCDKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDKit.h; sourceTree = "<group>"; };
 		2FDF131A19E71BD100F2EF04 /* OCDKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCDKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDF131D19E71BD100F2EF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCDKitTests.swift; sourceTree = "<group>"; };
+		2FDF131E19E71BD100F2EF04 /* OCDKitBasicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCDKitBasicTests.swift; sourceTree = "<group>"; };
 		2FDF133919E7284300F2EF04 /* OpenCivicData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenCivicData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,7 +171,10 @@
 		2FDF131B19E71BD100F2EF04 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2FDF131E19E71BD100F2EF04 /* OCDKitTests.swift */,
+				2F41E57B1A23E9150063012B /* OCDFieldsTests.swift */,
+				2FDF131E19E71BD100F2EF04 /* OCDKitBasicTests.swift */,
+				2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */,
+				2F41E57D1A23E9930063012B /* OCDTestsBase.swift */,
 				2FDF131C19E71BD100F2EF04 /* Supporting Files */,
 			);
 			path = Tests;
@@ -321,8 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F41E5801A23EB8E0063012B /* OCDKitEndpointTests.swift in Sources */,
+				2F41E57C1A23E9150063012B /* OCDFieldsTests.swift in Sources */,
+				2F41E57E1A23E9930063012B /* OCDTestsBase.swift in Sources */,
 				2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */,
-				2FDF131F19E71BD100F2EF04 /* OCDKitTests.swift in Sources */,
+				2FDF131F19E71BD100F2EF04 /* OCDKitBasicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
