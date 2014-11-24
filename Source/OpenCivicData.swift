@@ -13,6 +13,47 @@ import AlamofireSwiftyJSON
 
 public typealias URLParameters = [String:AnyObject]
 
+enum OCDFields {
+    case Object, Bill, Division, Event, Jurisdiction, Person, Vote
+
+    static let baseFields: [String] = ["id"]
+    static let temporalFields: [String] = ["created_at", "updated_at"]
+
+    var defaultFields: [String] {
+        var fields: [String] = []
+        fields.extend(OCDFields.baseFields)
+
+        switch self {
+        case .Object:
+            return fields
+        case .Bill:
+            fields.extend(OCDFields.temporalFields)
+            fields.extend(["identifier", "legislative_session", "title", "from_organization_id", "classification"])
+            return fields
+        case .Division:
+            fields.extend(["name", "country", "jurisdictions"])
+            return fields
+        case .Event:
+            fields.extend(OCDFields.temporalFields)
+            fields.extend(["jurisdiction_id", "description", "classification", "start_time", "end_time", "timezone"])
+            return fields
+        case .Jurisdiction:
+            fields.extend(["classification", "url"])
+            return fields
+        case .Person:
+            fields.extend(OCDFields.temporalFields)
+            fields.extend(["name", "image", "summary", "birth_date", "other_names"])
+            return fields
+        case .Vote:
+            fields.extend(OCDFields.temporalFields)
+            fields.extend(["identifier", "motion_text", "start_date", "end_date", "organization_id", "bill_id", "result"])
+            return fields
+        default:
+            return fields
+        }
+    }
+}
+
 // MARK: - OCDRouter
 
 enum OCDRouter: URLRequestConvertible {
