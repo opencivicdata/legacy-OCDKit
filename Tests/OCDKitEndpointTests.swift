@@ -335,9 +335,62 @@ class OCDDivisionEndpointTests: OCDTestsBase {
     }
 }
 
+// MARK: - Jurisdiction Endpoint Tests
+
+class OCDJurisdictionEndpointTests: OCDTestsBase {
+
+    func testJurisdictionLookup() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("OCD Jurisdiction Lookup")
+        let division_id = "ocd-division/country:us/state:nc";
+        let fields = OCDFields.Jurisdiction.defaultFields
+
+        api.jurisdictions(fields: fields, parameters: ["division_id": division_id])
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+
+                // Check URL request
+                XCTAssertNotNil(request, "request should not be nil")
+                var requestString: String? = request.URL.absoluteString
+                XCTAssert(requestString?.hasPrefix("https://api.opencivicdata.org/jurisdictions/") != nil, "request URL should start with api.opencivicdata.org/jurisdictions/")
+
+                // Check response
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+
+                // Check JSON
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
+                    if let metaDict = responseDict["meta"] as? NSDictionary {
+                        XCTAssertNotNil(metaDict["count"], "meta dictionary should contain count")
+                    }
+                    XCTAssertNotNil(responseDict["results"], "response dictionary should contain results")
+                    if let resultsArray = responseDict["results"] as? NSArray {
+                        XCTAssertGreaterThanOrEqual(resultsArray.count, 0, "results should be some number, right?")
+                        for result:AnyObject in resultsArray {
+                            if let resultObject = result as? NSDictionary {
+                                for f in fields {
+                                    println("\(f): \(resultObject[f])")
+                                    XCTAssertNotNil(resultObject[f], "A result object should have a \"\(f)\" field.")
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+}
+
 // MARK: - Person Endpoint Tests
 
 class OCDPersonEndpointTests: OCDTestsBase {
+
     func testPeopleLatLonLookup() {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
@@ -346,7 +399,7 @@ class OCDPersonEndpointTests: OCDTestsBase {
         let lat =  42.358056
         let lon = -71.063611
 
-        api.people(fields: ["id"], parameters: ["lat": lat, "lon": lon])
+        api.people(fields: OCDFields.Person.defaultFields, parameters: ["lat": lat, "lon": lon])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 
@@ -385,6 +438,54 @@ class OCDPersonEndpointTests: OCDTestsBase {
                 }
         }
         
+        waitForExpectationsWithTimeout(10) { (error) in
+            XCTAssertNil(error, "\(error)")
+        }
+    }
+
+
+    func testPeopleMembershipLookup() {
+        let api = OpenCivicData(apiKey: self.apiKey!)
+
+        let expectation = expectationWithDescription("People Membership Lookup")
+
+        let division_id = "ocd-organization/98004f81-af38-4600-82a9-d1f23200be0b"
+
+        api.people(fields: OCDFields.Person.defaultFields, parameters: ["member_of": division_id])
+            .responseJSON { (request, response, JSON, error) in
+                expectation.fulfill()
+
+                // Check URL request
+                XCTAssertNotNil(request, "request should not be nil")
+                var requestString: String? = request.URL.absoluteString
+                XCTAssert(requestString?.hasPrefix("https://api.opencivicdata.org/people/") != nil, "request URL should start with api.opencivicdata.org/people/")
+
+                // Check response
+                XCTAssertNotNil(response, "response should not be nil")
+                XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
+
+                // Check JSON
+                XCTAssertNotNil(JSON, "JSON should not be nil")
+                if let responseDict = JSON as? NSDictionary {
+                    // Check JSON meta
+                    XCTAssertNotNil(responseDict["meta"], "response dictionary should contain meta")
+                    if let metaDict = responseDict["meta"] as? NSDictionary {
+                        XCTAssertNotNil(metaDict["count"], "meta dictionary should contain count")
+                    }
+
+                    // Check JSON results
+                    XCTAssertNotNil(responseDict["results"], "response dictionary should contain results")
+                    if let resultsArray = responseDict["results"] as? NSArray {
+                        XCTAssertGreaterThanOrEqual(resultsArray.count, 0, "results should be some number, right?")
+                        for result:AnyObject in resultsArray {
+                            if let resultObject = result as? NSDictionary {
+                                XCTAssertNotNil(resultObject["id"], "A result object should have an id.")
+                            }
+                        }
+                    }
+                }
+        }
+
         waitForExpectationsWithTimeout(10) { (error) in
             XCTAssertNil(error, "\(error)")
         }
