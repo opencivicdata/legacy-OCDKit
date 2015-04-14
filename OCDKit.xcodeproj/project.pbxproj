@@ -12,6 +12,13 @@
 		2F41E5801A23EB8E0063012B /* OCDKitEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */; };
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 		2F96CED11A0C25190011DD06 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F96CECC1A0C1C480011DD06 /* Configuration.plist */; };
+		2FAA8A1B1ADD7F4A0078A6C4 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2FAA8A1C1ADD7F4A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2FAA8A221ADD90520078A6C4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; };
+		2FAA8A231ADD90530078A6C4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; };
+		2FAA8A241ADDA2460078A6C4 /* OCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDF130F19E71BD100F2EF04 /* OCDKit.framework */; };
+		2FAA8A261ADDA29A0078A6C4 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2FAA8A271ADDA29A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FDF131F19E71BD100F2EF04 /* OCDKitBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitBasicTests.swift */; };
 		2FDF133A19E7284300F2EF04 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
@@ -28,12 +35,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2FDF133719E726FB00F2EF04 /* Copy Frameworks */ = {
+		2FAA8A1A1ADD7F2B0078A6C4 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2FAA8A1B1ADD7F4A0078A6C4 /* Alamofire.framework in Copy Frameworks */,
+				2FAA8A1C1ADD7F4A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FAA8A251ADDA2890078A6C4 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2FAA8A261ADDA29A0078A6C4 /* Alamofire.framework in Copy Frameworks */,
+				2FAA8A271ADDA29A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,9 +65,9 @@
 		2F41E57B1A23E9150063012B /* OCDFieldsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDFieldsTests.swift; sourceTree = "<group>"; };
 		2F41E57D1A23E9930063012B /* OCDTestsBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDTestsBase.swift; sourceTree = "<group>"; };
 		2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCDKitEndpointTests.swift; sourceTree = "<group>"; };
-		2F4FC7A31A16A15C00897D38 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
-		2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Build/Products/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		2F96CECC1A0C1C480011DD06 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		2FDF130F19E71BD100F2EF04 /* OCDKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OCDKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDF131319E71BD100F2EF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FDF131419E71BD100F2EF04 /* OCDKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCDKit.h; sourceTree = "<group>"; };
@@ -61,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FAA8A221ADD90520078A6C4 /* Alamofire.framework in Frameworks */,
+				2FAA8A231ADD90530078A6C4 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FAA8A241ADDA2460078A6C4 /* OCDKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,8 +109,8 @@
 		2F4FC7A81A16A16500897D38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2F4FC7A31A16A15C00897D38 /* Alamofire.framework */,
-				2F4FC7A41A16A15C00897D38 /* SwiftyJSON.framework */,
+				2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */,
+				2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,10 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FDF132219E71BD100F2EF04 /* Build configuration list for PBXNativeTarget "OCDKit" */;
 			buildPhases = (
+				2FAA8A191ADD7EA50078A6C4 /* Carthage copy-frameworks */,
+				2FAA8A1A1ADD7F2B0078A6C4 /* Copy Frameworks */,
 				2FDF130A19E71BD100F2EF04 /* Sources */,
 				2FDF130B19E71BD100F2EF04 /* Frameworks */,
 				2FDF130C19E71BD100F2EF04 /* Headers */,
-				2FDF133719E726FB00F2EF04 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +213,7 @@
 				2FDF131619E71BD100F2EF04 /* Sources */,
 				2FDF131719E71BD100F2EF04 /* Frameworks */,
 				2FDF131819E71BD100F2EF04 /* Resources */,
+				2FAA8A251ADDA2890078A6C4 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,6 +270,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FAA8A191ADD7EA50078A6C4 /* Carthage copy-frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Carthage copy-frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2FDF130A19E71BD100F2EF04 /* Sources */ = {
@@ -372,7 +417,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "Resources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -393,7 +439,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "Resources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -409,6 +456,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -426,6 +474,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

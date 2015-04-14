@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import AlamofireSwiftyJSON
 
 public typealias URLParameters = [String:AnyObject]
 
