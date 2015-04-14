@@ -14,8 +14,10 @@
 		2F091A3E1A15483200164ABA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F091A3D1A15483200164ABA /* Images.xcassets */; };
 		2F091A411A15483200164ABA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F091A3F1A15483200164ABA /* LaunchScreen.xib */; };
 		2F091A4D1A15483200164ABA /* OCDKitExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091A4C1A15483200164ABA /* OCDKitExampleTests.swift */; };
-		2F091A691A15493700164ABA /* OCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F091A5D1A15486F00164ABA /* OCDKit.framework */; };
 		2F091A6B1A155DCB00164ABA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F091A6A1A155DCB00164ABA /* Model.swift */; };
+		2F8C86FE1ADDC23A003C9146 /* OCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F091A5D1A15486F00164ABA /* OCDKit.framework */; };
+		2F8C870E1ADDC4C4003C9146 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; };
+		2F8C87151ADDC961003C9146 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; };
 		2FE63E461A16957D00CACA76 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FE63E451A16957D00CACA76 /* Configuration.plist */; };
 		2FE63E491A16969800CACA76 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE63E481A16969800CACA76 /* Configuration.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +44,7 @@
 			remoteGlobalIDString = 2FDF131A19E71BD100F2EF04;
 			remoteInfo = OCDKitTests;
 		};
-		2F091A651A15491000164ABA /* PBXContainerItemProxy */ = {
+		2F8C86FA1ADDC147003C9146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2F091A571A15486E00164ABA /* OCDKit.xcodeproj */;
 			proxyType = 1;
@@ -65,6 +67,8 @@
 		2F091A4C1A15483200164ABA /* OCDKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCDKitExampleTests.swift; sourceTree = "<group>"; };
 		2F091A571A15486E00164ABA /* OCDKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCDKit.xcodeproj; path = ../../../OCDKit.xcodeproj; sourceTree = "<group>"; };
 		2F091A6A1A155DCB00164ABA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		2FE63E451A16957D00CACA76 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		2FE63E481A16969800CACA76 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F091A691A15493700164ABA /* OCDKit.framework in Frameworks */,
+				2F8C86FE1ADDC23A003C9146 /* OCDKit.framework in Frameworks */,
+				2F8C870E1ADDC4C4003C9146 /* Alamofire.framework in Frameworks */,
+				2F8C87151ADDC961003C9146 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,13 +188,14 @@
 			buildConfigurationList = 2F091A501A15483200164ABA /* Build configuration list for PBXNativeTarget "OCDKitExample" */;
 			buildPhases = (
 				2F091A2B1A15483200164ABA /* Sources */,
+				2F8C86FF1ADDC24E003C9146 /* carthage copy-frameworks */,
 				2F091A2C1A15483200164ABA /* Frameworks */,
 				2F091A2D1A15483200164ABA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2F091A661A15491000164ABA /* PBXTargetDependency */,
+				2F8C86FB1ADDC147003C9146 /* PBXTargetDependency */,
 			);
 			name = OCDKitExample;
 			productName = OCDKitExample;
@@ -294,6 +301,25 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F8C86FF1ADDC24E003C9146 /* carthage copy-frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				../../Carthage/Build/iOS/Alamofire.framework,
+				../../Carthage/Build/iOS/SwiftyJSON.framework,
+			);
+			name = "carthage copy-frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F091A2B1A15483200164ABA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -323,10 +349,10 @@
 			target = 2F091A2E1A15483200164ABA /* OCDKitExample */;
 			targetProxy = 2F091A471A15483200164ABA /* PBXContainerItemProxy */;
 		};
-		2F091A661A15491000164ABA /* PBXTargetDependency */ = {
+		2F8C86FB1ADDC147003C9146 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OCDKit;
-			targetProxy = 2F091A651A15491000164ABA /* PBXContainerItemProxy */;
+			targetProxy = 2F8C86FA1ADDC147003C9146 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
 				INFOPLIST_FILE = "Resources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
 				INFOPLIST_FILE = "Resources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

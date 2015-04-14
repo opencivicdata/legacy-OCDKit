@@ -10,6 +10,8 @@
 		2F41E57C1A23E9150063012B /* OCDFieldsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57B1A23E9150063012B /* OCDFieldsTests.swift */; };
 		2F41E57E1A23E9930063012B /* OCDTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57D1A23E9930063012B /* OCDTestsBase.swift */; };
 		2F41E5801A23EB8E0063012B /* OCDKitEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41E57F1A23EB8E0063012B /* OCDKitEndpointTests.swift */; };
+		2F8C86F61ADDC106003C9146 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2F8C86F71ADDC107003C9146 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F9362E319F8515D00E2DAE0 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
 		2F96CED11A0C25190011DD06 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F96CECC1A0C1C480011DD06 /* Configuration.plist */; };
 		2FAA8A1B1ADD7F4A0078A6C4 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -17,8 +19,6 @@
 		2FAA8A221ADD90520078A6C4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; };
 		2FAA8A231ADD90530078A6C4 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; };
 		2FAA8A241ADDA2460078A6C4 /* OCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDF130F19E71BD100F2EF04 /* OCDKit.framework */; };
-		2FAA8A261ADDA29A0078A6C4 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A151ADD7E8D0078A6C4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2FAA8A271ADDA29A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAA8A161ADD7E8D0078A6C4 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2FDF131519E71BD100F2EF04 /* OCDKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDF131419E71BD100F2EF04 /* OCDKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2FDF131F19E71BD100F2EF04 /* OCDKitBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF131E19E71BD100F2EF04 /* OCDKitBasicTests.swift */; };
 		2FDF133A19E7284300F2EF04 /* OpenCivicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF133919E7284300F2EF04 /* OpenCivicData.swift */; };
@@ -53,8 +53,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2FAA8A261ADDA29A0078A6C4 /* Alamofire.framework in Copy Frameworks */,
-				2FAA8A271ADDA29A0078A6C4 /* SwiftyJSON.framework in Copy Frameworks */,
+				2F8C86F61ADDC106003C9146 /* Alamofire.framework in Copy Frameworks */,
+				2F8C86F71ADDC107003C9146 /* SwiftyJSON.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
