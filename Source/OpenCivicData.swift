@@ -12,13 +12,13 @@ import SwiftyJSON
 
 public typealias URLParameters = [String:AnyObject]
 
-enum OCDFields {
+public enum OCDFields {
     case Object, Bill, Division, Event, Jurisdiction, Person, Vote
 
     static let baseFields: [String] = ["id"]
     static let temporalFields: [String] = ["created_at", "updated_at"]
 
-    var defaultFields: [String] {
+    public var defaultFields: [String] {
         var fields: [String] = []
         fields.extend(OCDFields.baseFields)
 
@@ -37,7 +37,7 @@ enum OCDFields {
             fields.extend(["jurisdiction_id", "description", "classification", "start_time", "end_time", "timezone"])
             return fields
         case .Jurisdiction:
-            fields.extend(["classification", "url"])
+            fields.extend(["classification", "url", "name"])
             return fields
         case .Person:
             fields.extend(OCDFields.temporalFields)
