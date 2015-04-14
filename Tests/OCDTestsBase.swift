@@ -12,6 +12,8 @@ import OCDKit // Not really necessary as OCDKit is a member of the test target
 
 class OCDTestsBase: XCTestCase {
     var apiKey: String?
+    let longTimeOut: NSTimeInterval = 30
+    let shortTimeOut: NSTimeInterval = 10
 
     override func setUp() {
         super.setUp()
@@ -38,7 +40,7 @@ class OCDTestsBase: XCTestCase {
     }
 
     func testSetUp() {
-        XCTAssertNotNil(self.apiKey?, "OCDTestsBase.apiKey should not be nil")
+        XCTAssertNotNil(self.apiKey, "OCDTestsBase.apiKey should not be nil")
     }
 
 }
