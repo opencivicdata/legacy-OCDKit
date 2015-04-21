@@ -27,7 +27,7 @@ public enum OCDFields {
             return fields
         case .Bill:
             fields.extend(OCDFields.temporalFields)
-            fields.extend(["identifier", "legislative_session_id", "title", "from_organization_id", "classification"])
+            fields.extend(["identifier", "title", "from_organization_id", "classification"])
             return fields
         case .Division:
             fields.extend(["name", "country", "jurisdictions"])

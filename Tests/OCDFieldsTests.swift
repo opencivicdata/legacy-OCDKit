@@ -31,7 +31,7 @@ class OCDFieldsTests: XCTestCase {
 
     func testDefaultFieldsForBill() {
         let fields: [String] = OCDFields.Bill.defaultFields
-        let expectedFields: [String] = ["id", "created_at", "updated_at", "identifier", "legislative_session_id", "title", "from_organization_id", "classification"]
+        let expectedFields: [String] = ["id", "created_at", "updated_at", "identifier", "title", "from_organization_id", "classification"]
         let expectedFieldStr: String = join(", ", expectedFields)
         XCTAssertEqual(fields, expectedFields, "Default fields for OCDFields.Bill should include \"\(expectedFieldStr)\"")
     }
@@ -52,7 +52,7 @@ class OCDFieldsTests: XCTestCase {
 
     func testDefaultFieldsForJurisdiction() {
         let fields: [String] = OCDFields.Jurisdiction.defaultFields
-        let expectedFields: [String] = ["id", "classification", "url"]
+        let expectedFields: [String] = ["id", "classification", "url", "name"]
         let expectedFieldStr: String = join(", ", expectedFields)
         XCTAssertEqual(fields, expectedFields, "Default fields for OCDFields.Jurisdiction should include \"\(expectedFieldStr)\"")
     }
