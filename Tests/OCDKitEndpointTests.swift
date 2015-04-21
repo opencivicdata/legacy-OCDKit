@@ -14,12 +14,13 @@ import SwiftyJSON
 // MARK: - Object Lookup Tests
 
 class OCDObjectLookupTests: OCDTestsBase {
+    let sampleBillID = "ocd-bill/36ebab81-71b1-476f-9f4a-a565621968e4"
 
     func testBillObjectLookup() {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("OCD Object Lookup")
-        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+        let ocdId = sampleBillID;
         let fields = OCDFields.Bill.defaultFields
 
         api.object(ocdId, fields: fields, parameters: nil)
@@ -50,7 +51,7 @@ class OCDObjectLookupTests: OCDTestsBase {
         let api = OpenCivicData(apiKey: self.apiKey!)
 
         let expectation = expectationWithDescription("OCD Object Lookup with custom fields")
-        let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
+        let ocdId = sampleBillID;
         let fields = ["title", "updated_at", "identifier"]
 
         api.object(ocdId, fields: fields, parameters: nil)
@@ -149,7 +150,7 @@ class OCDBillEndpointTests: OCDTestsBase {
                 }
         }
 
-        waitForExpectationsWithTimeout(20) { (error) in
+        waitForExpectationsWithTimeout(longTimeOut) { (error) in
             XCTAssertNil(error, "\(error)")
         }
     }

@@ -12,7 +12,7 @@ import OCDKit // Not really necessary as OCDKit is a member of the test target
 
 class OCDTestsBase: XCTestCase {
     var apiKey: String?
-    let longTimeOut: NSTimeInterval = 30
+    let longTimeOut: NSTimeInterval = 40
     let shortTimeOut: NSTimeInterval = 10
 
     override func setUp() {
