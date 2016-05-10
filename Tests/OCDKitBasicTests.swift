@@ -24,11 +24,11 @@ class OCDKitBasicTests: OCDTestsBase {
 
         let expectation = expectationWithDescription("OpenCivicData without an api key should fail to get results and instead return an error")
 
-        api.bills(fields: ["id"], parameters: nil)
+        api.bills(["id"], parameters: nil)
            .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
                 if let responseDict = JSON as? NSDictionary {
