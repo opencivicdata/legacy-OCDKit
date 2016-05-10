@@ -55,24 +55,24 @@ class OCDRouterTests: OCDTestsBase {
     func testRouterForObject() {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Object(ocdId, fields, nil)
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Object(ocdId, fields, nil)
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/?fields=\(paramString)")!, "request URL should be equal")
     }
 
     func testRouterForSearch() {
         let path = "foo"
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Search(path, fields, nil)
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Search(path, fields, nil)
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(path)/?fields=\(paramString)")!, "request URL should be equal")
     }
 
     func testRouterForSearchWithParameters() {
         let path = "bills"
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Search(path, fields, ["subject":"LABOR"])
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Search(path, fields, ["subject":"LABOR"])
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(path)/?fields=\(paramString)&subject=LABOR")!, "request URL should be equal")
     }
 
