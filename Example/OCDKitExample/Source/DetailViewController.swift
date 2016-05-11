@@ -12,19 +12,19 @@ import Alamofire
 import SwiftyJSON
 
 class DetailViewController: UITableViewController {
-
+    
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     var objects: Array<JSON> = []
     var opencivicdata:OpenCivicData = OpenCivicData()
-
-
+    
+    
     var detailType: OCDType? {
         didSet {
             // Update the view.
             self.configureView()
         }
     }
-
+    
     func configureView() {
         // Update the user interface for the detail item.
         if let type = self.detailType {
@@ -32,14 +32,14 @@ class DetailViewController: UITableViewController {
             self.title = "\(title.capitalizedString) objects"
         }
     }
-
+    
     func loadData() {
         if let type = self.detailType {
-
+            
             typealias ApiMethod = (fields: [String], parameters: URLParameters?) -> Request
             var method: ApiMethod?
             var fields: [String] = ["id"]
-
+            
             switch type {
             case .Bill:
                 method = self.opencivicdata.bills
@@ -60,14 +60,14 @@ class DetailViewController: UITableViewController {
                 method = self.opencivicdata.votes
                 fields = OCDFields.Vote.defaultFields
             }
-
+            
             if let method = method {
-                method(fields: fields, parameters: nil).responseJSON { (request, response, JSON, error) in
-                    if let data: NSDictionary = JSON as? NSDictionary {
-                        let json = SwiftyJSON.JSON(data)
+                method(fields: fields, parameters: nil).responseJSON { response in
+                    if let data = response.data {
+                        let json = SwiftyJSON.JSON(data: data)
                         let count = json["meta"]["count"]
                         let typeLabel: String = type.label()
-                        println("Got \(count) \(typeLabel) objects")
+                        print("Got \(count) \(typeLabel) objects")
                         self.objects = json["results"].arrayValue
                         let errorMessage:String? = json["error"].string
                         self.tableView.reloadData()
@@ -86,7 +86,7 @@ class DetailViewController: UITableViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -97,35 +97,35 @@ class DetailViewController: UITableViewController {
         self.configureView()
         self.loadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table View
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.objects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        
         let data = self.objects[indexPath.row]
-
+        
         let text: String = data["title"].string ?? data["name"].string ?? data["motion_text"].string ?? "Something"
         cell.textLabel!.text = text
-
+        
         let id: String = data["id"].string ?? "No id"
         cell.detailTextLabel?.text = id
-
+        
         return cell
     }
-
+    
 }
 

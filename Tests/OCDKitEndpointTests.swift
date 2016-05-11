@@ -27,7 +27,7 @@ class OCDObjectLookupTests: OCDTestsBase {
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
 //                let json = SwiftyJSON.JSON(JSON!)
@@ -58,7 +58,7 @@ class OCDObjectLookupTests: OCDTestsBase {
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
@@ -89,7 +89,7 @@ class OCDObjectLookupTests: OCDTestsBase {
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
@@ -123,11 +123,11 @@ class OCDBillEndpointTests: OCDTestsBase {
 
         let fields = ["id", "title"]
 
-        api.bills(fields: fields, parameters: ["subject":"LABOR"])
+        api.bills(fields, parameters: ["subject":"LABOR"])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
@@ -163,11 +163,11 @@ class OCDBillEndpointTests: OCDTestsBase {
         let organization_id = "ocd-organization/98004f81-af38-4600-82a9-d1f23200be0b"
         let fields = OCDFields.Bill.defaultFields
 
-        api.bills(fields: fields, parameters: ["from_organization_id": organization_id])
+        api.bills(fields, parameters: ["from_organization_id": organization_id])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
@@ -182,7 +182,7 @@ class OCDBillEndpointTests: OCDTestsBase {
                         for result:AnyObject in resultsArray {
                             if let resultObject = result as? NSDictionary {
                                 for f in fields {
-                                    println("\(f): \(resultObject[f])")
+                                    print("\(f): \(resultObject[f])")
                                     XCTAssertNotNil(resultObject[f], "A result object should have a \"\(f)\" field.")
                                 }
                             }
@@ -201,21 +201,20 @@ class OCDBillEndpointTests: OCDTestsBase {
 
         let expectation = expectationWithDescription("Bills Subject Lookup")
 
-        api.bills(fields: ["id"], parameters: ["subject":"LABOR"])
+        api.bills(["id"], parameters: ["subject":"LABOR"])
             .response { (request, response, data, error) in
                 expectation.fulfill()
 
                 // Check URL request
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request!.URL)
                 XCTAssertNotNil(response, "response should not be nil")
 
                 // Check response
                 XCTAssertLessThan(response!.statusCode, 500, "Response status code should not be 500 or above")
 
                 // Check JSON
-                if let jsonData: NSData = data as? NSData {
-                    var error:NSError? = nil
+                if let jsonData = data {
                     let object = JSON(data: jsonData)
                     XCTAssertNotEqual(object["meta"], [:], "meta dictionary should not be empty")
                     XCTAssertNotNil(object["meta"]["count"].number, "meta dictionary should contain count")
@@ -244,7 +243,7 @@ class OCDDivisionEndpointTests: OCDTestsBase {
 
         let expectation = expectationWithDescription("Division Fetch Results")
 
-        api.divisions(fields: OCDFields.Division.defaultFields, parameters: [:])
+        api.divisions(OCDFields.Division.defaultFields, parameters: [:])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 
@@ -292,7 +291,7 @@ class OCDDivisionEndpointTests: OCDTestsBase {
 //                    for division in JSON["results"] {
 //                        let jurisdictions = division["jurisdictions"]
 //                        for item in jurisdictions {
-//                            println(item["id"])
+//                            print(item["id"])
 //                        }
 //                    }
 //                })
@@ -312,7 +311,7 @@ class OCDDivisionEndpointTests: OCDTestsBase {
 
         let expectation = expectationWithDescription("Division Lat/Lon Lookup")
 
-        api.divisions(fields: OCDFields.Division.defaultFields, parameters: ["lat": latitude, "lon": longitude])
+        api.divisions(OCDFields.Division.defaultFields, parameters: ["lat": latitude, "lon": longitude])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 
@@ -354,7 +353,7 @@ class OCDJurisdictionEndpointTests: OCDTestsBase {
         let division_id = "ocd-division/country:us/state:nc";
         let fields = OCDFields.Jurisdiction.defaultFields
 
-        api.jurisdictions(fields: fields, parameters: ["division_id": division_id])
+        api.jurisdictions(fields, parameters: ["division_id": division_id])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 
@@ -380,7 +379,7 @@ class OCDJurisdictionEndpointTests: OCDTestsBase {
                         for result:AnyObject in resultsArray {
                             if let resultObject = result as? NSDictionary {
                                 for f in fields {
-                                    println("\(f): \(resultObject[f])")
+                                    print("\(f): \(resultObject[f])")
                                     XCTAssertNotNil(resultObject[f], "A result object should have a \"\(f)\" field.")
                                 }
                             }
@@ -407,7 +406,7 @@ class OCDPersonEndpointTests: OCDTestsBase {
         let lat =  42.358056
         let lon = -71.063611
 
-        api.people(fields: OCDFields.Person.defaultFields, parameters: ["lat": lat, "lon": lon])
+        api.people(OCDFields.Person.defaultFields, parameters: ["lat": lat, "lon": lon])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 
@@ -459,7 +458,7 @@ class OCDPersonEndpointTests: OCDTestsBase {
 
         let division_id = "ocd-organization/98004f81-af38-4600-82a9-d1f23200be0b"
 
-        api.people(fields: OCDFields.Person.defaultFields, parameters: ["member_of": division_id])
+        api.people(OCDFields.Person.defaultFields, parameters: ["member_of": division_id])
             .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
 

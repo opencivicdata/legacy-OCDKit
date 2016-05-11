@@ -24,11 +24,11 @@ class OCDKitBasicTests: OCDTestsBase {
 
         let expectation = expectationWithDescription("OpenCivicData without an api key should fail to get results and instead return an error")
 
-        api.bills(fields: ["id"], parameters: nil)
+        api.bills(["id"], parameters: nil)
            .responseJSON { (request, response, JSON, error) in
                 expectation.fulfill()
                 XCTAssertNotNil(request, "request should not be nil")
-                println(request.URL)
+                print(request.URL)
                 XCTAssertNotNil(response, "response should not be nil")
                 XCTAssertNotNil(JSON, "JSON should not be nil")
                 if let responseDict = JSON as? NSDictionary {
@@ -55,24 +55,24 @@ class OCDRouterTests: OCDTestsBase {
     func testRouterForObject() {
         let ocdId = "ocd-bill/000040f9-c09a-4121-aa08-4049fcb9d440";
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Object(ocdId, fields, nil)
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Object(ocdId, fields, nil)
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(ocdId)/?fields=\(paramString)")!, "request URL should be equal")
     }
 
     func testRouterForSearch() {
         let path = "foo"
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Search(path, fields, nil)
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Search(path, fields, nil)
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(path)/?fields=\(paramString)")!, "request URL should be equal")
     }
 
     func testRouterForSearchWithParameters() {
         let path = "bills"
         let fields = ["id"]
-        let paramString = join(",", fields)
-        var route = OCDRouter.Search(path, fields, ["subject":"LABOR"])
+        let paramString = fields.joinWithSeparator(",")
+        let route = OCDRouter.Search(path, fields, ["subject":"LABOR"])
         XCTAssertEqual(route.URLRequest.URL!, NSURL(string: "https://api.opencivicdata.org/\(path)/?fields=\(paramString)&subject=LABOR")!, "request URL should be equal")
     }
 

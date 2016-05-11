@@ -20,34 +20,32 @@ public enum OCDFields {
 
     public var defaultFields: [String] {
         var fields: [String] = []
-        fields.extend(OCDFields.baseFields)
+        fields.appendContentsOf(OCDFields.baseFields)
 
         switch self {
         case .Object:
             return fields
         case .Bill:
-            fields.extend(OCDFields.temporalFields)
-            fields.extend(["identifier", "title", "from_organization_id", "classification"])
+            fields.appendContentsOf(OCDFields.temporalFields)
+            fields.appendContentsOf(["identifier", "title", "from_organization_id", "classification"])
             return fields
         case .Division:
-            fields.extend(["name", "country", "jurisdictions"])
+            fields.appendContentsOf(["name", "country", "jurisdictions"])
             return fields
         case .Event:
-            fields.extend(OCDFields.temporalFields)
-            fields.extend(["jurisdiction_id", "description", "classification", "start_time", "end_time", "timezone"])
+            fields.appendContentsOf(OCDFields.temporalFields)
+            fields.appendContentsOf(["jurisdiction_id", "description", "classification", "start_time", "end_time", "timezone"])
             return fields
         case .Jurisdiction:
-            fields.extend(["classification", "url", "name"])
+            fields.appendContentsOf(["classification", "url", "name"])
             return fields
         case .Person:
-            fields.extend(OCDFields.temporalFields)
-            fields.extend(["name", "image", "summary", "birth_date", "other_names"])
+            fields.appendContentsOf(OCDFields.temporalFields)
+            fields.appendContentsOf(["name", "image", "summary", "birth_date", "other_names"])
             return fields
         case .Vote:
-            fields.extend(OCDFields.temporalFields)
-            fields.extend(["identifier", "motion_text", "start_date", "end_date", "organization_id", "bill_id", "result"])
-            return fields
-        default:
+            fields.appendContentsOf(OCDFields.temporalFields)
+            fields.appendContentsOf(["identifier", "motion_text", "start_date", "end_date", "organization_id", "bill_id", "result"])
             return fields
         }
     }
@@ -73,7 +71,7 @@ enum OCDRouter: URLRequestConvertible {
 
     // MARK: URLRequestConvertible
 
-    var URLRequest: NSURLRequest {
+    var URLRequest: NSMutableURLRequest {
 
         let URL = NSURL(string: OCDRouter.baseURLString)
         let mutableURLRequest = NSMutableURLRequest(URL: URL!.URLByAppendingPathComponent(path))
@@ -81,7 +79,7 @@ enum OCDRouter: URLRequestConvertible {
 
         func mergeFieldsParameters(fields: [String], params: URLParameters?) -> URLParameters {
             var URLParams: URLParameters = [:]
-            URLParams["fields"] = join(",", fields)
+            URLParams["fields"] = fields.joinWithSeparator(",")
             if var params = params {
                 for (key, value) in params {
                     var v: AnyObject = value
@@ -98,9 +96,9 @@ enum OCDRouter: URLRequestConvertible {
         let parameters: URLParameters = {
             switch self {
                 case .Object(_, let fields, let params):
-                    return mergeFieldsParameters(fields, params)
+                    return mergeFieldsParameters(fields, params: params)
                 case .Search(_, let fields, let params):
-                    return mergeFieldsParameters(fields, params)
+                    return mergeFieldsParameters(fields, params: params)
                 }
 
         }()
@@ -127,9 +125,9 @@ public class OpenCivicData {
     /**
     Convenience initializer which sets the apiKey and configures the manager to add X-APIKEY to the session HTTP headers
 
-    :param: apiKey An OpenCivicData API Key
+    - parameter apiKey: An OpenCivicData API Key
 
-    :returns: An instance of OpenCivicData configured with an API key.
+    - returns: An instance of OpenCivicData configured with an API key.
     */
     public convenience init(apiKey:String) {
         self.init()
@@ -162,11 +160,11 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/ for details
 
-    :param: ocdId The OCD identifier for the object, as a String
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter ocdId: The OCD identifier for the object, as a String
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
     public func object(ocdId:String, fields: [String]) -> Request {
         return self.object(ocdId, fields: fields, parameters: nil)
@@ -177,11 +175,11 @@ public class OpenCivicData {
     
     See http://docs.opencivicdata.org/en/latest/api/ for details
 
-    :param: ocdId The OCD identifier for the object, as a String
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter ocdId: The OCD identifier for the object, as a String
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
     public func object(ocdId:String, fields: [String], parameters: URLParameters?) -> Request {
         return self.request(OCDRouter.Object(ocdId, fields, parameters))
@@ -192,12 +190,12 @@ public class OpenCivicData {
     
     See http://docs.opencivicdata.org/en/latest/api/search.html#bill-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func bills(#fields: [String], parameters:URLParameters?) -> Request {
+    public func bills(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("bills", fields, parameters))
     }
 
@@ -206,12 +204,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#division-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func divisions(#fields: [String], parameters:URLParameters?) -> Request {
+    public func divisions(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("divisions", fields, parameters))
     }
 
@@ -220,12 +218,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#event-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func events(#fields: [String], parameters:URLParameters?) -> Request {
+    public func events(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("events", fields, parameters))
     }
 
@@ -234,12 +232,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#jurisdiction-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func jurisdictions(#fields: [String], parameters:URLParameters?) -> Request {
+    public func jurisdictions(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("jurisdictions", fields, parameters))
     }
 
@@ -248,12 +246,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#organization-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func organizations(#fields: [String], parameters:URLParameters?) -> Request {
+    public func organizations(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("organizations", fields, parameters))
     }
 
@@ -262,12 +260,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#person-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func people(#fields: [String], parameters:URLParameters?) -> Request {
+    public func people(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("people", fields, parameters))
     }
 
@@ -276,12 +274,12 @@ public class OpenCivicData {
 
     See http://docs.opencivicdata.org/en/latest/api/search.html#vote-search for details
 
-    :param: fields An array of field names, as Strings
-    :param: [String:AnyObject] A dictionary of filter parameters
+    - parameter fields: An array of field names, as Strings
+    - parameter [String:AnyObject]: A dictionary of filter parameters
 
-    :returns: The created request.
+    - returns: The created request.
     */
-    public func votes(#fields: [String], parameters:URLParameters?) -> Request {
+    public func votes(fields: [String], parameters:URLParameters?) -> Request {
         return self.request(OCDRouter.Search("votes", fields, parameters))
     }
 }
